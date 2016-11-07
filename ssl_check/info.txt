@@ -1,0 +1,11 @@
+To use this, it will by default, use the Macro: {$SSL_PORT} => 443 in the global template.
+
+If you would like to use a different port, specify it in the agent config. E.g:
+
+Normal
+------
+Zabbix Agent Interface: www.google.com => 443
+
+SMTP
+----
+Zabbix Agent Interface: mail.google.com => 465

@@ -1,0 +1,13 @@
+Also set a Macro in WebUI > General > Macros:
+
+{$SNMP_COMMUNITY}	=>	public
+
+Assuming your public string was actually public and a valume mapping of
+
+Name: QNAP Drive Status
+
+-4	=>	unknown
+-5	=>	no disk
+-6	=>	invalid
+-9	=>	read/write error
+0	=>	ready
