@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2016-11-07T15:24:20Z</date>
+    <date>2016-11-10T16:46:12Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -598,6 +598,49 @@
                     <logtimefmt/>
                 </item>
                 <item>
+                    <name>RAID Rebuilt Percentage</name>
+                    <type>3</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.contents[/proc/mdstat,UTF8]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>red /proc/mdstat to get percentage of rebuild status</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Hard disks</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
                     <name>Software Raid exists</name>
                     <type>3</type>
                     <snmp_community/>
@@ -672,6 +715,49 @@
                     <description>/proc/mdstat with a _ in it means broken RAID</description>
                     <inventory_link>0</inventory_link>
                     <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>robert.mclay</name>
+                    <type>3</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.fs.size[t/share/HDA_DATA,percentage]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password>Zo@b1234!</password>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Hard disks</name>
+                        </application>
+                    </applications>
                     <valuemap/>
                     <logtimefmt/>
                 </item>
@@ -1556,6 +1642,18 @@ QNAP Knowledgebase</description>
                         </item_prototype>
                     </item_prototypes>
                     <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>{Template SNMP QNAP NAS:SysVolumePFreeSizeEX[{#SNMPINDEX}].last()}&lt;10</expression>
+                            <name>Free disk space less than 10% on volume {#SNMPVALUE}</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>4</priority>
+                            <description>This will return the value of a volume and triggeri f thisi s less than 10%&#13;
+&#13;
+NB: You may need to add a size check to say &lt; 10GB os so later on.</description>
+                            <type>0</type>
+                            <dependencies/>
+                        </trigger_prototype>
                         <trigger_prototype>
                             <expression>{Template SNMP QNAP NAS:SysVolumePFreeSizeEX[{#SNMPINDEX}].last(0)}&lt;20</expression>
                             <name>Free space is less than 20% on volume {#SNMPVALUE}</name>
