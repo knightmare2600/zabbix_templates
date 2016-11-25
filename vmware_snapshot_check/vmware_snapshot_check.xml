@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2016-11-03T11:44:08Z</date>
+    <date>2016-11-25T14:28:12Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -67,13 +67,13 @@
                     <logtimefmt/>
                 </item>
                 <item>
-                    <name>Snapshot Output Check</name>
+                    <name>Consolidation Output Check</name>
                     <type>0</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>vfs.file.contents[/usr/lib/zabbix/externalscripts/snapshot-status]</key>
-                    <delay>3600</delay>
+                    <key>vfs.file.contents[/usr/lib/zabbix/externalscripts/consolidation-status]</key>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>0</trends>
                     <status>0</status>
@@ -110,12 +110,55 @@
                     <logtimefmt/>
                 </item>
                 <item>
-                    <name>Private Key File</name>
+                    <name>Snapshot Output Check</name>
                     <type>0</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>vfs.file.exists[/root/.ssh/id_rsa]</key>
+                    <key>vfs.file.contents[/usr/lib/zabbix/externalscripts/snapshot-status]</key>
+                    <delay>300</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>VMWare ESX</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>consolidation-status file</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[//usr/lib/zabbix/externalscripts/consolidation-status]</key>
                     <delay>30</delay>
                     <history>90</history>
                     <trends>365</trends>
@@ -142,9 +185,58 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>Private key file needs to exist or Example1 cannot check the snapshot status on ESX hosts.</description>
+                    <description>If there is no consolidation file, then we aren't checking consolidation status so that needs fixed.&#13;
+&#13;
+NB: After proxy reboot, but before the hourly cron task, this alert will show, then self resolve. Just be aware of that.</description>
                     <inventory_link>0</inventory_link>
-                    <applications/>
+                    <applications>
+                        <application>
+                            <name>VMWare ESX</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>snapshot-status file</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/usr/lib/zabbix/externalscripts/snapshot-status]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>if /usr/lib/zabbix/externalscripts/snapshot-status does not exist, then we have no way of confirming snapshot status</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>VMWare ESX</name>
+                        </application>
+                    </applications>
                     <valuemap/>
                     <logtimefmt/>
                 </item>
@@ -155,7 +247,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vfs.file.exists[/usr/lib/zabbix/externalscripts/snapshot_check.sh]</key>
-                    <delay>3600</delay>
+                    <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -187,6 +279,49 @@
                     <valuemap/>
                     <logtimefmt/>
                 </item>
+                <item>
+                    <name>VMWare Snapshot check Cron Job</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.regmatch[/etc/crontab,snapshot_check,UTF8,,]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>/etc/crontab must contain the cron job for alert to clear.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>VMWare ESX</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
             </items>
             <discovery_rules/>
             <macros>
@@ -200,6 +335,56 @@
         </template>
     </templates>
     <triggers>
+        <trigger>
+            <expression>({Template VMWare Snapshot check:vfs.file.contents[/usr/lib/zabbix/externalscripts/consolidation-status].regexp(^1.*)})&lt;&gt;0</expression>
+            <name>Consolidation Status: {ITEM.LASTVALUE1}</name>
+            <url/>
+            <status>1</status>
+            <priority>2</priority>
+            <description/>
+            <type>1</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template VMWare Snapshot check:vfs.file.contents[/usr/lib/zabbix/externalscripts/consolidation-status].str(Needs Consolidation)}=1</expression>
+            <name>Consolidation Statuses: {ITEM.LASTVALUE1}</name>
+            <url/>
+            <status>0</status>
+            <priority>5</priority>
+            <description/>
+            <type>1</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template VMWare Snapshot check:vfs.file.exists[//usr/lib/zabbix/externalscripts/consolidation-status].last()}=0</expression>
+            <name>Hey! {HOST.NAME} has no consolidation-status file!</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If the file doesn't exist, we have no consolidation visibility</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template VMWare Snapshot check:vfs.file.exists[/usr/lib/zabbix/externalscripts/snapshot-status].last()}=0</expression>
+            <name>Hey! {HOST.NAME} has no snapshot-status file!</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If the file doesn't exist, we have no snapshot visibility</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template VMWare Snapshot check:vfs.file.regmatch[/etc/crontab,snapshot_check,UTF8,,].last()}=0</expression>
+            <name>Hey! {HOST.NAME} has no snapshot_check.sh Cron Job</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If the cron job isn't checking snapshots we have no visibility so alert</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
         <trigger>
             <expression>{Template VMWare Snapshot check:vfs.file.exists[/usr/lib/zabbix/externalscripts/snapshot_check.sh].last()}=0</expression>
             <name>Hey! {HOST.NAME} has no snapshot_check.sh installed</name>
@@ -232,4 +417,3 @@
         </trigger>
     </triggers>
 </zabbix_export>
-
