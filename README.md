@@ -7,7 +7,7 @@ Read the info.txt in each folder for specifics for that template, and then impor
 
 Templates
 
-
+* domain_check - Check a list of domains for expiry and warn for 14 days or less and go critical for 0 or below
 * qnap_snmp - SNMP Template for QNAP NAS devices. Requires the NAS.mib from your QNAP's WebUI -> SNMP section
 * ssl_check - Checks an SSL certificate for issuer (hello WoSign!) and days to expiry. Alerts for 90, 60 30 days etc.
 * unattended_upgrades - Monitors the unattended upgrades package for Ubuntu Linux. Raises an alert if a system has a pending reboot or no cront job specified for the cleaning of old kernels (script included)
