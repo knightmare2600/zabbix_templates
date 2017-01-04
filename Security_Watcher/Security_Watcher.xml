@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.0</version>
+    <date>2017-01-04T15:28:19Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Security Watcher For Public CVEs</template>
+            <name>Security Watcher For Public CVEs</name>
+            <description/>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Bash</name>
+                </application>
+                <application>
+                    <name>glibc</name>
+                </application>
+                <application>
+                    <name>Imagemagick</name>
+                </application>
+                <application>
+                    <name>kernel version2</name>
+                </application>
+                <application>
+                    <name>OpenSSL</name>
+                </application>
+                <application>
+                    <name>phpmailer</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Bash Package Version</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>system.sw.packages[&quot;bash&quot;,all,short]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>1</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>get the package version of bash too</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Bash</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>glibc package version</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>system.sw.packages[&quot;glibc&quot;,,all]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>1</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>https://www.digitalocean.com/community/tutorials/how-to-protect-your-linux-server-against-the-ghost-vulnerability GHOST vulnerability in glibc</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>glibc</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Imagemagick package version</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>system.sw.packages[&quot;imagemagick&quot;,,short]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>1</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>https://www.ubuntu.com/usn/USN-2990-1/ returning anything below versions on that page will make it vulnerable to  CVE-2016-3714, CVE-2016-3715, CVE-2016-3716, CVE-2016-3717, CVE-2016-3718 and CVE-2016-5118</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Imagemagick</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>phpmailer package version</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>system.sw.packages[&quot;libphp-phpmailer&quot;,all,full]</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>1</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>https://people.canonical.com/~ubuntu-security/cve/2016/CVE-2016-10033.html</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>phpmailer</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>A N other package</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>system.sw.packages[&quot;linux-image-virtual&quot;,all,full]</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>1</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>kernel version2</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>OpenSSL Package</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>system.sw.packages[&quot;openssl&quot;,,short]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>1</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>There's just so many CVEs. Heatbleed, POODLE, ROP Gadgets, so just create new triggers for each version to avoid flubbing the checks and add the CVE list in that description instead.&#13;
+&#13;
+Bob Beck was right you know...</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>OpenSSL</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Kernel version 2</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>system.sw.packages[&quot;^linux-image&quot;,,short]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>1</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>NB: As of 2017-01-04 this does not work due to https://support.zabbix.com/browse/ZBXNEXT-2580 but it's here so that when Zabbix fix upstream, this and DirtyCOW checks will kick in.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>kernel version2</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>/bin/bash filedate</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.time[/bin/bash]</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>unixtime</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Bash</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>/bin/uptime filedate</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.time[/bin/uptime]</key>
+                    <delay>60</delay>
+                    <history>15</history>
+                    <trends>90</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>unixtime</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>kernel version2</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+            </items>
+            <discovery_rules/>
+            <macros/>
+            <templates/>
+            <screens/>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{Security Watcher For Public CVEs:vfs.file.time[/bin/bash].last(0)}&lt; 1411570800</expression>
+            <name>Bash version vulnerable to CVE-2014-6271 (ShellShock)</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>https://en.wikipedia.org/wiki/Shellshock_(software_bug) CVE-2014-6277, CVE-2014-6278, CVE-2014-7169, CVE-2014-7186, and CVE-2014-7187</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Security Watcher For Public CVEs:system.sw.packages[&quot;openssl&quot;,,short].str(1.0.1j)}</expression>
+            <name>{HOSTNAME} Vulnerable to CVE-2014-3566 (POODLE)</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description>https://en.wikipedia.org/wiki/POODLE This check is for POODLE only. Heartbleed and Cthulhu can go live in another trigger.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Security Watcher For Public CVEs:system.sw.packages[&quot;glibc&quot;,,all].str(2.13-38+deb7u7)}&lt;&gt;0</expression>
+            <name>{HOSTNAME} vulnerable to CVE-2015-0235 (GHOST)</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description>https://www.digitalocean.com/community/tutorials/how-to-protect-your-linux-server-against-the-ghost-vulnerability&#13;
+&#13;
+versions 2.15-0ubuntu10.10, 2.11.1-0ubuntu7.20 and 2.13-38+deb7u7 are NOT vulnerable per Digital Ocean's link.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Security Watcher For Public CVEs:system.sw.packages[&quot;^linux-image&quot;,,short].last()}=0</expression>
+            <name>{HOSTNAME} Vulnerable to CVE-2016-0728 (Kernel Keyring)</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description>Original Template had:&#13;
+(({cve-2016-0728:system.sw.packages[&quot;^kernel&quot;,,short].regexp(kernel-2.)})=0 and ({cve-2016-0728:system.sw.packages[&quot;^kernel&quot;,,short].regexp(kernel-4.1.13-19.31)})=0 and ({cve-2016-0728:system.sw.packages[&quot;^kernel&quot;,,short].regexp(kernel-3.13.0-76.120)})=0 and ({cve-2016-0728:system.sw.packages[&quot;^kernel&quot;,,short].regexp(kernel-3.[0-7]$)})=0)</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Security Watcher For Public CVEs:system.sw.packages[&quot;openssl&quot;,,short].str(1.0.2)}</expression>
+            <name>{HOSTNAME} Vulnerable to CVE-2016-0800 (DROWN)</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description>https://en.wikipedia.org/wiki/DROWN This check is for DROWN only. Heartbleed and Cthulhu can go live in another trigger.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Security Watcher For Public CVEs:system.sw.packages[&quot;^linux-image&quot;,,short].last()}=0</expression>
+            <name>{HOSTNAME} Vulnerable to CVE-2016-5195 (DirtyCOW)</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description>Original Template had:&#13;
+(({cve-2016-0728:system.sw.packages[&quot;^kernel&quot;,,short].regexp(kernel-2.)})=0 and ({cve-2016-0728:system.sw.packages[&quot;^kernel&quot;,,short].regexp(kernel-4.1.13-19.31)})=0 and ({cve-2016-0728:system.sw.packages[&quot;^kernel&quot;,,short].regexp(kernel-3.13.0-76.120)})=0 and ({cve-2016-0728:system.sw.packages[&quot;^kernel&quot;,,short].regexp(kernel-3.[0-7]$)})=0)&#13;
+&#13;
+https://www.digitalocean.com/community/tutorials/how-to-protect-your-server-against-the-dirty-cow-linux-vulnerability</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Security Watcher For Public CVEs:system.sw.packages[&quot;libphp-phpmailer&quot;,all,full].str(libphp-phpmailer)}=1</expression>
+            <name>{HOSTNAME} Vulnerable to CVE-2016-10033 (phpmailer)</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description>As of 2017-01-03 no patch exists for libphp-mailer so alert if found since that'sc an attack vectror.&#13;
+&#13;
+c.f: https://people.canonical.com/~ubuntu-security/cve/2016/CVE-2016-10033.html</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Security Watcher For Public CVEs:vfs.file.time[/bin/uptime].last(0)}&lt; 1411570800</expression>
+            <name>{HOSTNAME} vulnerable to CVE-2016-10033 (TODO)</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>/bin/bash file time is prior to ShellShock fix release date then it is vulnerable to CVE-2014-6277, CVE-2014-6278, CVE-2014-7169, CVE-2014-7186, and CVE-2014-7187 (Shellshock)</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+    </triggers>
+</zabbix_export>
+
