@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.0</version>
+    <date>2017-01-04T15:54:02Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>ISC DHCP Server</template>
+            <name>ISC DHCP Server</name>
+            <description/>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>ISC DHCP Server</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Valid dhcpd.conf</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>system.run[/usr/sbin/dhcpd -t -cf /etc/dhcp/dhcpd.conf,0]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>1</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>This tests the DHCP config file for errors and returns dhcpd -t -cf /etc/dhcp/dhcpd.conf&#13;
+Internet Systems Consortium DHCP Server 4.3.3&#13;
+Copyright 2004-2015 Internet Systems Consortium.&#13;
+All rights reserved.&#13;
+For info, please visit https://www.isc.org/software/dhcp/&#13;
+WARNING: Host declarations are global.  They are not limited to the scope you declared them in.&#13;
+/etc/dhcp/dhcpd.conf line 59: semicolon expected.&#13;
+                ddns-hostname&#13;
+                 ^&#13;
+Configuration file errors encountered -- exiting&#13;
+ &#13;
+if there is an error you cna laso check for warnings, but I'm not ding that:&#13;
+&#13;
+dhcpd -t -cf /etc/dhcp/dhcpd.conf&#13;
+Internet Systems Consortium DHCP Server 4.3.3&#13;
+Copyright 2004-2015 Internet Systems Consortium.&#13;
+All rights reserved.&#13;
+For info, please visit https://www.isc.org/software/dhcp/&#13;
+WARNING: Host declarations are global.  They are not limited to the scope you declared them in.&#13;
+Config file: /etc/dhcp/dhcpd.conf&#13;
+Database file: /var/lib/dhcp/dhcpd.leases&#13;
+PID file: /var/run/dhcpd.pid</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>ISC DHCP Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>ISC DHCP Server Configuration File</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/etc/dhcp/dhcpd.conf]</key>
+                    <delay>90</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>/etc/dhcp/dhcpd.conf needs to exist for DHCP to work and for the configruation checker alert to ufnction</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>ISC DHCP Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>ISC DHCP Server Configuration Status File</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/tmp//tmp/dhcpconfig-status]</key>
+                    <delay>90</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>/tmp/dhcpconfig-status is used becuase remote commands aren ot supported on activate agent behind a zabbix proxy. This file takes output of the command and svaes it to a file so we can pattern match on it</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>ISC DHCP Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>isc-dhcp-server Package</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/usr/sbin/dhcpd]</key>
+                    <delay>90</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>isc-dhcp-server package is needed to run a DHCP Server</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>ISC DHCP Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>ISC DHCP Service running</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/var/run/dhcp-server/dhcpd.pid]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Checks if /var/run/dhcp-server/dhcpd.pid exists. If not, then the service isn't running.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>ISC DHCP Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>ISC DHCP Server Cron config Job</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.regmatch[/etc/crontab,dhcpd,UTF8,,]</key>
+                    <delay>90</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>/var/spool/cron/crontabs/root must contain the cron job for alert to clear.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>ISC DHCP Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+            </items>
+            <discovery_rules/>
+            <macros/>
+            <templates/>
+            <screens/>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{ISC DHCP Server:vfs.file.exists[/etc/dhcp/dhcpd.conf].last(0)}=0</expression>
+            <name>Hey! {HOST.NAME} has no /etc/dhcp.dhcpd.conf file!</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If /usr/bin/facter binary doesn't exist then package facter is not installed and therefore, alert us to this fact.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{ISC DHCP Server:vfs.file.exists[/tmp//tmp/dhcpconfig-status].last(0)}=0</expression>
+            <name>Hey! {HOST.NAME} has no /tmp/dhcpconfig-status File!</name>
+            <url/>
+            <status>1</status>
+            <priority>1</priority>
+            <description>If /tmp/dhcpconfig-statu does not exist then we can't checkthe confugration file for errors</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{ISC DHCP Server:vfs.file.exists[/usr/sbin/dhcpd].last(0)}=0</expression>
+            <name>Hey! {HOST.NAME} has no isc-dhcp-server package installed</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>If /usr/bin/aptitude binary doesn't exist then package aptitude is not installed and therefore, alert us to this fact.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{ISC DHCP Server:vfs.file.regmatch[/etc/crontab,dhcpd,UTF8,,].last(#1)}=0</expression>
+            <name>Hey {HOST.NAME} has no DHCP config check cron job</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>/var/spool/cron/crontabs/root must contain the line 00 7   *   *   *    /usr/local/bin/purge-old-kernels.sh --keep 2 for this check to be OK. This will clean the kernels at 07:00 each morning.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{ISC DHCP Server:vfs.file.exists[/var/run/dhcp-server/dhcpd.pid].last()}=0</expression>
+            <name>{HOST.NAME} ISC DHCP Server is not running</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description>If /usr/bin/unattended-upgrade binary doesn't exist then package unattended-upgrades is not installed and therefore, alert us to this fact.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+    </triggers>
+</zabbix_export>
+
