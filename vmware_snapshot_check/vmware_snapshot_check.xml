@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2016-11-25T14:28:12Z</date>
+    <date>2017-01-04T11:45:29Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -63,6 +63,47 @@
                             <name>VMWare ESX</name>
                         </application>
                     </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Snapshot Check Script checksum</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.cksum[/usr/lib/zabbix/externalscripts/snapshot_check.sh]</key>
+                    <delay>300</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>/usr/lib/zabbix/zabbix/externalscripts/snapshot_check.sh needs match the output from cksum snapshot_check.sh or else it's the wrong version.&#13;
+&#13;
+NB: Do take care to update this when you update the script!</description>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
                     <valuemap/>
                     <logtimefmt/>
                 </item>
@@ -346,17 +387,7 @@ NB: After proxy reboot, but before the hourly cron task, this alert will show, t
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template VMWare Snapshot check:vfs.file.contents[/usr/lib/zabbix/externalscripts/consolidation-status].str(Needs Consolidation)}=1</expression>
-            <name>Consolidation Statuses: {ITEM.LASTVALUE1}</name>
-            <url/>
-            <status>0</status>
-            <priority>5</priority>
-            <description/>
-            <type>1</type>
-            <dependencies/>
-        </trigger>
-        <trigger>
-            <expression>{Template VMWare Snapshot check:vfs.file.exists[//usr/lib/zabbix/externalscripts/consolidation-status].last()}=0</expression>
+            <expression>{Template VMWare Snapshot check:vfs.file.exists[//usr/lib/zabbix/externalscripts/consolidation-status].avg(5m)}=0</expression>
             <name>Hey! {HOST.NAME} has no consolidation-status file!</name>
             <url/>
             <status>0</status>
@@ -366,7 +397,7 @@ NB: After proxy reboot, but before the hourly cron task, this alert will show, t
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template VMWare Snapshot check:vfs.file.exists[/usr/lib/zabbix/externalscripts/snapshot-status].last()}=0</expression>
+            <expression>{Template VMWare Snapshot check:vfs.file.exists[/usr/lib/zabbix/externalscripts/snapshot-status].avg(5m)}=0</expression>
             <name>Hey! {HOST.NAME} has no snapshot-status file!</name>
             <url/>
             <status>0</status>
@@ -396,6 +427,16 @@ NB: After proxy reboot, but before the hourly cron task, this alert will show, t
             <dependencies/>
         </trigger>
         <trigger>
+            <expression>{Template VMWare Snapshot check:vfs.file.cksum[/usr/lib/zabbix/externalscripts/snapshot_check.sh].last()}&lt;&gt;1013421975</expression>
+            <name>Hey! {HOST.NAME} has the wrong snapshot_check.sh version</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>if the checksum does not match then you are not running hte correct version you can find the correct checksum by running cksum /usr/lib/zabbix/externalscripts/snapshot_check.sh</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
             <expression>({Template VMWare Snapshot check:vfs.file.contents[/usr/lib/zabbix/externalscripts/snapshot-status].regexp(^1.*)})&lt;&gt;0</expression>
             <name>{ITEM.LASTVALUE1}</name>
             <url/>
@@ -411,6 +452,16 @@ NB: After proxy reboot, but before the hourly cron task, this alert will show, t
             <url/>
             <status>0</status>
             <priority>3</priority>
+            <description/>
+            <type>1</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template VMWare Snapshot check:vfs.file.contents[/usr/lib/zabbix/externalscripts/consolidation-status].str(Needs Consolidation)}=1</expression>
+            <name>{ITEM.LASTVALUE1}</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
             <description/>
             <type>1</type>
             <dependencies/>
