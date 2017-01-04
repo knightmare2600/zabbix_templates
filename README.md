@@ -9,7 +9,7 @@ Templates
 
 * domain_check          - Check a list of domains for expiry and warn for 14 days or less and go critical for 0 or below
 * qnap_snmp             - SNMP Template for QNAP NAS devices. Requires the NAS.mib from your QNAP's WebUI -> SNMP section
-* isc-dhcp-server       - Monitors the ISC DHCP Server on Linux and alerts on problems (coming soon!)
+* isc-dhcp-server       - Monitors the ISC DHCP Server on Linux alerting if service is not running
 * Security_Watcher      - Checks package versions, build dates, etc. for public CVEs and alerts. NOT a replacement for Vulnerability scanners
 * ssl_check             - Checks an SSL certificate for issuer (hello WoSign!) and days to expiry. Alerts for 90, 60 30 days etc.
 * unattended_upgrades   - Monitors the unattended upgrades package for Ubuntu Linux. Raises an alert if a system has a pending reboot or no cront job specified for the cleaning of old kernels (script included)
