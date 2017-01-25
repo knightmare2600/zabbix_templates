@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2016-12-21T10:12:43Z</date>
+    <date>2017-01-25T14:59:44Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -592,49 +592,6 @@
                     <applications>
                         <application>
                             <name>System</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                    <logtimefmt/>
-                </item>
-                <item>
-                    <name>RAID Rebuilt Percentage</name>
-                    <type>3</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>vfs.file.contents[/proc/mdstat,UTF8]</key>
-                    <delay>30</delay>
-                    <history>90</history>
-                    <trends>0</trends>
-                    <status>0</status>
-                    <value_type>4</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <delta>0</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description>red /proc/mdstat to get percentage of rebuild status</description>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>Hard disks</name>
                         </application>
                     </applications>
                     <valuemap/>
@@ -1527,7 +1484,7 @@ QNAP Knowledgebase</description>
                             <url/>
                             <status>0</status>
                             <priority>3</priority>
-                            <description>This will return the value of a volume and trigger if this is less than 10%&#13;
+                            <description>This will return the value of a volume and triggeri f thisi s less than 10%&#13;
 &#13;
 NB: You may need to add a size check to say &lt; 10GB os so later on.</description>
                             <type>0</type>
@@ -1694,6 +1651,16 @@ NB: You may need to add a size check to say &lt; 10GB os so later on.</descripti
             <status>0</status>
             <priority>4</priority>
             <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template SNMP QNAP NAS:PhysicalFirmwareRev.str(4.2.3)}=0</expression>
+            <name>{HOST.NAME} is not running firmware 4.2.3</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>Firmware 4.2.3 is needed to patch a large number of heap overflow and auth bypass bugs. This is a temporary check to get NAS devices updated. Disable it when not in use.</description>
             <type>0</type>
             <dependencies/>
         </trigger>
