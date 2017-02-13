@@ -27,6 +27,7 @@
 ## Updated: 18 Nov 2015   Robert McLay      Confirm SSH works, alert if not   ##
 ## Updated: 19 Nov 2015   Duncan Blair      Only remove file if it exists     ##
 ## Updated: 25 Nov 2016   Robert McLay      Check for consolidation too       ##
+## Updated: 13 Feb 2017   Robert McLay      Fix typo in snapshot count        ##
 ##----------------------------------------------------------------------------##
 
 print_usage() {
@@ -97,7 +98,7 @@ consolidate=`ssh -i /root/.ssh/id_rsa root@$1 vim-cmd vmsvc/get.summary $id |gre
 
 ## Now check for snapshots and consolidation. I'll use a different file to keep Zabbix logic code
 ## down consolidation is a bad thing (TM) so if it's happening, then y'all are getting an alert
-  if [ $snapshotnum -ge 1 ]; then
+  if [ $snapshotnum -ge $2 ]; then
     snap[$i]="$vmname:$snapshotnum";
     let "snaptotal=$snaptotal+$snapshotnum";
     let i++;
@@ -123,7 +124,7 @@ if [ $snapshotnum -le $2 ]; then
   else
     echo "$snapshotnum snapshots found on ${snap[@]}"  > /usr/lib/zabbix/externalscripts/snapshot-status
     exit 0
-  fi
+ fi
 fi
 
 ## If total of snapshots is less than the critical level, output that, otherwise lp0 is combusting
