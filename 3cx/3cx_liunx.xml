@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.0</version>
+    <date>2017-02-15T14:27:26Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>3CX PBX Linux</template>
+            <name>3CX PBX Linux</name>
+            <description>3CX PBX Template (https://www.3cx.com) monitors services are running. Do NOT put checks which are not unique to 3CX in this template.</description>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>3cxpbx</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>3CX HTTP PBX WebUI</name>
+                    <type>3</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>net.tcp.service[http,,5000]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>5000/tcp for HTTP WebUI. Ideally you would be using HTTPS to connect to the other one for securitry reasons of course.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>3cxpbx</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>3CX HTTPS PBX WebUI</name>
+                    <type>3</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>net.tcp.service[https,,5001]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>This checks the HTTPS WebUI is running on the 5001/tcp port. For checking you can actually browse to it, that would be a web scenario</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>3cxpbx</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>3CX PBX TCP SIP Port</name>
+                    <type>3</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>net.tcp.service[sip,,5060]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>5060/TCP is used for SIP connections. VOIP PBXs use this</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>3cxpbx</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>3CX UDP SIP Service</name>
+                    <type>3</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>net.udp.service[sip,,5060]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>UDP/5060 is also used by 3CX and PBX servers. So monitor that too</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>3cxpbx</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>3CX UDP Tunnel Service</name>
+                    <type>3</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>net.udp.service[sip,,5090]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>UDP/5090 is used by 3CX Tunnel Broker so we need to monitor that</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>3cxpbx</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>3CX UDP IVR Service</name>
+                    <type>3</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>net.udp.service[sip,,5483]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>UDP/5483 is used by 3CX IVR so we need to monitor that</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>3cxpbx</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>3CX UDP Queue Manager Service</name>
+                    <type>3</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>net.udp.service[sip,,5488]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>UDP/5488 is used by 3CX Queue Manager so we need to monitor that</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>3cxpbx</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>3CX UDP System Services</name>
+                    <type>3</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>net.udp.service[sip,,49465]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>UDP/49465 is used by 3CX System Services Monitoring so we can watch them watching us</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>3cxpbx</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>telnet Package</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/usr/bin/telnet]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>tshark is the telnet client. Eddie suggests installing it on 3CX PBX server for those times when one is trobuleshooting, so this check for it</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>3cxpbx</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>tshark Package</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/usr/bin/tshark]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>tshark is the command line version of wireshark. Eddie suggests installing it on 3CX PBX server for those times when one is trobuleshooting, so this check for it</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>3cxpbx</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>3cxpbx Package</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/usr/sbin/3CXPbxServer]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>if the PBX server doesn't exist we cannot possibly be a Linux PBX</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>3cxpbx</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+            </items>
+            <discovery_rules/>
+            <macros/>
+            <templates/>
+            <screens/>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{3CX PBX Linux:vfs.file.exists[/usr/sbin/3CXPbxServer].last(0)}=0</expression>
+            <name>Hey! {HOST.NAME} has no 3cxpbx package installed</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>If this packages is not installed, the server cannot function as a 3CX PBX</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{3CX PBX Linux:vfs.file.exists[/usr/bin/telnet].last(0)}=0</expression>
+            <name>Hey! {HOST.NAME} has no telnet package installed</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>troubleshooting connections with telnet at the suggestion of Eddie from 3CX we install this</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{3CX PBX Linux:vfs.file.exists[/usr/bin/tshark].last(0)}=0</expression>
+            <name>Hey! {HOST.NAME} has no tshark package installed</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>troubleshooting connections with tshark the command line version of wireshark at the suggestion of Eddie from 3CX we install this</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{3CX PBX Linux:net.udp.service[sip,,5488].last(0)}=0</expression>
+            <name>{HOST.NAME} has no 3CX Queue Manager Listener on UDP/5488</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description>if port UDP/5488 is not open then 3CX Queue Manager is not working</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{3CX PBX Linux:net.udp.service[sip,,49465].last(0)}=0</expression>
+            <name>{HOST.NAME} has no 3CX Service Manager Listener on UDP/49465</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description>if port UDP/49465 is not open then 3CX cannot self monitor</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{3CX PBX Linux:net.udp.service[sip,,5090].last(0)}=0</expression>
+            <name>{HOST.NAME} has no 3CX Tunnel on UDP/5090</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description>if port UDP/5090 is not open then we're not able create a 3CX Tunnel and that's not good</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{3CX PBX Linux:net.tcp.service[https,,5001].last(0)}=0</expression>
+            <name>{HOST.NAME} has no HTTPS WebUI on TCP/5001</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description>if port 5060/TCP is not open then we're not able to accept SIP so no PBX</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{3CX PBX Linux:net.tcp.service[http,,5000].last(0)}=0</expression>
+            <name>{HOST.NAME} has no HTTP WebUI on TCP/5000</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description>if port 5060/TCP is not open then we're not able to accept SIP so no PBX</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{3CX PBX Linux:net.udp.service[sip,,5483].last(0)}=0</expression>
+            <name>{HOST.NAME} has no IVR Service on UDP/49465</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description>if port UDP/5483 is not open then 3CX IVR is not functioning</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{3CX PBX Linux:net.tcp.service[sip,,5060].last(0)}=0</expression>
+            <name>{HOST.NAME} has no SIP Listener on TCP/5060</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description>if port TCP/5060 is not open then we're not able to accept SIP so no PBX</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{3CX PBX Linux:net.udp.service[sip,,5060].last(0)}=0</expression>
+            <name>{HOST.NAME} has no SIP Listener on UDP/5060</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description>if port UDP/5060 is not open then we're not able to accept SIP so no PBX</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+    </triggers>
+</zabbix_export>
+

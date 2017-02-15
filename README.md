@@ -7,6 +7,7 @@ Read the info.txt in each folder for specifics for that template, and then impor
 
 Templates
 
+* 3CX PBX               - Monitor a 3CX PBX running on Linux Debian - Windows template WIP
 * domain_check          - Check a list of domains for expiry and warn for 14 days or less and go critical for 0 or below
 * qnap_snmp             - SNMP Template for QNAP NAS devices. Requires the NAS.mib from your QNAP's WebUI -> SNMP section
 * isc-dhcp-server       - Monitors the ISC DHCP Server on Linux alerting if service is not running
