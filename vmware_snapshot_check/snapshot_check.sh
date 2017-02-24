@@ -13,7 +13,7 @@
 ##  /usr/lib/zabbix/externalscripts/snapshot_check.sh esx.your.tld 0 1 2>&1   ##
 ##  * Zabbix 2.2+                                                             ##
 ##                                                                            ##
-## Script tested on vmware esx/esxi: 3.5/4.0/4.1/5.5/6.0                      ##
+## Script tested on vmware esx/esxi: 3.5/4.0/4.1/5.5/6.0/6.5                  ##
 ##                                                                            ##
 ## on early version you have to create an alias for vim-cmd                   ##
 ## #cd /usr/bin                                                               ##
@@ -28,6 +28,9 @@
 ## Updated: 19 Nov 2015   Duncan Blair      Only remove file if it exists     ##
 ## Updated: 25 Nov 2016   Robert McLay      Check for consolidation too       ##
 ## Updated: 13 Feb 2017   Robert McLay      Fix typo in snapshot count        ##
+## Updated: 15 Feb 2017   Robert McLay      Fix snapshot count and logic bug  ##
+## Updated: 24 Feb 2017   Robert McLay      Use combined total snapshots, as  ##
+##                                          opposed to a VMs total snapshots  ##
 ##----------------------------------------------------------------------------##
 
 print_usage() {
@@ -98,7 +101,8 @@ consolidate=`ssh -i /root/.ssh/id_rsa root@$1 vim-cmd vmsvc/get.summary $id |gre
 
 ## Now check for snapshots and consolidation. I'll use a different file to keep Zabbix logic code
 ## down consolidation is a bad thing (TM) so if it's happening, then y'all are getting an alert
-  if [ $snapshotnum -ge $2 ]; then
+
+  if [ "$snapshotnum" -ge "$2" ]; then
     snap[$i]="$vmname:$snapshotnum";
     let "snaptotal=$snaptotal+$snapshotnum";
     let i++;
@@ -110,29 +114,30 @@ consolidate=`ssh -i /root/.ssh/id_rsa root@$1 vim-cmd vmsvc/get.summary $id |gre
   fi
 done
 
+echo "$snaptotal"
+
 ## If /usr/lib/zabbix/externalscripts/consolidation-status does not exist, then no consolidation required
 if [ ! -f "/usr/lib/zabbix/externalscripts/consolidation-status" ]; then
   echo "No consolidation required" > /usr/lib/zabbix/externalscripts/consolidation-status
 fi
 
-
 ## If total of snapshots is less than the tolerance value (2nd variable) then we're all square
-if [ $snapshotnum -le $2 ]; then
-  if [ $snapshotnum -eq 0 ]; then
-    echo "$snapshotnum snapshots found" > /usr/lib/zabbix/externalscripts/snapshot-status
-    exit 0
-  else
-    echo "$snapshotnum snapshots found on ${snap[@]}"  > /usr/lib/zabbix/externalscripts/snapshot-status
-    exit 0
- fi
+if [ "$snaptotal" -eq 0 ]; then
+  echo "$snaptotal snapshots found" > /usr/lib/zabbix/externalscripts/snapshot-status
+  exit 0
+elif [ $snaptotal -lt $2 ]; then
+  echo "0 snapshots found" > /usr/lib/zabbix/externalscripts/snapshot-status
+  exit 0
+else
+  echo "$snaptotal snapshots found"  > /usr/lib/zabbix/externalscripts/snapshot-status
 fi
 
 ## If total of snapshots is less than the critical level, output that, otherwise lp0 is combusting
-if [ $snapshotnum -le $3 ]; then
-  echo "$snapshotnum snapshots found on ${snap[@]}" > /usr/lib/zabbix/externalscripts/snapshot-status
+if [ "$snaptotal" -le $3 ]; then
+  echo "$snaptotal snapshots found on ${snap[@]}" > /usr/lib/zabbix/externalscripts/snapshot-status
   exit 1
 else
-  echo "$snapshotnum snapshots found on ${snap[@]}" > /usr/lib/zabbix/externalscripts/snapshot-status
+  echo "$snaptotal snapshots found on ${snap[@]}" > /usr/lib/zabbix/externalscripts/snapshot-status
   exit 2
 fi
 
