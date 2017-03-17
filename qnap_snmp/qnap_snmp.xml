@@ -1655,12 +1655,12 @@ NB: You may need to add a size check to say &lt; 10GB os so later on.</descripti
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template SNMP QNAP NAS:PhysicalFirmwareRev.str(4.2.3)}=0</expression>
-            <name>{HOST.NAME} is not running firmware 4.2.3</name>
+            <expression>{Template SNMP QNAP NAS:PhysicalFirmwareRev.str(4.2.4)}=0</expression>
+            <name>{HOST.NAME} is not running firmware 4.2.4</name>
             <url/>
             <status>0</status>
             <priority>2</priority>
-            <description>Firmware 4.2.3 is needed to patch a large number of heap overflow and auth bypass bugs. This is a temporary check to get NAS devices updated. Disable it when not in use.</description>
+            <description>Firmware 4.2.4 is needed to patch a large number of heap overflow and auth bypass bugs. This is a temporary check to get NAS devices updated. Disable it when not in use.</description>
             <type>0</type>
             <dependencies/>
         </trigger>
