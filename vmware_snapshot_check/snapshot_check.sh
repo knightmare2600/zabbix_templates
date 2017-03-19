@@ -70,7 +70,7 @@ fi
 
 ## Reset variables
 i=0
-total=0
+snaptotal=0
 snapshotnum=0
 
 
