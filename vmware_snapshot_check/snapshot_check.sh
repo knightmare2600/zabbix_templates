@@ -31,6 +31,7 @@
 ## Updated: 15 Feb 2017   Robert McLay      Fix snapshot count and logic bug  ##
 ## Updated: 24 Feb 2017   Robert McLay      Use combined total snapshots, as  ##
 ##                                          opposed to a VMs total snapshots  ##
+## Updated: 27 Mar 2017   Robert McLay      Subtract 1 snap for Replica VMs   ##
 ##----------------------------------------------------------------------------##
 
 print_usage() {
@@ -69,10 +70,11 @@ if [ -f "/usr/lib/zabbix/externalscripts/consolidation-status" ]; then
 fi
 
 ## Reset variables
-i=0
-snaptotal=0
-snapshotnum=0
-
+let i=0;
+let snaptotal=0;
+let snapshotnum=0;
+let replicasnaptotal=0;
+let replicacount="$2+1";
 
 ## Test we can SSH to the host before trying to execute anything
 testconnection=`ssh -i /root/.ssh/id_rsa root@$1 vmware -v`
@@ -102,19 +104,33 @@ consolidate=`ssh -i /root/.ssh/id_rsa root@$1 vim-cmd vmsvc/get.summary $id |gre
 ## Now check for snapshots and consolidation. I'll use a different file to keep Zabbix logic code
 ## down consolidation is a bad thing (TM) so if it's happening, then y'all are getting an alert
 
-  if [ "$snapshotnum" -ge "$2" ]; then
+isreplica=`echo $vmname | cut -d'_' -f 2`
+
+if [ "$isreplica" != "vmpreplica" ]; then
+  ## Total snpashots if we are not a replica
+  if [ "$snapshotnum" -gt "$2" ]; then
     snap[$i]="$vmname:$snapshotnum";
     let "snaptotal=$snaptotal+$snapshotnum";
     let i++;
   fi
-  if [ "$consolidate" == "true" ]; then
-    ## Debug code, uncomment to confirm logic code works
-    #echo "Consolidation status of $vmname is $consolidate"
-    echo "$vmname: Needs Consolidation" >> /usr/lib/zabbix/externalscripts/consolidation-status
+elif [ "$isreplica" == "vmpreplica" ]; then
+  ## If we are a replica, then get total snapshots and delete 1 from it (default replica shapshot)
+  if [ "$snapshotnum" -gt "$replicacount" ]; then
+    snap[$i]="$vmname:$snapshotnum";
+    let i++;
   fi
-done
+fi
 
-echo "$snaptotal"
+if [ "$consolidate" == "true" ]; then
+  ## Debug code, uncomment to confirm logic code works
+  #echo "Consolidation status of $vmname is $consolidate"
+  echo "$vmname: Needs Consolidation" >> /usr/lib/zabbix/externalscripts/consolidation-status
+fi
+
+#echo "$replicasnaptotal"
+#echo "$vmname" has "$snaptotal" and snapshotnum is "$snapshotnum"
+
+done
 
 ## If /usr/lib/zabbix/externalscripts/consolidation-status does not exist, then no consolidation required
 if [ ! -f "/usr/lib/zabbix/externalscripts/consolidation-status" ]; then
@@ -125,15 +141,15 @@ fi
 if [ "$snaptotal" -eq 0 ]; then
   echo "$snaptotal snapshots found" > /usr/lib/zabbix/externalscripts/snapshot-status
   exit 0
-elif [ $snaptotal -lt $2 ]; then
+elif [ "$snaptotal" -lt "$2" ]; then
   echo "0 snapshots found" > /usr/lib/zabbix/externalscripts/snapshot-status
   exit 0
 else
-  echo "$snaptotal snapshots found"  > /usr/lib/zabbix/externalscripts/snapshot-status
+  echo "$snaptotal snapshots found on ${snap[@]}"  > /usr/lib/zabbix/externalscripts/snapshot-status
 fi
 
 ## If total of snapshots is less than the critical level, output that, otherwise lp0 is combusting
-if [ "$snaptotal" -le $3 ]; then
+if [ "$snaptotal" -le "$3" ]; then
   echo "$snaptotal snapshots found on ${snap[@]}" > /usr/lib/zabbix/externalscripts/snapshot-status
   exit 1
 else

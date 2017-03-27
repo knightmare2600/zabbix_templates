@@ -427,7 +427,7 @@ NB: After proxy reboot, but before the hourly cron task, this alert will show, t
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template VMWare Snapshot check:vfs.file.cksum[/usr/lib/zabbix/externalscripts/snapshot_check.sh].last()}&lt;&gt;3904038286</expression>
+            <expression>{Template VMWare Snapshot check:vfs.file.cksum[/usr/lib/zabbix/externalscripts/snapshot_check.sh].last()}&lt;&gt;1742960427</expression>
             <name>Hey! {HOST.NAME} has the wrong snapshot_check.sh version</name>
             <url/>
             <status>0</status>
