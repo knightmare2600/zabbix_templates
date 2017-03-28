@@ -185,7 +185,7 @@
         </trigger>
         <trigger>
             <expression>{Template SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;7</expression>
-            <name>SSL certificate for {HOST.CONN} expires in less than 7 days ({ITEM.VALUE} remaining)</name>
+            <name>SSL certificate for {HOST.CONN} expires in less than 7 days ({ITEM.LASTVALUE} remaining)</name>
             <url/>
             <status>0</status>
             <priority>4</priority>
@@ -200,7 +200,7 @@
         </trigger>
         <trigger>
             <expression>{Template SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;15</expression>
-            <name>SSL certificate for {HOST.CONN} expires in less than 15 days ({ITEM.VALUE} remaining)</name>
+            <name>SSL certificate for {HOST.CONN} expires in less than 15 days ({ITEM.LASTVALUE} remaining)</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
@@ -208,14 +208,14 @@
             <type>0</type>
             <dependencies>
                 <dependency>
-                    <name>SSL certificate for {HOST.CONN} expires in less than 7 days ({ITEM.VALUE} remaining)</name>
+                    <name>SSL certificate for {HOST.CONN} expires in less than 7 days ({ITEM.LASTVALUE} remaining)</name>
                     <expression>{Template SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;7</expression>
                 </dependency>
             </dependencies>
         </trigger>
         <trigger>
             <expression>{Template SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;30</expression>
-            <name>SSL certificate for {HOST.CONN} expires in less than 30 days ({ITEM.VALUE} remaining)</name>
+            <name>SSL certificate for {HOST.CONN} expires in less than 30 days ({ITEM.LASTVALUE} remaining)</name>
             <url/>
             <status>0</status>
             <priority>2</priority>
@@ -223,14 +223,14 @@
             <type>0</type>
             <dependencies>
                 <dependency>
-                    <name>SSL certificate for {HOST.CONN} expires in less than 15 days ({ITEM.VALUE} remaining)</name>
+                    <name>SSL certificate for {HOST.CONN} expires in less than 15 days ({ITEM.LASTVALUE} remaining)</name>
                     <expression>{Template SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;15</expression>
                 </dependency>
             </dependencies>
         </trigger>
         <trigger>
             <expression>{Template SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;60</expression>
-            <name>SSL certificate for {HOST.CONN} expires in less than 60 days ({ITEM.VALUE} remaining)</name>
+            <name>SSL certificate for {HOST.CONN} expires in less than 60 days ({ITEM.LASTVALUE} remaining)</name>
             <url/>
             <status>0</status>
             <priority>1</priority>
@@ -238,14 +238,14 @@
             <type>0</type>
             <dependencies>
                 <dependency>
-                    <name>SSL certificate for {HOST.CONN} expires in less than 30 days ({ITEM.VALUE} remaining)</name>
+                    <name>SSL certificate for {HOST.CONN} expires in less than 30 days ({ITEM.LASTVALUE} remaining)</name>
                     <expression>{Template SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;30</expression>
                 </dependency>
             </dependencies>
         </trigger>
         <trigger>
             <expression>{Template SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;90</expression>
-            <name>SSL certificate for {HOST.CONN} expires in less than 90 days ({ITEM.VALUE} remaining)</name>
+            <name>SSL certificate for {HOST.CONN} expires in less than 90 days ({ITEM.LASTVALUE} remaining)</name>
             <url/>
             <status>0</status>
             <priority>0</priority>
@@ -253,7 +253,7 @@
             <type>0</type>
             <dependencies>
                 <dependency>
-                    <name>SSL certificate for {HOST.CONN} expires in less than 60 days ({ITEM.VALUE} remaining)</name>
+                    <name>SSL certificate for {HOST.CONN} expires in less than 60 days ({ITEM.LASTVALUE} remaining)</name>
                     <expression>{Template SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;60</expression>
                 </dependency>
             </dependencies>
