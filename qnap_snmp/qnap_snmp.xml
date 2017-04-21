@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2017-01-25T14:59:44Z</date>
+    <date>2017-04-21T14:38:40Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -1655,12 +1655,16 @@ NB: You may need to add a size check to say &lt; 10GB os so later on.</descripti
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template SNMP QNAP NAS:PhysicalFirmwareRev.str(4.2.4)}=0</expression>
-            <name>{HOST.NAME} is not running firmware 4.2.4</name>
+            <expression>{Template SNMP QNAP NAS:PhysicalFirmwareRev.regexp(4\.2\.5|4\.3\.3)}=0</expression>
+            <name>{HOST.NAME} is not running firmware 4.2.5 or 4.3.3</name>
             <url/>
             <status>0</status>
-            <priority>2</priority>
-            <description>Firmware 4.2.4 is needed to patch a large number of heap overflow and auth bypass bugs. This is a temporary check to get NAS devices updated. Disable it when not in use.</description>
+            <priority>1</priority>
+            <description>[Fixes] &#13;
+ &#13;
+- Fixed multiple network vulnerabilities in QTS.&#13;
+- Fixed an issue where an error message would occur when users created a RADIUS client whose name contained the symbol &quot;_&quot;.&#13;
+- Fixed an issue where unexpected error entries would appear in SMB logs when users connected to NAS shared folders via SMB.</description>
             <type>0</type>
             <dependencies/>
         </trigger>
