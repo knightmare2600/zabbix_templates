@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2017-04-21T14:38:40Z</date>
+    <date>2017-08-15T14:58:26Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -1245,7 +1245,7 @@ QNAP Knowledgebase</description>
                         </trigger_prototype>
                         <trigger_prototype>
                             <expression>{Template SNMP QNAP NAS:HdTemperatureEX[{#SNMPINDEX}].min(2m)}&gt;{$HD_TEMPERATURE_ALARM}</expression>
-                            <name>Temperature of {#SNMPVALUE} on {HOST.NAME} is over {$HD_TEMPERATURE_ALARM} for 2 min</name>
+                            <name>Temperature of {#SNMPVALUE} on {HOST.NAME} is {ITEM.LASTVALUE1}</name>
                             <url/>
                             <status>0</status>
                             <priority>4</priority>
@@ -1255,10 +1255,10 @@ QNAP Knowledgebase</description>
                         </trigger_prototype>
                         <trigger_prototype>
                             <expression>{Template SNMP QNAP NAS:HdTemperatureEX[{#SNMPINDEX}].min(2m)}&gt;{$HD_TEMPERATURE_WARNING}</expression>
-                            <name>Temperature of {#SNMPVALUE} on {HOST.NAME} is over {$HD_TEMPERATURE_WARNING} for 2min</name>
+                            <name>Temperature of {#SNMPVALUE} on {HOST.NAME} is {ITEM.LASTVALUE1}</name>
                             <url/>
                             <status>0</status>
-                            <priority>1</priority>
+                            <priority>2</priority>
                             <description/>
                             <type>0</type>
                             <dependencies/>
@@ -1479,8 +1479,8 @@ QNAP Knowledgebase</description>
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Template SNMP QNAP NAS:SysVolumePFreeSizeEX[{#SNMPINDEX}].last()}&lt;10</expression>
-                            <name>Free disk space less than 10% on volume {#SNMPVALUE}</name>
+                            <expression>({Template SNMP QNAP NAS:SysVolumeFreeSizeEX[{#SNMPINDEX}].last(0)} / {Template SNMP QNAP NAS:SysVolumeTotalSizeEX[{#SNMPINDEX}].last(0)}) &lt;0.1</expression>
+                            <name>Less than 10% free: {#SNMPVALUE}, {ITEM.LASTVALUE1} left</name>
                             <url/>
                             <status>0</status>
                             <priority>3</priority>
@@ -1491,8 +1491,8 @@ NB: You may need to add a size check to say &lt; 10GB os so later on.</descripti
                             <dependencies/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template SNMP QNAP NAS:SysVolumePFreeSizeEX[{#SNMPINDEX}].last(0)}&lt;20</expression>
-                            <name>Free space is less than 20% on volume {#SNMPVALUE}</name>
+                            <expression>({Template SNMP QNAP NAS:SysVolumeFreeSizeEX[{#SNMPINDEX}].last(0)} / {Template SNMP QNAP NAS:SysVolumeTotalSizeEX[{#SNMPINDEX}].last(0)}) &lt;0.2</expression>
+                            <name>Less than 20% free: {#SNMPVALUE}, {ITEM.LASTVALUE1} left</name>
                             <url/>
                             <status>0</status>
                             <priority>2</priority>
@@ -1592,7 +1592,7 @@ NB: You may need to add a size check to say &lt; 10GB os so later on.</descripti
             <macros>
                 <macro>
                     <macro>{$HD_TEMPERATURE_ALARM}</macro>
-                    <value>51</value>
+                    <value>55</value>
                 </macro>
                 <macro>
                     <macro>{$HD_TEMPERATURE_WARNING}</macro>
@@ -1635,7 +1635,7 @@ NB: You may need to add a size check to say &lt; 10GB os so later on.</descripti
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template SNMP QNAP NAS:SystemTemperatureEX.avg(300)}&gt;44</expression>
+            <expression>{Template SNMP QNAP NAS:SystemTemperatureEX.avg(300)}&gt;60</expression>
             <name>Temperature High ({ITEM.LASTVALUE1}) on {HOSTNAME}</name>
             <url/>
             <status>0</status>
@@ -1655,8 +1655,8 @@ NB: You may need to add a size check to say &lt; 10GB os so later on.</descripti
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template SNMP QNAP NAS:PhysicalFirmwareRev.regexp(4\.2\.5|4\.3\.3)}=0</expression>
-            <name>{HOST.NAME} is not running firmware 4.2.5 or 4.3.3</name>
+            <expression>{Template SNMP QNAP NAS:PhysicalFirmwareRev.regexp(4\.2\.6|4\.3\.3)}=0</expression>
+            <name>{HOST.NAME} is not running firmware 4.2.6 or 4.3.3</name>
             <url/>
             <status>0</status>
             <priority>1</priority>
