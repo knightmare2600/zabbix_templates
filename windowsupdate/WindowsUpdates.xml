@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.0</version>
+    <date>2017-08-15T14:56:15Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Windows Updates</template>
+            <name>Windows Updates</name>
+            <description/>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>WindowsUpdate</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Reboot Required</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>needsreboot</key>
+                    <delay>120</delay>
+                    <history>2</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>http://www.catonrug.net/2015/01/windows-restart-is-pending-zabbix-detection-rule.html</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>WindowsUpdate</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>needsreboot.cmd file Checksum</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.cksum[C:\Zabbix\needsreboot.cmd]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>We check the version of this script in the event we update the cmd file. This is a quick way to confirm which nodes are using the wrong build. Assuming of course, that one updates the complimentary trigger too.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>WindowsUpdate</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>needsreboot.cmd script check</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[C:\Zabbix\needsreboot.cmd]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>If C:\Zabbix\needsreboot.cmd does not exist, we cannot monitor the logged in users.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>WindowsUpdate</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>zabbix_agentd.conf NeedsReboot UserParemeter</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.regmatch[C:\Zabbix\zabbix_agentd.conf,needsreboot,UTF8,0,]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>If the zabbix_agentd.conf does not contain the line UserParameter=needsreboot,&quot;c:\zabbix\needsreboot.cmd&quot; then this check will not work.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>WindowsUpdate</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+            </items>
+            <discovery_rules/>
+            <macros/>
+            <templates/>
+            <screens/>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{Windows Updates:vfs.file.exists[C:\Zabbix\needsreboot.cmd].last(0)}=0</expression>
+            <name>Hey! {HOST.NAME} has no C:\Zabbix\needsreboot.cmd installed</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>If the C:\Zabbix\needsreboot.cmd file does not exist, it is not possible to monitor logged in RDP users, so we will throw an alert</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Windows Updates:vfs.file.regmatch[C:\Zabbix\zabbix_agentd.conf,needsreboot,UTF8,0,].last(0)}=0</expression>
+            <name>Hey! {HOST.NAME} has no needsreboot Parameter in agent configuration</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>If the line UserParameter=needsreboot,&quot;c:\zabbix\needsreboot.cmd&quot; is not in the C:\Zabbix\Zabbix_Agentd.conf file then this will trigger the alert.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Windows Updates:vfs.file.cksum[C:\Zabbix\needsreboot.cmd].last(0)}&lt;&gt;1232286362</expression>
+            <name>Hey! {HOST.NAME} has the wrong needsreboot.cmd version!</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>if the checksum does not match then you are not running hte correct version of the script. This may lead to false or non-existent alerts in zabbix.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Windows Updates:needsreboot.str(&quot;no reboot required&quot;)}=0</expression>
+            <name>{HOST.NAME} :  {ITEM.LASTVALUE1}</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>If a reboot is required, let people know</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+    </triggers>
+</zabbix_export>
