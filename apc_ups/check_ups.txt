@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# ******************************************************************************
+# *                                                                            *
+# * Check the UPS is reporting status: ONLINE, if not raise a nagios critical  *
+# * Used by nagios.  Some elements of D Hodgson's script UPS_status.ksh" used  *
+# *                                                                            *
+# * Created: R McLay    02/06/2008 v1.0 Initial Version.                       *
+# * Updated: R McLay    02/06/2008 v1.1 Remove lots of debug lines I left in   *
+# * Updated: R McLay    03/06/2008 v1.2 Added sudo support which I had forgot  *
+# *                                     about.                                 *
+# * Updated: R McLay    20/06/2008 v1.3 Use tr to print some stats on output   *
+# * Updated: C Calvelli 04/03/2010 v1.4 Removed the need to run with root/sudo *
+# * Updated: R McLay    15/06/2011 v1.5 Fixed typo from 2008 on status & print *
+# *                                     output status on battery too.          *
+# * Updated: R McLay    15/06/2011 v1.6 Tampered with the status line, moved % *
+# *                                     symbols & : to fit on 80 cols.         *
+# * Updated: R McLay    16/02/2017 v1.7 Zabbix: write the output to ups-status *
+# * Updated: R McLay    16/02/2017 v1.8 Some awful sed to trim zabbix output   *
+# *                                                                            *
+# ******************************************************************************
+
+# First off, check if apcupsd is running.  If not, raise a critical
+APCSTAT="`ps --no-headings -Capcupsd`"
+
+if [ "$APCSTAT" = '' ]; then
+  echo 'CRITICAL: apcupsd is not running' > /usr/lib/zabbix/externalscripts/ups-status
+  exit 2
+fi
+
+# ******************************************************************************
+# * Run the UPS status program outputting status, load %, charge % & time left *
+# * on one line. First sed removes the spaces, second replaces Percent with %, *
+# * lastly, tr puts it on one line,adding 2 spaces (OCTAL 040)                 *
+# ******************************************************************************
+
+## old line, still useful.
+#nagios_status=`/sbin/apcaccess status | egrep "(^STATUS|LOADPCT|BCHARGE|TIMELEFT)" | sed 's/ //g' | awk -F: '{ print $1 " : " $2 }' | sed "s/Percent/ %/g" | tr '\n' '\040\040'`
+## new line, changed the spacing & % printing to fit on 80 cols, for debuging
+nagios_status=`/sbin/apcaccess status | egrep "(^STATUS|LOADPCT|BCHARGE|TIMELEFT)" | sed 's/ //g' | awk -F: '{ print $1 ": " $2 }' | sed "s/Percent/%/g" | tr '\n' '\040\040' | sed 's/PCT/\ %/g' | sed 's/Minutes/m/g' | sed 's/ \%//g'`
+
+status=`/sbin/apcaccess status | grep ^STATUS | awk '{ print $3 }'`
+
+# echo $nagios_status
+
+if [ "$status" = "ONLINE" ]
+  then
+  # Everything is running fine.
+  echo "$nagios_status" > /usr/lib/zabbix/externalscripts/ups-status
+  exit 0
+
+else
+  # Uh Oh!  Let's raise a critical nagios!
+  # echo "CRITICAL: UPS Status : OFFLINE"
+  echo "$nagios_status" > /usr/lib/zabbix/externalscripts/ups-status
+  exit 2
+fi
+

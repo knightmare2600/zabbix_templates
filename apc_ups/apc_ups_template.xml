@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.0</version>
+    <date>2017-02-17T15:38:05Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template APC UPS Check</template>
+            <name>Template APC UPS Check</name>
+            <description/>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>APC UPS</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>APC UPSt Check</name>
+                    <type>10</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>check_ups.sh</key>
+                    <delay>180</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>1</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>APC UPS</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>APC UPS Check Script checksum</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.cksum[/usr/local/bin/check_ups.sh]</key>
+                    <delay>300</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>/usr/local/bin/check_ups.sh needs match the output from cksum /usr/local/bin/check_ups.sh or else it's the wrong version.&#13;
+&#13;
+NB: Do take care to update this when you update the script!</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>APC UPS</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>APC UPS Output Check</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.contents[/usr/lib/zabbix/externalscripts/ups-status]</key>
+                    <delay>300</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>APC UPS</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>APC UPS status file</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/usr/lib/zabbix/externalscripts/ups-status]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>if /usr/lib/zabbix/externalscripts/ups-status does not exist, then we have no way of confirming the APC UPS is doing anything</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>APC UPS</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>APC UPS Check Script</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/usr/local/bin/check_ups.sh]</key>
+                    <delay>300</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>/usr/local/bin/check_ups.sh needs to exist or Example1 cannot check the APC UPS status</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>APC UPS</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>APC Status Cron Job</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.regmatch[/etc/crontab,check_ups,UTF8,,]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>/etc/crontab must contain the cron job for alert to clear.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>APC UPS</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+            </items>
+            <discovery_rules/>
+            <macros>
+                <macro>
+                    <macro>{$SSH_PORT}</macro>
+                    <value>22</value>
+                </macro>
+            </macros>
+            <templates/>
+            <screens/>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{Template APC UPS Check:vfs.file.exists[/usr/local/bin/check_ups.sh].last()}=0</expression>
+            <name>Hey! {HOST.NAME} has no check_ups.sh installed</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If the file doesn't exist, we need to add it, so alert</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template APC UPS Check:vfs.file.exists[/usr/lib/zabbix/externalscripts/ups-status].avg(5m)}=0</expression>
+            <name>Hey! {HOST.NAME} has no ups-status file!</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If the file doesn't exist, we have no ACP UPS visibility</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template APC UPS Check:vfs.file.regmatch[/etc/crontab,check_ups,UTF8,,].last()}=0</expression>
+            <name>Hey! {HOST.NAME} has no ups_check.sh Cron Job</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If the cron job isn't checking snapshots we have no visibility so alert</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template APC UPS Check:vfs.file.cksum[/usr/local/bin/check_ups.sh].last()}&lt;&gt;3613270834</expression>
+            <name>Hey! {HOST.NAME} has the wrong check_ups.sh version</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>if the checksum does not match then you are not running hte correct version you can find the correct checksum by running cksum /usr/local/bin/check_ups.sh</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>({Template APC UPS Check:vfs.file.contents[/usr/lib/zabbix/externalscripts/ups-status].regexp(^CAL)})&lt;&gt;0</expression>
+            <name>UPS Calibration: {ITEM.LASTVALUE1}</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>1</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>({Template APC UPS Check:vfs.file.contents[/usr/lib/zabbix/externalscripts/ups-status].regexp(ONBATT)})&lt;&gt;0</expression>
+            <name>UPS Discharging: {ITEM.LASTVALUE1}</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>1</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>({Template APC UPS Check:vfs.file.contents[/usr/lib/zabbix/externalscripts/ups-status].regexp(REPLACEBATT)})&lt;&gt;0</expression>
+            <name>UPS Replace Battery: {ITEM.LASTVALUE1}</name>
+            <url/>
+            <status>0</status>
+            <priority>5</priority>
+            <description/>
+            <type>1</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>({Template APC UPS Check:vfs.file.contents[/usr/lib/zabbix/externalscripts/ups-status].regexp(^CRITICAL)})&lt;&gt;0</expression>
+            <name>{ITEM.LASTVALUE1}</name>
+            <url/>
+            <status>0</status>
+            <priority>5</priority>
+            <description/>
+            <type>1</type>
+            <dependencies/>
+        </trigger>
+    </triggers>
+</zabbix_export>
+
