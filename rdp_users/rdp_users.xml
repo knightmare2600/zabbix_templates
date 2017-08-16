@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2017-05-22T14:00:51Z</date>
+    <date>2017-08-16T13:13:21Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -9,8 +9,8 @@
     </groups>
     <templates>
         <template>
-            <template>RDPUsers</template>
-            <name>RDPUsers</name>
+            <template>RDP Users</template>
+            <name>RDP Users</name>
             <description/>
             <groups>
                 <group>
@@ -158,7 +158,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>vfs.file.regmatch[C:\Zabbix\zabbix_agentd.conf,RDPUsers,UTF8,,]</key>
+                    <key>vfs.file.regmatch[C:\Zabbix\zabbix_agentd.conf,RDPUsers,UTF8,0,10000]</key>
                     <delay>30</delay>
                     <history>90</history>
                     <trends>365</trends>
@@ -204,7 +204,7 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{RDPUsers:vfs.file.exists[C:\Zabbix\RDPUsers.cmd].last(0)}=0</expression>
+            <expression>{RDP Users:vfs.file.exists[C:\Zabbix\RDPUsers.cmd].last(0)}=0</expression>
             <name>Hey! {HOST.NAME} has no C:\Zabbix\RDPUsers.cmd installed</name>
             <url/>
             <status>0</status>
@@ -214,7 +214,7 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{RDPUsers:vfs.file.regmatch[C:\Zabbix\zabbix_agentd.conf,RDPUsers,UTF8,,].last(#1)}=0</expression>
+            <expression>{RDP Users:vfs.file.regmatch[C:\Zabbix\zabbix_agentd.conf,RDPUsers,UTF8,0,10000].last(#1)}=0</expression>
             <name>Hey! {HOST.NAME} has no RDPUsers Parameter in agent configuration</name>
             <url/>
             <status>0</status>
@@ -224,7 +224,7 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{RDPUsers:vfs.file.cksum[C:\Zabbix\RDPUsers.cmd].last(0)}&lt;&gt;334614066</expression>
+            <expression>{RDP Users:vfs.file.cksum[C:\Zabbix\RDPUsers.cmd].last(0)}&lt;&gt;334614066</expression>
             <name>Hey! {HOST.NAME} has the wrong RDPUsers.cmd version!</name>
             <url/>
             <status>0</status>
@@ -234,15 +234,14 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{RDPUsers:RDPUsers.str(rdp-tcp)}&lt;&gt;0</expression>
+            <expression>{RDP Users:RDPUsers.str(rdp-tcp)}&lt;&gt;0 and {RDP Users:RDPUsers.time(0)}&gt;170000</expression>
             <name>{HOST.NAME} RDP users:  {ITEM.LASTVALUE1}</name>
             <url/>
             <status>0</status>
-            <priority>2</priority>
-            <description>Search for users connected via RDP to server and throw an alert if we find them.</description>
+            <priority>0</priority>
+            <description>Search for users connected via RDP to server and throw an alert if we find them, if the time is after 5pm (1700)</description>
             <type>0</type>
             <dependencies/>
         </trigger>
     </triggers>
 </zabbix_export>
-
