@@ -235,7 +235,7 @@
         </trigger>
         <trigger>
             <expression>{Windows Updates:needsreboot.str(&quot;no reboot required&quot;)}=0</expression>
-            <name>{HOST.NAME} :  {ITEM.LASTVALUE1}</name>
+            <name>{HOST.NAME} has a pending reboot</name>
             <url/>
             <status>0</status>
             <priority>1</priority>
