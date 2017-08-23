@@ -1,8 +1,9 @@
-#Zabbix Templates
-##About
+# Zabbix Templates
+
+## About
 This repo contains scripts and templates for a zabbix 2.2+ and 3.x zabbix server to do various checks on devics
 
-##Usage
+## Usage
 Read the info.txt in each folder for specifics for that template, and then import the template into your Zabbix server, after having confirmed any Macros or Valume Mappings have been added.
 
 Templates
@@ -26,10 +27,10 @@ Templates
 ```
 ```
 
-##Notes
+## Notes
 This code has been tested on Zabbix 2.2 and 3.0. Some bugs may be present. Use at your own risk!
 
 Licensed under GPLv3.
 
-##
+## Copyright
 Authors: Various: Seee shell scrpts for details
