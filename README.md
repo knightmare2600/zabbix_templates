@@ -11,6 +11,7 @@ Templates
 * apc_ups		- Monitor APC UPS using Serial port - see notes on setup
 * domain_check          - Check a list of domains for expiry and warn for 14 days or less and go critical for 0 or below
 * qnap_snmp             - SNMP Template for QNAP NAS devices. Requires the NAS.mib from your QNAP's WebUI -> SNMP section
+* IP Fire		- IP Fire template - Allows SNMP Monitoring of IP Fire Firewalls [WIP]
 * isc-dhcp-server       - Monitors the ISC DHCP Server on Linux alerting if service is not running
 * Microsoft Exchange	- Monitor Microsoft Exchange 2010/2013 - Support for 2016 WIP
 * rdp_users             - Monitors logged in RDP users and alerts for sessions left active

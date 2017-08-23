@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.0</version>
+    <date>2017-08-23T13:03:37Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>IPFire</template>
+            <name>IPFire</name>
+            <description/>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications/>
+            <items/>
+            <discovery_rules/>
+            <macros/>
+            <templates>
+                <template>
+                    <name>Template ICMP Ping</name>
+                </template>
+                <template>
+                    <name>Template SNMP Disks</name>
+                </template>
+                <template>
+                    <name>Template SNMP Generic</name>
+                </template>
+                <template>
+                    <name>Template SNMP Interfaces</name>
+                </template>
+            </templates>
+            <screens/>
+        </template>
+    </templates>
+</zabbix_export>
+
