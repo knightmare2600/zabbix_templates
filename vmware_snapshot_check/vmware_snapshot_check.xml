@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2017-01-04T11:45:29Z</date>
+    <date>2017-08-23T20:41:41Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -11,7 +11,11 @@
         <template>
             <template>Template VMWare Snapshot check</template>
             <name>Template VMWare Snapshot check</name>
-            <description/>
+            <description>Check for VMs running on an ESX node which are either one or more snapshots, or require consolidation. For those running ESXi nodes without VCentre.&#13;
+&#13;
+You will also need to set up SSH keys, enable SSH on ESXi and add the public key on a single line to /etc/ssh/keys-root/authorized-keys on the ESXi host.&#13;
+&#13;
+http://www.catonrug.net/2013/05/vfs.file.time-access-modify-changed-zabbix-2.html helps here</description>
             <groups>
                 <group>
                     <name>Templates</name>
@@ -103,7 +107,11 @@
 &#13;
 NB: Do take care to update this when you update the script!</description>
                     <inventory_link>0</inventory_link>
-                    <applications/>
+                    <applications>
+                        <application>
+                            <name>VMWare ESX</name>
+                        </application>
+                    </applications>
                     <valuemap/>
                     <logtimefmt/>
                 </item>
@@ -314,9 +322,13 @@ NB: After proxy reboot, but before the hourly cron task, this alert will show, t
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>/usr/lib/zabbix/zabbix/externalscripts/snapshot_check.sh needs to exist or we cannot check the snapshot status on ESX hosts.</description>
+                    <description>/usr/lib/zabbix/zabbix/externalscripts/snapshot_check.sh needs to exist or Example1 cannot check the snapshot status on ESX hosts.</description>
                     <inventory_link>0</inventory_link>
-                    <applications/>
+                    <applications>
+                        <application>
+                            <name>VMWare ESX</name>
+                        </application>
+                    </applications>
                     <valuemap/>
                     <logtimefmt/>
                 </item>
@@ -354,6 +366,96 @@ NB: After proxy reboot, but before the hourly cron task, this alert will show, t
                     <privatekey/>
                     <port/>
                     <description>/etc/crontab must contain the cron job for alert to clear.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>VMWare ESX</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>consolidation-status file last modified</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.time[/usr/lib/zabbix/externalscripts/consolidation-status,modify]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Check the last modified date. Your cron job is dependant on this, so if you don't check once per hour, update the trigger accordingly.&#13;
+&#13;
+NB: After proxy reboot, but before the hourly cron task, this alert will show, then self resolve. Just be aware of that.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>VMWare ESX</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>snapshot-status file last modified</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.time[/usr/lib/zabbix/externalscripts/snapshot-status,modify]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Check the last modified date. Your cron job is dependant on this, so if you don't check once per hour, update the trigger accordingly.&#13;
+&#13;
+NB: After proxy reboot, but before the hourly cron task, this alert will show, then self resolve. Just be aware of that.</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -427,12 +529,32 @@ NB: After proxy reboot, but before the hourly cron task, this alert will show, t
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template VMWare Snapshot check:vfs.file.cksum[/usr/lib/zabbix/externalscripts/snapshot_check.sh].last()}&lt;&gt;1742960427</expression>
+            <expression>{Template VMWare Snapshot check:vfs.file.cksum[/usr/lib/zabbix/externalscripts/snapshot_check.sh].last(0)}&lt;&gt;1742960427</expression>
             <name>Hey! {HOST.NAME} has the wrong snapshot_check.sh version</name>
             <url/>
             <status>0</status>
             <priority>2</priority>
             <description>if the checksum does not match then you are not running hte correct version you can find the correct checksum by running cksum /usr/lib/zabbix/externalscripts/snapshot_check.sh</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template VMWare Snapshot check:vfs.file.time[/usr/lib/zabbix/externalscripts/consolidation-status,modify].now(0)}-{Template VMWare Snapshot check:vfs.file.time[/usr/lib/zabbix/externalscripts/consolidation-status,modify].last(0)}&gt;3700</expression>
+            <name>Hey! {HOST.NAME} no change to consolidation-status file for more than 60 minutes!</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If the file doesn't change at least once per hour, we have no current consolidation visibility</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template VMWare Snapshot check:vfs.file.time[/usr/lib/zabbix/externalscripts/snapshot-status,modify].now(0)}-{Template VMWare Snapshot check:vfs.file.time[/usr/lib/zabbix/externalscripts/snapshot-status,modify].last(0)}&gt;3700</expression>
+            <name>Hey! {HOST.NAME} no change to snapshot-status file for more than 60 minutes!</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If the file doesn't change at least once per hour, we have no current snapshot visibility</description>
             <type>0</type>
             <dependencies/>
         </trigger>
