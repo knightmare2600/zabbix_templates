@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2017-08-16T13:13:21Z</date>
+    <date>2017-09-20T08:40:49Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -21,8 +21,97 @@
                 <application>
                     <name>Audit</name>
                 </application>
+                <application>
+                    <name>RDP</name>
+                </application>
             </applications>
             <items>
+                <item>
+                    <name>Default RDP Port</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>net.tcp.listen[3389]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Checks if port 3389/TCP is listening. This is the default port</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>RDP</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Custom RDP Port</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>net.tcp.listen[7279]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Checks if port 7279 is listening. Do change this if you use a custom RDP port.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>RDP</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
                 <item>
                     <name>Logged in  users</name>
                     <type>7</type>
@@ -61,6 +150,49 @@
                     <applications>
                         <application>
                             <name>Audit</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Terminal Server Service</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>service_state[TermService]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>If TermService is not running, people cannot RDP in.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>RDP</name>
                         </application>
                     </applications>
                     <valuemap/>
@@ -214,22 +346,32 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{RDP Users:vfs.file.regmatch[C:\Zabbix\zabbix_agentd.conf,RDPUsers,UTF8,0,10000].last(#1)}=0</expression>
-            <name>Hey! {HOST.NAME} has no RDPUsers Parameter in agent configuration</name>
-            <url/>
-            <status>0</status>
-            <priority>1</priority>
-            <description>If the line UserParameter=RDPUsers,&quot;c:\zabbix\RDPUsers.cmd&quot; is not in the C:\Zabbix\Zabbix_Agentd.conf file then this will trigger the alert.</description>
-            <type>0</type>
-            <dependencies/>
-        </trigger>
-        <trigger>
             <expression>{RDP Users:vfs.file.cksum[C:\Zabbix\RDPUsers.cmd].last(0)}&lt;&gt;334614066</expression>
             <name>Hey! {HOST.NAME} has the wrong RDPUsers.cmd version!</name>
             <url/>
             <status>0</status>
             <priority>1</priority>
             <description>if the checksum does not match then you are not running hte correct version of the script. This may lead to false or non-existent alerts in zabbix.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{RDP Users:net.tcp.listen[7279].last(#1)}=0 and {RDP Users:net.tcp.listen[3389].last(#1)}=0</expression>
+            <name>Hey! {HOST.NAME} is not listening on port 7279/TCP or 3389/TCP</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>If TCP/7279 or 3389/TCP is not open then raise an alert</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{RDP Users:service_state[TermService].last(0)}&lt;&gt;0</expression>
+            <name>Remote Desktop Services Service Stopped</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description>If TermService service is stoppped, users cannot RDP in.</description>
             <type>0</type>
             <dependencies/>
         </trigger>
