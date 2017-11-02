@@ -23,6 +23,7 @@ Templates
 * vmware_snapshot_check - Checks a VMWare ESXi host and outputs a text file with the current number of snapshots to a file. Requires SSH daemon to be running on ESXi host and SSH keys to be available. The shell script also needs to be available
 * Windows Update	- Checks if Windows system needs a restart. Plan to eventually alert for pending updates WIP
 * Windows OS		- Modify Zabbix Templaye to show volume of free space e.g. 7.2GB as well as < 20% in LLD trigger)
+* Wordpress		- Monitor wordpress installs and alert if they are out of date
 
 ```
 ```
