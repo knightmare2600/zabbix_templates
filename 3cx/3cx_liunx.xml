@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2017-02-15T14:27:26Z</date>
+    <date>2017-11-02T10:45:45Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -29,7 +29,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>net.tcp.service[http,,5000]</key>
+                    <key>net.tcp.service[http,,{$3CXHTTPWEBUI}]</key>
                     <delay>30</delay>
                     <history>90</history>
                     <trends>365</trends>
@@ -72,7 +72,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>net.tcp.service[https,,5001]</key>
+                    <key>net.tcp.service[https,,{$3CXHTTPSWEBUI}]</key>
                     <delay>30</delay>
                     <history>90</history>
                     <trends>365</trends>
@@ -95,7 +95,7 @@
                     <data_type>0</data_type>
                     <authtype>0</authtype>
                     <username/>
-                    <password/>
+                    <password>Zo@b1234!</password>
                     <publickey/>
                     <privatekey/>
                     <port/>
@@ -459,7 +459,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>vfs.file.exists[/usr/sbin/3CXPbxServer]</key>
+                    <key>vfs.file.exists[/usr/sbin/3CXPhoneSystem]</key>
                     <delay>30</delay>
                     <history>90</history>
                     <trends>365</trends>
@@ -498,14 +498,23 @@
                 </item>
             </items>
             <discovery_rules/>
-            <macros/>
+            <macros>
+                <macro>
+                    <macro>{$3CXHTTPSWEBUI}</macro>
+                    <value>443</value>
+                </macro>
+                <macro>
+                    <macro>{$3CXHTTPWEBUI}</macro>
+                    <value>80</value>
+                </macro>
+            </macros>
             <templates/>
             <screens/>
         </template>
     </templates>
     <triggers>
         <trigger>
-            <expression>{3CX PBX Linux:vfs.file.exists[/usr/sbin/3CXPbxServer].last(0)}=0</expression>
+            <expression>{3CX PBX Linux:vfs.file.exists[/usr/sbin/3CXPhoneSystem].last(0)}=0</expression>
             <name>Hey! {HOST.NAME} has no 3cxpbx package installed</name>
             <url/>
             <status>0</status>
@@ -565,8 +574,8 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{3CX PBX Linux:net.tcp.service[https,,5001].last(0)}=0</expression>
-            <name>{HOST.NAME} has no HTTPS WebUI on TCP/5001</name>
+            <expression>{3CX PBX Linux:net.tcp.service[https,,{$3CXHTTPSWEBUI}].last(0)}=0</expression>
+            <name>{HOST.NAME} has no HTTPS WebUI on TCP/{$3CXHTTPSWEBUI}</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
@@ -575,8 +584,8 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{3CX PBX Linux:net.tcp.service[http,,5000].last(0)}=0</expression>
-            <name>{HOST.NAME} has no HTTP WebUI on TCP/5000</name>
+            <expression>{3CX PBX Linux:net.tcp.service[http,,{$3CXHTTPWEBUI}].last(0)}=0</expression>
+            <name>{HOST.NAME} has no HTTP WebUI on TCP/{$3CXHTTPWEBUI}</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
@@ -616,4 +625,3 @@
         </trigger>
     </triggers>
 </zabbix_export>
-
