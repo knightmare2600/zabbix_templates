@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2017-08-15T14:58:26Z</date>
+    <date>2017-11-24T09:12:00Z</date>
     <groups>
         <group>
             <name>Templates</name>
+        </group>
+        <group>
+            <name>Wordpress</name>
         </group>
     </groups>
     <templates>
@@ -1520,6 +1523,16 @@ NB: You may need to add a size check to say &lt; 10GB os so later on.</descripti
                             </dependencies>
                         </trigger_prototype>
                         <trigger_prototype>
+                            <expression>{Template SNMP QNAP NAS:SysVolumeStatusEX[{#SNMPINDEX}].regexp(Checking)}=1</expression>
+                            <name>Volume {#SNMPINDEX} on {HOSTNAME} is	Checking</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>2</priority>
+                            <description/>
+                            <type>0</type>
+                            <dependencies/>
+                        </trigger_prototype>
+                        <trigger_prototype>
                             <expression>{Template SNMP QNAP NAS:SysVolumeStatusEX[{#SNMPINDEX}].regexp(In degraded mode)}=1</expression>
                             <name>Volume {#SNMPINDEX} on {HOSTNAME} is Degraded</name>
                             <url/>
@@ -1602,6 +1615,391 @@ NB: You may need to add a size check to say &lt; 10GB os so later on.</descripti
             <templates/>
             <screens/>
         </template>
+        <template>
+            <template>Wordpress</template>
+            <name>Wordpress</name>
+            <description/>
+            <groups>
+                <group>
+                    <name>Wordpress</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Wordpress</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>wp-cli checksum</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.cksum[/usr/local/bin/wp-cli.phar]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>wp-cli.phar checksum so we can find versions which are out-of-date</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Wordpress</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Wordpress output check</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.contents[/tmp/wordpress-status]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>grab the contents of the file wordpress-status and we will know if wordpress needs updated.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Wordpress</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>wordpress-status file</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/tmp/wordpress-status]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>if it does not exist then we cannot check current wordpress status.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Wordpress</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>wp-cli binary</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/usr/local/bin/wp-cli.phar]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar if it does not exist then we cannot check wordpress from the command line</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Wordpress</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>wp-cli cron job</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.regmatch[/etc/crontab,wp\-cli,UTF8,0,10000]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>If the /etc/crontab file does not have a job for running wp-cli to check for updates, we're unable to actually do any checking. E.g:&#13;
+&#13;
+00 16   * * *   root    /usr/local/bin/wp-cli.phar --path=/var/www/html --alow-root core version &gt; /tmp/wordpress-status</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Wordpress</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>wordpress-status file last modified</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.time[/tmp/wordpress-status,modify]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>find out how often this fiel changes. Used by trigger to ensure there is not a stale check.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Wordpress</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>Wordpress instances</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>wp.discovery</key>
+                    <delay>30</delay>
+                    <status>0</status>
+                    <allowed_hosts/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <filter>
+                        <evaltype>0</evaltype>
+                        <formula/>
+                        <conditions/>
+                    </filter>
+                    <lifetime>30</lifetime>
+                    <description/>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Wordpress update status {#WPNAME}</name>
+                            <type>0</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>wp.update_available[{#WPNAME}]</key>
+                            <delay>3600</delay>
+                            <history>30</history>
+                            <trends>0</trends>
+                            <status>0</status>
+                            <value_type>4</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Wordpress</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                    </item_prototypes>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>{Wordpress:wp.update_available[{#WPNAME}].nodata(129600)}=1</expression>
+                            <name>No update status data available for {#WPNAME}</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>3</priority>
+                            <description/>
+                            <type>0</type>
+                            <dependencies/>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Wordpress:wp.update_available[{#WPNAME}].regexp(^OK$)}=0</expression>
+                            <name>Wordpress update available for {#WPNAME}</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>2</priority>
+                            <description/>
+                            <type>1</type>
+                            <dependencies/>
+                        </trigger_prototype>
+                    </trigger_prototypes>
+                    <graph_prototypes/>
+                    <host_prototypes/>
+                </discovery_rule>
+            </discovery_rules>
+            <macros/>
+            <templates/>
+            <screens/>
+        </template>
     </templates>
     <triggers>
         <trigger>
@@ -1635,12 +2033,82 @@ NB: You may need to add a size check to say &lt; 10GB os so later on.</descripti
             <dependencies/>
         </trigger>
         <trigger>
+            <expression>{Wordpress:vfs.file.cksum[/usr/local/bin/wp-cli.phar].last(0)}&lt;&gt;2544542821</expression>
+            <name>Hey! {HOST.NAME} has an outdated wp-cli.phar build</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>if the checksum does not match then you are not running hte correct version. Find the correct checksum by running cksum /usr/local/bin/wp-cli.phar when updates occur.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Wordpress:vfs.file.exists[/tmp/wordpress-status].avg(5m)}=0</expression>
+            <name>Hey! {HOST.NAME} has no wordpress-status file</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>if the file doesn't exist we cannot are not actively checking wordpress status</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Wordpress:vfs.file.regmatch[/etc/crontab,wp\-cli,UTF8,0,10000].last()}=0</expression>
+            <name>Hey! {HOST.NAME} has no wp-cli.phar Cron Job</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If the cron job isn't checking wordpress updates so alert</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Wordpress:vfs.file.exists[/usr/local/bin/wp-cli.phar].avg(5m)}=0</expression>
+            <name>Hey! {HOST.NAME} has no wp-cli.phar file</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>if the file doesn't exist we cannot possibly check wordpress status</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Wordpress:vfs.file.time[/tmp/wordpress-status,modify].now(0)}-{Wordpress:vfs.file.time[/tmp/wordpress-status,modify].last(0)}&gt;87000</expression>
+            <name>Hey! {HOST.NAME} no change to wordpress-status file for more than 24 hours</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If the file doesn't change at least once per hour, we have no current wordpress visibility using 8700 seconds so it allows 25 hours to avoid false positives as the script executes.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
             <expression>{Template SNMP QNAP NAS:SystemTemperatureEX.avg(300)}&gt;60</expression>
             <name>Temperature High ({ITEM.LASTVALUE1}) on {HOSTNAME}</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
             <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.8.3)}&lt;&gt;1</expression>
+            <name>Wordpress is outdated on {HOST.NAME}</name>
+            <url/>
+            <status>1</status>
+            <priority>4</priority>
+            <description>4.8.3 is the version below which, all the wordpress installs are vulnerable to QL injection.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.8.3)}=0 and {Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.9)}=0</expression>
+            <name>Wordpress is outdated on {HOST.NAME}</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description>4.8.3 is the version below which, all the wordpress installs are vulnerable to SQL injection.</description>
             <type>0</type>
             <dependencies/>
         </trigger>
