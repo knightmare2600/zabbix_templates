@@ -14,7 +14,8 @@ Templates
 * qnap_snmp             - SNMP Template for QNAP NAS devices. Requires the NAS.mib from your QNAP's WebUI -> SNMP section
 * IP Fire		- IP Fire template - Allows SNMP Monitoring of IP Fire Firewalls [WIP]
 * isc-dhcp-server       - Monitors the ISC DHCP Server on Linux alerting if service is not running
-* Microsoft Exchange	- Monitor Microsoft Exchange 2010/2013 - Support for 2016 WIP
+* LAMP Stack		- Confirms all packages required for LAMP stack are installed on Ubuntu VM
+* Microsoft Exchange	- Monitor Microsoft Exchange 2010/2013/2016
 * rdp_users             - Monitors logged in RDP users and alerts for sessions left active
 * Security_Watcher      - Checks package versions, build dates, etc. for public CVEs and alerts. NOT a replacement for Vulnerability scanners
 * ssl_check             - Checks an SSL certificate for issuer (hello WoSign!) and days to expiry. Alerts for 90, 60 30 days etc.
