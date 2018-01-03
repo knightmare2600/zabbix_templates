@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2017-08-15T15:11:06Z</date>
+    <date>2018-01-03T11:06:55Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -377,6 +377,49 @@
                     <logtimefmt/>
                 </item>
                 <item>
+                    <name>Service Status Microsoft Exchange Frontend Transport</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>service_state[MSExchangeFrontEndTransport]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Exchange 2013 Client Access</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
                     <name>Service Status Microsoft Exchange Health Manager</name>
                     <type>0</type>
                     <snmp_community/>
@@ -417,6 +460,49 @@
                         </application>
                         <application>
                             <name>Exchange 2013 Mailbox</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Service Status Microsoft Exchange IMAP4 Backend</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>service_state[MSExchangeImap4BE]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>1</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Exchange 2013 Client Access</name>
                         </application>
                     </applications>
                     <valuemap/>
@@ -562,6 +648,49 @@
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Exchange 2013 Client Access</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Service Status Microsoft Exchange POP3 Backend</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>service_state[MSExchangepop3BE]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>1</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
@@ -1046,6 +1175,36 @@
             <dependencies/>
         </trigger>
         <trigger>
+            <expression>{Template Microsoft Exchange Server 2013:service_state[MSExchangeAntispamUpdate].last(0)}&lt;&gt;0</expression>
+            <name>Microsoft Exchange Anti-Spam Update Service Stopped</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template Microsoft Exchange Server 2013:service_state[MSExchangeDagMgmt].last(0)}&lt;&gt;0</expression>
+            <name>Microsoft Exchange DAG Management Service Stopped</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template Microsoft Exchange Server 2013:service_state[MSExchangeDiagnostics].last(0)}&lt;&gt;0</expression>
+            <name>Microsoft Exchange Diagnostics Service Stopped</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
             <expression>{Template Microsoft Exchange Server 2013:service_state[MSExchangeEdgeSync].last(0)}&lt;&gt;0</expression>
             <name>Microsoft Exchange Edge Sync Service Stopped</name>
             <url/>
@@ -1056,8 +1215,28 @@
             <dependencies/>
         </trigger>
         <trigger>
+            <expression>{Template Microsoft Exchange Server 2013:service_state[MSExchangeFrontEndTransport].last(0)}&lt;&gt;0</expression>
+            <name>Microsoft Exchange FrontEnd Transport Service Stopped</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
             <expression>{Template Microsoft Exchange Server 2013:service_state[MSExchangeHM].last(0)}&lt;&gt;0</expression>
             <name>Microsoft Exchange Health Manager Service Stopped</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template Microsoft Exchange Server 2013:service_state[MSExchangeImap4BE].last(0)}&lt;&gt;0</expression>
+            <name>Microsoft Exchange IMAP4 Backend Service Stopped</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
@@ -1106,10 +1285,10 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template Microsoft Exchange Server 2013:service_state[MSExchangeUM].last(0)}&lt;&gt;0</expression>
-            <name>Microsoft Exchange Mailbox Transport Delivery Service Stopped</name>
+            <expression>{Template Microsoft Exchange Server 2013:service_state[MSExchangepop3BE].last(0)}&lt;&gt;0</expression>
+            <name>Microsoft Exchange POP3 Backend Service Stopped</name>
             <url/>
-            <status>1</status>
+            <status>0</status>
             <priority>3</priority>
             <description/>
             <type>0</type>
@@ -1140,6 +1319,16 @@
             <name>Microsoft Exchange RPC Client Access Service Stopped</name>
             <url/>
             <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template Microsoft Exchange Server 2013:service_state[HostControllerService].last(0)}&lt;&gt;0</expression>
+            <name>Microsoft Exchange Search Host Controller Service Stopped</name>
+            <url/>
+            <status>1</status>
             <priority>3</priority>
             <description/>
             <type>0</type>
@@ -1216,6 +1405,16 @@
             <dependencies/>
         </trigger>
         <trigger>
+            <expression>{Template Microsoft Exchange Server 2013:service_state[MSExchangeUMCR].last(0)}&lt;&gt;0</expression>
+            <name>Microsoft Exchange Unified Messaging Call Router Service Stopped</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
             <expression>{Template Microsoft Exchange Server 2013:service_state[MSExchangeUM].last(0)}&lt;&gt;0</expression>
             <name>Microsoft Exchange Unified Messaging Service Stopped</name>
             <url/>
@@ -1227,4 +1426,3 @@
         </trigger>
     </triggers>
 </zabbix_export>
-
