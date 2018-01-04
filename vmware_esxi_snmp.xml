@@ -1,0 +1,1268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.0</version>
+    <date>2018-01-04T15:05:20Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template SNMP OS ESXi</template>
+            <name>Template SNMP OS ESXi</name>
+            <description/>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Disk partitions</name>
+                </application>
+                <application>
+                    <name>General</name>
+                </application>
+                <application>
+                    <name>Interfaces</name>
+                </application>
+                <application>
+                    <name>Memory</name>
+                </application>
+                <application>
+                    <name>Processors</name>
+                </application>
+                <application>
+                    <name>RAID</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Device name</name>
+                    <type>4</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <multiplier>0</multiplier>
+                    <snmp_oid>SNMPv2-MIB::sysName.0</snmp_oid>
+                    <key>sysName</key>
+                    <delay>3600</delay>
+                    <history>7</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>1</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>An administratively-assigned name for this managed node. By convention, this is the node's fully-qualified domain name.  If the name is unknown, the value is the zero-length string.</description>
+                    <inventory_link>3</inventory_link>
+                    <applications>
+                        <application>
+                            <name>General</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Device uptime</name>
+                    <type>4</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <multiplier>1</multiplier>
+                    <snmp_oid>SNMPv2-MIB::sysUpTime.0</snmp_oid>
+                    <key>sysUpTime</key>
+                    <delay>300</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>uptime</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>0.01</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>The time since the network management portion of the system was last re-initialized.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>General</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>VMWare Build</name>
+                    <type>4</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <multiplier>0</multiplier>
+                    <snmp_oid>.1.3.6.1.4.1.6876.1.4.0</snmp_oid>
+                    <key>VMProdBuild.0</key>
+                    <delay>3600</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port>161</port>
+                    <description/>
+                    <inventory_link>5</inventory_link>
+                    <applications>
+                        <application>
+                            <name>General</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>ESXi Version</name>
+                    <type>4</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <multiplier>0</multiplier>
+                    <snmp_oid>1.3.6.1.4.1.6876.1.2.0</snmp_oid>
+                    <key>vmwProdVersion.0</key>
+                    <delay>3600</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port>161</port>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>General</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>Disk partitions</name>
+                    <type>4</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>discovery[{#SNMPVALUE},.1.3.6.1.2.1.25.2.3.1.4]</snmp_oid>
+                    <key>hrStorageAlloc</key>
+                    <delay>900</delay>
+                    <status>0</status>
+                    <allowed_hosts/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <filter>
+                        <evaltype>0</evaltype>
+                        <formula/>
+                        <conditions>
+                            <condition>
+                                <macro>{#SNMPVALUE}</macro>
+                                <value>1048576|4194304|8388608|2097152</value>
+                                <operator>8</operator>
+                                <formulaid>A</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <lifetime>1</lifetime>
+                    <description>The rule will discover all disk partitions matching the global regexp &quot;Storage devices for SNMP discovery&quot;.&#13;
+&#13;
+{$SNMP_COMMUNITY} is a global macro.&#13;
+hrStorageFixedDisk</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Allocation units VMFS {#SNMPINDEX}</name>
+                            <type>4</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <multiplier>0</multiplier>
+                            <snmp_oid>.1.3.6.1.2.1.25.2.3.1.4.{#SNMPINDEX}</snmp_oid>
+                            <key>hrStorageAllocationUnits[{#SNMPINDEX}]</key>
+                            <delay>300</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Disk partitions</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Description of VMFS {#SNMPINDEX}</name>
+                            <type>4</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <multiplier>0</multiplier>
+                            <snmp_oid>.1.3.6.1.2.1.25.2.3.1.3.{#SNMPINDEX}</snmp_oid>
+                            <key>hrStorageDescr[{#SNMPINDEX}]</key>
+                            <delay>3600</delay>
+                            <history>7</history>
+                            <trends>0</trends>
+                            <status>0</status>
+                            <value_type>1</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port>161</port>
+                            <description>A description of the type and instance of the storage described by this entry.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Disk partitions</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Total size of VMFS {#SNMPINDEX} in blocks</name>
+                            <type>4</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <multiplier>0</multiplier>
+                            <snmp_oid>.1.3.6.1.2.1.25.2.3.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>hrStorageSizeBlocks[{#SNMPINDEX}]</key>
+                            <delay>3600</delay>
+                            <history>7</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>blocks</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port>161</port>
+                            <description>The size of the storage represented by this entry, in units of hrStorageAllocationUnits. This object is writable to allow remote configuration of the size of the storage area in those cases where such an operation makes sense and is possible on the underlying system. For example, the amount of main memory allocated to a buffer pool might be modified or the amount of disk space allocated to virtual memory might be modified.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Disk partitions</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Total size of VMFS {#SNMPINDEX}</name>
+                            <type>15</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>hrStorageSize[{#SNMPINDEX}]</key>
+                            <delay>3600</delay>
+                            <history>7</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>Bytes</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params>last(&quot;hrStorageSizeBlocks[{#SNMPINDEX}]&quot;) * last(&quot;hrStorageAllocationUnits[{#SNMPINDEX}]&quot;)</params>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>The size of the storage represented by this entry, in units of hrStorageAllocationUnits. This object is writable to allow remote configuration of the size of the storage area in those cases where such an operation makes sense and is possible on the underlying system. For example, the amount of main memory allocated to a buffer pool might be modified or the amount of disk space allocated to virtual memory might be modified.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Disk partitions</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Used disk on VMFS {#SNMPINDEX} in blocks</name>
+                            <type>4</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <multiplier>0</multiplier>
+                            <snmp_oid>.1.3.6.1.2.1.25.2.3.1.6.{#SNMPINDEX}</snmp_oid>
+                            <key>hrStorageUsedBlocks[{#SNMPINDEX}]</key>
+                            <delay>300</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>MB</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port>161</port>
+                            <description>The amount of the storage represented by this entry that is allocated, in units of hrStorageAllocationUnits.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Disk partitions</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Used disk on VMFS {#SNMPINDEX}</name>
+                            <type>15</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>hrStorageUsed[{#SNMPINDEX}]</key>
+                            <delay>300</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>Bytes</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params>last(&quot;hrStorageUsedBlocks[{#SNMPINDEX}]&quot;) * last(&quot;hrStorageAllocationUnits[{#SNMPINDEX}]&quot;)</params>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description>The amount of the storage represented by this entry that is allocated, in units of hrStorageAllocationUnits.</description>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Disk partitions</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Used Space % on VMFS {#SNMPINDEX}</name>
+                            <type>15</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>vmfs.FreeSpacePer[{#SNMPINDEX}]</key>
+                            <delay>300</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts/>
+                            <units>%</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params>last(&quot;hrStorageUsed[{#SNMPINDEX}]&quot;)/last(&quot;hrStorageSize[{#SNMPINDEX}]&quot;)*100</params>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Disk partitions</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Free Space on VMFS {#SNMPINDEX}</name>
+                            <type>15</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>vmfs.FreeSpace[{#SNMPINDEX}]</key>
+                            <delay>300</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>Bytes</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params>last(&quot;hrStorageSize[{#SNMPINDEX}]&quot;)-last(&quot;hrStorageUsed[{#SNMPINDEX}]&quot;)</params>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Disk partitions</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                    </item_prototypes>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>({Template SNMP OS ESXi:hrStorageUsedBlocks[{#SNMPINDEX}].last(0)} / {Template SNMP OS ESXi:hrStorageSizeBlocks[{#SNMPINDEX}].last(0)} &gt; 0.9) and ({Template SNMP OS ESXi:vmfs.FreeSpace[{#SNMPINDEX}].last(0)} &lt; 20G)</expression>
+                            <name>Free disk space is less than 10% on volume {#SNMPINDEX}, {ITEM.LASTVALUE3} remaining</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>3</priority>
+                            <description/>
+                            <type>0</type>
+                            <dependencies/>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>({Template SNMP OS ESXi:hrStorageUsedBlocks[{#SNMPINDEX}].last(0)} / {Template SNMP OS ESXi:hrStorageSizeBlocks[{#SNMPINDEX}].last(0)} &gt; 0.8) and ({Template SNMP OS ESXi:hrStorageUsedBlocks[{#SNMPINDEX}].last(0)} / {Template SNMP OS ESXi:hrStorageSizeBlocks[{#SNMPINDEX}].last(0)} &lt; 0.9) and ({Template SNMP OS ESXi:vmfs.FreeSpace[{#SNMPINDEX}].last(0)} &lt; 40G)</expression>
+                            <name>Free disk space is less than 20% on volume {#SNMPINDEX}, {ITEM.LASTVALUE5} remaining</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>2</priority>
+                            <description/>
+                            <type>0</type>
+                            <dependencies/>
+                        </trigger_prototype>
+                    </trigger_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>Storage Use</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>1</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>0</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>C80000</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Template SNMP OS ESXi</host>
+                                        <key>vmfs.FreeSpacePer[{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                    <host_prototypes/>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>Memory</name>
+                    <type>4</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>discovery[{#SNMPVALUE},.1.3.6.1.2.1.25.2.3.1.3]</snmp_oid>
+                    <key>hrStorageDescr</key>
+                    <delay>600</delay>
+                    <status>0</status>
+                    <allowed_hosts/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <filter>
+                        <evaltype>0</evaltype>
+                        <formula/>
+                        <conditions>
+                            <condition>
+                                <macro>{#SNMPVALUE}</macro>
+                                <value>Real Memory</value>
+                                <operator>8</operator>
+                                <formulaid>A</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <lifetime>1</lifetime>
+                    <description/>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Used Memory %</name>
+                            <type>15</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>hrMemoryFreePerc[{#SNMPINDEX}]</key>
+                            <delay>300</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>0</value_type>
+                            <allowed_hosts/>
+                            <units>%</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params>last(&quot;hrMemoryUsed[{#SNMPINDEX}]&quot;)/&#13;
+last(&quot;hrMemoryTotal[{#SNMPINDEX}]&quot;)*100</params>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Memory</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Free Memory</name>
+                            <type>15</type>
+                            <snmp_community/>
+                            <multiplier>0</multiplier>
+                            <snmp_oid/>
+                            <key>hrMemoryFree[{#SNMPINDEX}]</key>
+                            <delay>300</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>Bytes</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params>last(&quot;hrMemoryTotal[{#SNMPINDEX}]&quot;)-last(&quot;hrMemoryUsed[{#SNMPINDEX}]&quot;)</params>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Memory</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Total Memory</name>
+                            <type>4</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <multiplier>1</multiplier>
+                            <snmp_oid>.1.3.6.1.2.1.25.2.2.0</snmp_oid>
+                            <key>hrMemoryTotal[{#SNMPINDEX}]</key>
+                            <delay>300</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>Bytes</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1024</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Memory</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Memory Used</name>
+                            <type>4</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <multiplier>1</multiplier>
+                            <snmp_oid>.1.3.6.1.2.1.25.2.3.1.6.{#SNMPINDEX}</snmp_oid>
+                            <key>hrMemoryUsed[{#SNMPINDEX}]</key>
+                            <delay>300</delay>
+                            <history>90</history>
+                            <trends>365</trends>
+                            <status>0</status>
+                            <value_type>3</value_type>
+                            <allowed_hosts/>
+                            <units>Bytes</units>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1024</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port/>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>Memory</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                    </item_prototypes>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>({Template SNMP OS ESXi:hrMemoryUsed[{#SNMPINDEX}].last(0)} / {Template SNMP OS ESXi:hrMemoryTotal[{#SNMPINDEX}].last(0)} &gt; 0.9) and ({Template SNMP OS ESXi:hrMemoryFree[{#SNMPINDEX}].last(0)} &lt; 512M)</expression>
+                            <name>Available Memory is less than 10%, {ITEM.LASTVALUE3} remaining</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>2</priority>
+                            <description/>
+                            <type>0</type>
+                            <dependencies/>
+                        </trigger_prototype>
+                    </trigger_prototypes>
+                    <graph_prototypes/>
+                    <host_prototypes/>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>Virtual Machines</name>
+                    <type>4</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>discovery[{#SNMPVALUE},.1.3.6.1.4.1.6876.2.1.1.2]</snmp_oid>
+                    <key>vmwVmDisplayName</key>
+                    <delay>900</delay>
+                    <status>0</status>
+                    <allowed_hosts/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port>161</port>
+                    <filter>
+                        <evaltype>0</evaltype>
+                        <formula/>
+                        <conditions/>
+                    </filter>
+                    <lifetime>1</lifetime>
+                    <description/>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>VM Guest OS {#SNMPVALUE}</name>
+                            <type>4</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <multiplier>0</multiplier>
+                            <snmp_oid>.1.3.6.1.4.1.6876.2.1.1.4.{#SNMPINDEX}</snmp_oid>
+                            <key>vmwVMGuestOS.[{#SNMPINDEX}]</key>
+                            <delay>3600</delay>
+                            <history>90</history>
+                            <trends>0</trends>
+                            <status>0</status>
+                            <value_type>4</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port>161</port>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>RAID</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>VM Guest State {#SNMPVALUE}</name>
+                            <type>4</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <multiplier>0</multiplier>
+                            <snmp_oid>.1.3.6.1.4.1.6876.2.1.1.8.{#SNMPINDEX}</snmp_oid>
+                            <key>vmwVMGuestState.[{#SNMPINDEX}]</key>
+                            <delay>300</delay>
+                            <history>90</history>
+                            <trends>0</trends>
+                            <status>0</status>
+                            <value_type>4</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port>161</port>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>RAID</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>VM Power State {#SNMPVALUE}</name>
+                            <type>4</type>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                            <multiplier>0</multiplier>
+                            <snmp_oid>.1.3.6.1.4.1.6876.2.1.1.6.{#SNMPINDEX}</snmp_oid>
+                            <key>vmwVMState.[{#SNMPINDEX}]</key>
+                            <delay>300</delay>
+                            <history>90</history>
+                            <trends>0</trends>
+                            <status>0</status>
+                            <value_type>4</value_type>
+                            <allowed_hosts/>
+                            <units/>
+                            <delta>0</delta>
+                            <snmpv3_contextname/>
+                            <snmpv3_securityname/>
+                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                            <snmpv3_authpassphrase/>
+                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                            <snmpv3_privpassphrase/>
+                            <formula>1</formula>
+                            <delay_flex/>
+                            <params/>
+                            <ipmi_sensor/>
+                            <data_type>0</data_type>
+                            <authtype>0</authtype>
+                            <username/>
+                            <password/>
+                            <publickey/>
+                            <privatekey/>
+                            <port>161</port>
+                            <description/>
+                            <inventory_link>0</inventory_link>
+                            <applications>
+                                <application>
+                                    <name>RAID</name>
+                                </application>
+                            </applications>
+                            <valuemap/>
+                            <logtimefmt/>
+                            <application_prototypes/>
+                        </item_prototype>
+                    </item_prototypes>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>({Template SNMP OS ESXi:vmwVMGuestState.[{#SNMPINDEX}].regexp(&quot;not running&quot;)}=1) and ({Template SNMP OS ESXi:vmwVMState.[{#SNMPINDEX}].regexp(&quot;powered on&quot;)}=1)</expression>
+                            <name>Guest Tools not running or out of date on {#SNMPVALUE}</name>
+                            <url/>
+                            <status>1</status>
+                            <priority>1</priority>
+                            <description>Checks if Guest Tools are running on a powered on VM</description>
+                            <type>0</type>
+                            <dependencies/>
+                        </trigger_prototype>
+                    </trigger_prototypes>
+                    <graph_prototypes/>
+                    <host_prototypes/>
+                </discovery_rule>
+            </discovery_rules>
+            <macros/>
+            <templates/>
+            <screens/>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>({Template SNMP OS ESXi:vmwProdVersion.0.str(6.0.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;4600944) or ({Template SNMP OS ESXi:vmwProdVersion.0.str(5.5.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;4179633)</expression>
+            <name>ESXi critically outdated on {HOST.NAME} (running: {ITEM.LASTVALUE1} build {ITEM.LASTVALUE2})</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>Enter the last critical bugfix version for each major ESXi product.&#13;
+&#13;
+Logic works on Major build, e.g. 6.0 and build number which changes often. This then does an | (OR) to check if it's 5.5 or 6.0</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>({Template SNMP OS ESXi:vmwProdVersion.0.str(6.0.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;4600944) or ({Template SNMP OS ESXi:vmwProdVersion.0.str(5.5.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;4345813)</expression>
+            <name>ESXi outdated on {HOST.NAME} (running: {ITEM.LASTVALUE1} build {ITEM.LASTVALUE2})</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>Catch-all. Checks that the version of VMWare is the current version.&#13;
+&#13;
+Logic works on Major build, e.g. 6.0 and build number which changes often. This then does an | (OR) to check if it's 5.5 or 6.0</description>
+            <type>0</type>
+            <dependencies>
+                <dependency>
+                    <name>ESXi critically outdated on {HOST.NAME} (running: {ITEM.LASTVALUE1} build {ITEM.LASTVALUE2})</name>
+                    <expression>({Template SNMP OS ESXi:vmwProdVersion.0.str(6.0.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;4600944) or ({Template SNMP OS ESXi:vmwProdVersion.0.str(5.5.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;4179633)</expression>
+                </dependency>
+            </dependencies>
+        </trigger>
+        <trigger>
+            <expression>({Template SNMP OS ESXi:vmwProdVersion.0.str(6.0.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;3380124) or ({Template SNMP OS ESXi:vmwProdVersion.0.str(5.5.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;3343343)</expression>
+            <name>VMWare ESXi is outdated on {HOST.NAME} ({ITEM.LASTVALUE1} build {ITEM.LASTVALUE2}) (Jan 2016 CBT)</name>
+            <url/>
+            <status>1</status>
+            <priority>4</priority>
+            <description>Checks that the version of VMWare is the current version.&#13;
+&#13;
+Logic works on Major build, e.g. 6.0 and build number which changes often. This then does an | (OR) to check if it's 5.5 or 6.0&#13;
+&#13;
+This check is to let us know any which aren'tat latest build (non critical CBT is covered in another trigger.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>({Template SNMP OS ESXi:vmwProdVersion.0.str(6.0.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;2715440) or ({Template SNMP OS ESXi:vmwProdVersion.0.str(5.5.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;2718055)</expression>
+            <name>VMWare ESXi is outdated on {HOST.NAME} ({ITEM.LASTVALUE1} build {ITEM.LASTVALUE2}) (May 2015 CBT)</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description>ESX 5.5/6.0 CBT corruption fix build May 2015&#13;
+&#13;
+ESX 6.0: http://kb.vmware.com/kb/2116126&#13;
+ESX 5.5: http://kb.vmware.com/kb/2090639&#13;
+&#13;
+c.f: http://www.virten.net/2015/05/esxi-6-0-may-2015-cbt-fix-patch-build-2715440/</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template SNMP OS ESXi:vmwProdVersion.0.str(6.0.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;3073146</expression>
+            <name>VMWare ESXi is outdated on {HOST.NAME} ({ITEM.LASTVALUE1} build {ITEM.LASTVALUE2}) (MIGRATION)</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>This will alert that the possible migration bug from VMs which were migrated from ESX 5.5 to ESX 6.0&#13;
+&#13;
+c.f: http://kb.vmware.com/kb/2132153</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>({Template SNMP OS ESXi:vmwProdVersion.0.str(6.5.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}=5969303) or ({Template SNMP OS ESXi:vmwProdVersion.0.str(6.5.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}=5310538) or ({Template SNMP OS ESXi:vmwProdVersion.0.str(6.0.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}=5224934)</expression>
+            <name>VMWare ESXi is outdated on {HOST.NAME} ({ITEM.LASTVALUE1} build {ITEM.LASTVALUE2}) (NIC Firmware)</name>
+            <url/>
+            <status>0</status>
+            <priority>5</priority>
+            <description>Checks that the version of VMWare is the current version.&#13;
+&#13;
+Logic works on Major build, e.g. 6.0 and build number which changes often. This then does an | (OR) to check if it's 5.5 or 6.0&#13;
+&#13;
+On following builds&#13;
+6.5 U1 Jul 2017 vSphere 6.5 U1 Build 5969303 net-bnx2x - 2.713.30.v60.7&#13;
+6.5 Jul 2017 vSphere 6.5 Build 5310538 net-bnx2x - 2.713.30.v60.7&#13;
+6.0 U3 Jul 2017 vSphere 6.0 U3 Build 5224934 net-bnx2x -  2.713.30.v60.7&#13;
+&#13;
+The Broadcom cards will act in a manner which corrupts the firmware to the point the NIC needs replaced. Per https://h20566.www2.hpe.com/hpsc/doc/public/display?docId=a00027033en_us &#13;
+&#13;
+HPE hjave suggested an in place upgrade of the firmware or driver can solve this issue, but you MUST NOT reboot the host.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template SNMP OS ESXi:vmwProdVersion.0.str(5.5.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;1331820</expression>
+            <name>VMWare ESXi is outdated on {HOST.NAME} ({ITEM.LASTVALUE1} build {ITEM.LASTVALUE2}) (NIC PSOD)</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description>Checks that the version of VMWare is not the version which PSODs on sending data.&#13;
+&#13;
+https://retrorabble.wordpress.com/2014/09/27/purple-esxi-rain/</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>({Template SNMP OS ESXi:vmwProdVersion.0.str(6.0.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;3247720) or ({Template SNMP OS ESXi:vmwProdVersion.0.str(5.5.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;3248547)</expression>
+            <name>VMWare ESXi is outdated on {HOST.NAME} ({ITEM.LASTVALUE1} build {ITEM.LASTVALUE2}) (Not Latest Build)</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>Checks that the version of VMWare is the current version.&#13;
+&#13;
+Logic works on Major build, e.g. 6.0 and build number which changes often. This then does an | (OR) to check if it's 5.5 or 6.0&#13;
+&#13;
+This check is to let us know any which aren'tat latest build (non critical CBT is covered in another trigger.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template SNMP OS ESXi:vmwProdVersion.0.str(6.0.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;3247720</expression>
+            <name>VMWare ESXi is outdated on {HOST.NAME} ({ITEM.LASTVALUE1} build {ITEM.LASTVALUE2}) (Nov 2015 CBT)</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description>This will alert that the November 2015 CBT corruption bug is possible on ESX 6.0. This is *not* the same CBT corruption bug from May 2015, or even the other one from 2014 when ESX 6.0 went GA.&#13;
+&#13;
+c.f: http://kb.vmware.com/kb/2137546</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template SNMP OS ESXi:vmwProdVersion.0.str(5.5.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;3116895</expression>
+            <name>VMWare ESXi is outdated on {HOST.NAME} ({ITEM.LASTVALUE1} build {ITEM.LASTVALUE2}) (SNAPSHOT)</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>Checks that the version of VMWare 5.5 is not the version which bombs out on Error 11 with snapshot consolidation&#13;
+&#13;
+http://kb.vmware.com/kb/2133825</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>({Template SNMP OS ESXi:vmwProdVersion.0.str(6.5.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;7273056) or ({Template SNMP OS ESXi:vmwProdVersion.0.str(6.0.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;6856897) or ({Template SNMP OS ESXi:vmwProdVersion.0.str(5.5.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;6480267)</expression>
+            <name>VMWare ESXi is outdated on {HOST.NAME} ({ITEM.LASTVALUE1} build {ITEM.LASTVALUE2}) (SPECTRE &amp; MELTDOWN)</name>
+            <url/>
+            <status>0</status>
+            <priority>5</priority>
+            <description>Checks that the version of VMWare is the current version.&#13;
+&#13;
+Logic works on Major build, e.g. 6.0 and build number which changes often. This then does an | (OR) to check if it's 5.5 or 6.0&#13;
+&#13;
+Following Builds Fix the Issue:&#13;
+6.5 ESXi650-201712101 build 7273056&#13;
+6.0 ESXi600-201711101 build 6856897&#13;
+5.5 ESXi550-201709101 build 6480267&#13;
+&#13;
+All builds below this are vulnerable. This is a disastrous outcome as it can allow memory compromise between guests.&#13;
+&#13;
+https://lists.vmware.com/pipermail/security-announce/2018/000397.html</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>({Template SNMP OS ESXi:vmwProdVersion.0.str(6.0.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;3247720) or ({Template SNMP OS ESXi:vmwProdVersion.0.str(5.5.0)}=1 and {Template SNMP OS ESXi:VMProdBuild.0.last()}&lt;3248547)</expression>
+            <name>VMWare ESXi is outdated on {HOST.NAME} ({ITEM.LASTVALUE1} build {ITEM.LASTVALUE2}) (Unwanted Auto CBT switching)</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>Checks that the version of VMWare is the current version.&#13;
+&#13;
+Logic works on Major build, e.g. 6.0 and build number which changes often. This then does an | (OR) to check if it's 5.5 or 6.0&#13;
+&#13;
+This check is to let us know any which aren'tat latest build (non critical CBT is covered in another trigger.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+    </triggers>
+</zabbix_export>
+
