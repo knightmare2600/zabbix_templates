@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2016-11-03T11:41:23Z</date>
+    <date>2018-03-09T09:00:44Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -17,8 +17,148 @@
                     <name>Templates</name>
                 </group>
             </groups>
-            <applications/>
+            <applications>
+                <application>
+                    <name>Unattended Upgrades</name>
+                </application>
+            </applications>
             <items>
+                <item>
+                    <name>Non Security Packages Available For Update</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>debian_updates[package]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>https://www.zabbix.com/forum/showthread.php?t=12576</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Security Packages Available For Update</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>debian_updates[security]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>https://www.zabbix.com/forum/showthread.php?t=12576</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>HWE Support Status</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>system.run[/usr/bin/hwe-support-status --verbose,0]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>hwe-support-status --verbose will output info such as:&#13;
+&#13;
+Your Hardware Enablement Stack (HWE) is supported until April 2019.&#13;
+&#13;
+WARNING: Security updates for your current Hardware Enablement Stack &#13;
+ended on 2016-08-04:  (not support HWE raise a critical alert sincen o more swecurity updates)&#13;
+&#13;
+You are not running a system with a Hardware Enablement Stack. Your system is supported until April 2019. (not using HWE)</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
                 <item>
                     <name>Kernel Build</name>
                     <type>0</type>
@@ -26,7 +166,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>system.sw.os[&lt;info&gt;]</key>
-                    <delay>30</delay>
+                    <delay>90</delay>
                     <history>90</history>
                     <trends>0</trends>
                     <status>0</status>
@@ -62,22 +202,26 @@
 3.2.82-1 for Debian 7&#13;
 4.7.8-1 for Debian unstable</description>
                     <inventory_link>0</inventory_link>
-                    <applications/>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
                     <valuemap/>
                     <logtimefmt/>
                 </item>
                 <item>
-                    <name>Unattended Upgrades Kerenl Purge cron job</name>
+                    <name>/etc/sudoers checksum</name>
                     <type>0</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>vfs.file.contents[/var/spool/cron/crontabs/root,UTF8]</key>
+                    <key>vfs.file.cksum[/etc/sudoers]</key>
                     <delay>30</delay>
                     <history>90</history>
-                    <trends>0</trends>
+                    <trends>365</trends>
                     <status>0</status>
-                    <value_type>4</value_type>
+                    <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>0</delta>
@@ -99,9 +243,56 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>/var/spool/cron/crontabs/root must contain the cron job for alert to clear.</description>
+                    <description>get checksum of /etc/sudoers to see if it's been tampered with</description>
                     <inventory_link>0</inventory_link>
-                    <applications/>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Debian Base OS</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/etc/debian_version]</key>
+                    <delay>90</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>If /etc/debian_version exists, then we are running Debian, not Ubuntu. This will comei nto play when using triggers for certain packages.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
                     <valuemap/>
                     <logtimefmt/>
                 </item>
@@ -112,7 +303,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vfs.file.exists[/etc/update-motd.d/90-updates-available]</key>
-                    <delay>30</delay>
+                    <delay>90</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -140,7 +331,11 @@
                     <port/>
                     <description>/etc/update-motd.d/90-updates-available needs to exist or update-notifier-common package is not installed so you don't get a MOTD notification as a fall back for unattended upgrades</description>
                     <inventory_link>0</inventory_link>
-                    <applications/>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
                     <valuemap/>
                     <logtimefmt/>
                 </item>
@@ -151,7 +346,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vfs.file.exists[/usr/bin/aptitude]</key>
-                    <delay>30</delay>
+                    <delay>90</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -179,7 +374,54 @@
                     <port/>
                     <description>aptitude is needed by the purge-old-kernels.sh script</description>
                     <inventory_link>0</inventory_link>
-                    <applications/>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>bc Packages</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/usr/bin/bc]</key>
+                    <delay>90</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>If this binary does not exist then bc package is not installed</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
                     <valuemap/>
                     <logtimefmt/>
                 </item>
@@ -190,7 +432,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vfs.file.exists[/usr/bin/facter]</key>
-                    <delay>30</delay>
+                    <delay>90</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -218,7 +460,54 @@
                     <port/>
                     <description>Checks if host needs a reboot presence of file confirms it does</description>
                     <inventory_link>0</inventory_link>
-                    <applications/>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>htop Package</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/usr/bin/htop]</key>
+                    <delay>90</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>If this binary does not exist then htop package is not installed</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
                     <valuemap/>
                     <logtimefmt/>
                 </item>
@@ -229,7 +518,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vfs.file.exists[/usr/bin/unattended-upgrade]</key>
-                    <delay>30</delay>
+                    <delay>90</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -257,7 +546,54 @@
                     <port/>
                     <description>If this binary does not exist then unattended-upgrades package is not installed</description>
                     <inventory_link>0</inventory_link>
-                    <applications/>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Zabbix Get Package</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/usr/bin/zabbix_get]</key>
+                    <delay>90</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>If this binary does not exist then zabbix-get is not installed</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
                     <valuemap/>
                     <logtimefmt/>
                 </item>
@@ -268,7 +604,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vfs.file.exists[/usr/local/bin/purge-old-kernels.sh]</key>
-                    <delay>30</delay>
+                    <delay>90</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -296,7 +632,11 @@
                     <port/>
                     <description>/usr/local/bin/purge-old-kernels.sh needs to exist or update-notifier-common package is not installed so you don't get a MOTD notification as a fall back for unattended upgrades</description>
                     <inventory_link>0</inventory_link>
-                    <applications/>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
                     <valuemap/>
                     <logtimefmt/>
                 </item>
@@ -307,7 +647,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vfs.file.exists[/var/run/reboot-required]</key>
-                    <delay>30</delay>
+                    <delay>90</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -335,7 +675,11 @@
                     <port/>
                     <description>Checks if host needs a reboot presence of file confirms it does</description>
                     <inventory_link>0</inventory_link>
-                    <applications/>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
                     <valuemap/>
                     <logtimefmt/>
                 </item>
@@ -346,7 +690,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vfs.file.md5sum[/etc/apt/apt.conf.d/50unattended-upgrades]</key>
-                    <delay>30</delay>
+                    <delay>90</delay>
                     <history>90</history>
                     <trends>0</trends>
                     <status>0</status>
@@ -374,7 +718,97 @@
                     <port/>
                     <description>Checks MD5SUM of /etc/apt/apt.conf.d/50unattended-upgrades, so we can alert if it doesn't match what we want</description>
                     <inventory_link>0</inventory_link>
-                    <applications/>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Unattended Upgrades Kerenl Purge cron job</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.regmatch[/etc/crontab,purge-old-kernels,UTF8,,]</key>
+                    <delay>90</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>/var/spool/cron/crontabs/root must contain the cron job for alert to clear.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Unattended Upgrades Update notifier Zabbix Agent</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>vfs.file.regmatch[/etc/zabbix/zabbix_agentd.conf,update-notifier,UTF8,,]</key>
+                    <delay>90</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>/var/spool/cron/crontabs/root must contain the cron job for alert to clear.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
                     <valuemap/>
                     <logtimefmt/>
                 </item>
@@ -387,6 +821,16 @@
     </templates>
     <triggers>
         <trigger>
+            <expression>{Linux Unattended Upgrades:vfs.file.cksum[/etc/sudoers].diff(0)}&gt;0</expression>
+            <name>/etc/sudoers has been changed on {HOST.NAME}</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
             <expression>{Linux Unattended Upgrades:vfs.file.exists[/usr/bin/aptitude].last(0)}=0</expression>
             <name>Hey! {HOST.NAME} has no aptitude package installed</name>
             <url/>
@@ -397,12 +841,32 @@
             <dependencies/>
         </trigger>
         <trigger>
+            <expression>{Linux Unattended Upgrades:vfs.file.exists[/usr/bin/bc].last(0)}=0</expression>
+            <name>Hey! {HOST.NAME} has no bc package installed</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>If /usr/bin/bc binary doesn't exist then package bc is not installed and therefore, alert us to this fact.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
             <expression>{Linux Unattended Upgrades:vfs.file.exists[/usr/bin/facter].last(0)}=0</expression>
             <name>Hey! {HOST.NAME} has no facter package installed</name>
             <url/>
             <status>0</status>
             <priority>1</priority>
             <description>If /usr/bin/facter binary doesn't exist then package facter is not installed and therefore, alert us to this fact.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Linux Unattended Upgrades:vfs.file.exists[/usr/bin/htop].last(0)}=0</expression>
+            <name>Hey! {HOST.NAME} has no htop package installed</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>If /usr/bin/facter binary doesn't exist then htop package is not installed and therefore, alert us to this fact.</description>
             <type>0</type>
             <dependencies/>
         </trigger>
@@ -427,12 +891,22 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Linux Unattended Upgrades:vfs.file.exists[/etc/update-motd.d/90-updates-available].last(0)}=0</expression>
+            <expression>{Linux Unattended Upgrades:vfs.file.exists[/etc/update-motd.d/90-updates-available].last(0)}=0 and {Linux Unattended Upgrades:vfs.file.exists[/etc/debian_version].last(0)}&lt;&gt;1</expression>
             <name>Hey! {HOST.NAME} has no update-notifier-common package installed</name>
             <url/>
             <status>0</status>
             <priority>1</priority>
             <description>If /etc/update-motd.d/90-updates-available file doesn't exist then package update-notifier-common is not installed and therefore, alert us to this fact.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Linux Unattended Upgrades:vfs.file.exists[/usr/bin/zabbix_get].last(0)}=0</expression>
+            <name>Hey! {HOST.NAME} has no zabbix-get package installed</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>If /usr/bin/zabbix_get binary doesn't exist then package zabbix-get is not installed and therefore, alert us to this fact.</description>
             <type>0</type>
             <dependencies/>
         </trigger>
@@ -447,12 +921,32 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Linux Unattended Upgrades:vfs.file.contents[/var/spool/cron/crontabs/root,UTF8].last(#1)}=0</expression>
-            <name>Unattended Upgrades Cron Job Check</name>
+            <expression>{Linux Unattended Upgrades:vfs.file.regmatch[/etc/crontab,purge-old-kernels,UTF8,,].last(#1)}=0</expression>
+            <name>Hey {HOST.NAME} has no purge old kernels cron job</name>
             <url/>
-            <status>1</status>
+            <status>0</status>
             <priority>1</priority>
             <description>/var/spool/cron/crontabs/root must contain the line 00 7   *   *   *    /usr/local/bin/purge-old-kernels.sh --keep 2 for this check to be OK. This will clean the kernels at 07:00 each morning.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Linux Unattended Upgrades:vfs.file.regmatch[/etc/zabbix/zabbix_agentd.conf,update-notifier,UTF8,,].last(#1)}=0</expression>
+            <name>Hey {HOST.NAME} has no Update Notifier Zabbix UserParameter</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>UserParameter=debian_updates[*],/usr/lib/update-notifier/apt-check --human-readable | /bin/grep $1 | /usr/bin/cut -d &quot; &quot; -f1</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Linux Unattended Upgrades:debian_updates[security].last(0)}&lt;0 and {Linux Unattended Upgrades:debian_updates[security].avg(1w)}&gt;0</expression>
+            <name>No security updates installed on {HOST.NAME} for more than 7 days</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If number of pending security updates averages more than 0 for more than a week, we have not installed security updates for more than a week.</description>
             <type>0</type>
             <dependencies/>
         </trigger>
@@ -468,4 +962,3 @@
         </trigger>
     </triggers>
 </zabbix_export>
-
