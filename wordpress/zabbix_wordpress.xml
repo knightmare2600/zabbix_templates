@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2017-11-02T16:26:42Z</date>
+    <date>2018-03-12T15:43:20Z</date>
     <groups>
         <group>
             <name>Wordpress</name>
@@ -230,7 +230,7 @@
                     <port/>
                     <description>If the /etc/crontab file does not have a job for running wp-cli to check for updates, we're unable to actually do any checking. E.g:&#13;
 &#13;
-00 16   * * *   root    /usr/local/bin/wp-cli.phar --alow-root --path=/var/www/html core version &gt; /usr/lib/tmpfiles.d/wordpress-status</description>
+00 16   * * *   root    /usr/local/bin/wp-cli.phar --path=/var/www/html --alow-root core version &gt; /tmp/wordpress-status</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -396,7 +396,7 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{Wordpress:vfs.file.cksum[/usr/local/bin/wp-cli.phar].last(0)}&lt;&gt;2544542821</expression>
+            <expression>{Wordpress:vfs.file.cksum[/usr/local/bin/wp-cli.phar].last(0)}&lt;&gt;1600316448</expression>
             <name>Hey! {HOST.NAME} has an outdated wp-cli.phar build</name>
             <url/>
             <status>0</status>
@@ -446,15 +446,48 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.8.3)}&lt;&gt;1</expression>
+            <expression>{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.8.4)}=0 and {Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.9.2)}=0</expression>
             <name>Wordpress is outdated on {HOST.NAME}</name>
+            <url/>
+            <status>1</status>
+            <priority>4</priority>
+            <description>4.8.3 is the version below which, all the wordpress installs are vulnerable to SQL injection.</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.9.4)}=1</expression>
+            <name>Wordpress is outdated on {HOST.NAME} (CVE 2018-6389)</name>
             <url/>
             <status>0</status>
             <priority>4</priority>
-            <description>4.8.3 is the version below which, all the wordpress installs are vulnerable to QL injection.</description>
+            <description>https://nickbloor.co.uk/2018/02/28/popping-wordpress/&#13;
+&amp;&#13;
+https://wpvulndb.com/vulnerabilities/9021</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.9.3)}=1</expression>
+            <name>Wordpress is outdated on {HOST.NAME} (further updates impossible)</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description>after auto-updating to 4.9.3, WordPress will no longer update automatically.&#13;
+&#13;
+https://t.co/34C39cOny3</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.9.4)}=0</expression>
+            <name>Wordpress is outdated on {HOST.NAME} (not latest version)</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>4.9.4 is the version below which, all the wordpress installs are vulnerable to SQL injection.</description>
             <type>0</type>
             <dependencies/>
         </trigger>
     </triggers>
 </zabbix_export>
-
