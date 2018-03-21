@@ -77,14 +77,15 @@ let replicasnaptotal=0;
 let replicacount="$2+1";
 
 ## Test we can SSH to the host before trying to execute anything
-testconnection=`ssh -i /root/.ssh/id_rsa root@$1 vmware -v`
+ssh -i /root/.ssh/id_rsa root@"$1" vmware -v
+sshstatus=`echo "$?"`
 
 ## Confirm SSH connection works, if not flub based on error code
-if [ "$?" -eq "130" ]; then 
-  echo "SSH Connection Failed: Please check manually" > /usr/lib/zabbix/externalscripts/snapshot-status
+if [ "$sshstatus" -eq "130" ]; then 
+  echo "SSH Connect Failed: Please check manually" > /usr/lib/zabbix/externalscripts/snapshot-status
   exit 0
-elif [ "$?" -eq "255" ]; then
-  echo "SSH Key Authentication Failed: Please check manually" > /usr/lib/zabbix/externalscripts/snapshot-status
+elif [ "$sshstatus" -eq "255" ]; then
+  echo "SSH Key Authentication Failed on host $1" > /usr/lib/zabbix/externalscripts/snapshot-status
   exit 0
 fi
 
