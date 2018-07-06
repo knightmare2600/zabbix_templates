@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2018-06-01T14:14:10Z</date>
+    <date>2018-07-06T12:59:18Z</date>
     <groups>
         <group>
             <name>Wordpress</name>
@@ -485,16 +485,22 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.8.4)}=0 or {Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.9.5)}=0</expression>
+            <expression>{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.9.7)}=0</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Wordpress is outdated on {HOST.NAME}</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
-            <status>1</status>
+            <status>0</status>
             <priority>4</priority>
-            <description>4.8.3 is the version below which, all the wordpress installs are vulnerable to SQL injection.</description>
+            <description>Latest Version only is supported per: https://codex.wordpress.org/Supported_Versions&#13;
+&#13;
+Check used to be&#13;
+&#13;
+{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.8.8)}=0 or {Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.9.7)}=0&#13;
+&#13;
+for Multiple version</description>
             <type>0</type>
             <manual_close>0</manual_close>
             <dependencies/>
@@ -535,6 +541,22 @@ https://wpvulndb.com/vulnerabilities/9021</description>
             <tags/>
         </trigger>
         <trigger>
+            <expression>{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.9.6)}=1</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Wordpress is outdated on {HOST.NAME} (CVE 2018-6389)</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description>http://blog.vulnspy.com/2018/06/27/Wordpress-4-9-6-Arbitrary-File-Delection-Vulnerbility-Exploit/ &amp; https://www.exploit-db.com/exploits/44949/</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
             <expression>{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.9.3)}=1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
@@ -553,7 +575,7 @@ https://t.co/34C39cOny3</description>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.9.6)}=0</expression>
+            <expression>{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.9.5)}=1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Wordpress is outdated on {HOST.NAME} (no GDPR update)</name>
@@ -564,14 +586,16 @@ https://t.co/34C39cOny3</description>
             <priority>2</priority>
             <description>4.9.6 is the version with GDPR updates with a thank you to Heather burns at https://webdevlaw.uk/data-protection-gdpr/ for getting this into mainline.&#13;
 &#13;
-cf: https://wordpress.org/news/2018/05/wordpress-4-9-6-privacy-and-maintenance-release/</description>
+cf: https://wordpress.org/news/2018/05/wordpress-4-9-6-privacy-and-maintenance-release/&#13;
+&#13;
+All versions above 4.9.6 will include the GDPR check, so work on basis that versions below that are not GDPR compliant.</description>
             <type>0</type>
             <manual_close>0</manual_close>
             <dependencies/>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.9.6)}=0</expression>
+            <expression>{Wordpress:vfs.file.contents[/tmp/wordpress-status].str(4.9.7)}=0</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Wordpress is outdated on {HOST.NAME} (not latest version)</name>
