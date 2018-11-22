@@ -60,9 +60,46 @@ then
     echo $issuer
 fi
 ;;
+-r)
+## We need the thumbprint to query crt.sh
+thumbprint=`openssl s_client -servername $servername -host $host -port $port -showcerts</dev/null 2>/dev/null |                                                    sed -n '/BEGIN CERTIFICATE/,/END CERT/p' |                                                                                                             openssl x509 -noout -fingerprint 2>/dev/null |                                                                                                         sed -n 's/ *SHA1 Fingerprint=*//p'`
+
+#revoked=$("openssl verify -crl_check -CAfile <(OLDIFS=$IFS; IFS=':' certificates=$(openssl s_client -connect $servername:$port -showcerts -tlsextdebug -tls1 2>&1 </dev/null | sed -n '/-----BEGIN/,/-----END/ {/-----BEGIN/ s/^/:/; p}'); for certificate in ${certificates#:}; do echo $certificate; done; IFS=$OLDIFS; openssl s_client -connect $servername:$port 2>&1 < /dev/null | sed -n '/-----BEGIN/,/-----END/p' | openssl x509 -noout -text | grep -m 1 URI:.*\.crl | sed 's/^.*URI://g' | xargs curl -s | openssl crl -inform DER -outform PEM) <(openssl s_client -connect $servername:$port 2>&1 < /dev/null | sed -n '/-----BEGIN/,/-----END/p'"))
+
+echo $revoked
+
+if [ -n "$thumbprint" ]
+then
+## do openssl browser emualtion here with thumbprint
+echo Not implemented
+fi
+
+ocspurl=`openssl s_client -servername $servername -host $host -port $port -showcerts</dev/null 2>/dev/null |                                                    sed -n '/BEGIN CERTIFICATE/,/END CERT/p' |                                                                                                             openssl x509 -noout -ocsp_uri 2>/dev/null`
+## https://backreference.org/2010/05/09/ocsp-verification-with-openssl/
+## links -dump 'https://crt.sh/?q="$tumbprint"'
+echo so this is implemented yet... Check for certificate revocation
+;;
+-s)
+serial=`openssl s_client -servername $servername -host $host -port $port -showcerts</dev/null 2>/dev/null |                                                        sed -n '/BEGIN CERTIFICATE/,/END CERT/p' |                                                                                                             openssl x509 -noout -serial 2>/dev/null |                                                                                                              sed -n 's/ *serial=*//p'`
+
+if [ -n "$serial" ]
+then
+    echo $serial
+fi
+;;
+-t)
+thumbprint=`openssl s_client -servername $servername -host $host -port $port -showcerts</dev/null 2>/dev/null |                                                    sed -n '/BEGIN CERTIFICATE/,/END CERT/p' |                                                                                                             openssl x509 -noout -fingerprint 2>/dev/null |                                                                                                         sed -n 's/ *SHA1 Fingerprint=*//p'`
+
+if [ -n "$thumbprint" ]
+then
+    echo $thumbprint
+fi
+;;
 *)
-echo "usage: $0 [-i|-d] hostname port sni"
+echo "usage: $0 [-i|-d|-s] hostname port sni"
 echo "    -i Show Issuer"
 echo "    -d Show valid days remaining"
+echo "    -s Show SSL serial number"
+echo "    -t Show SHA1 Thumbprint"
 ;;
 esac
