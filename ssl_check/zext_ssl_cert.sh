@@ -1,12 +1,19 @@
-#! /bin/sh
-#------------------------------------------------------------
-# zext_ssl_cert.sh
-# Script checks for number of days until certificate expires or the issuing authority
-# depending on switch passed on command line.
-#
-#Based on script from aperto.fr (http://aperto.fr/cms/en/blog/15-blog-en/15-ssl-certificate-expiration-monitoring-with-zabbix.html)
-#with additions by racooper@tamu.edu
-#------------------------------------------------------------
+#! /bin/bash
+
+#------------------------------------------------------------------------------#
+#                                                                              #
+# Script checks for num of days until certificate expires, issuing CA Vendor,  #
+# certificate thumbprint, Unknown/Bad CAs (hello woSign!), etc.                #
+# on switch passed on command line.                                            #
+#                                                                              #
+# Created: xx XXX XXXX   aperto.fr           Initial version for Zabbix        #
+# Updated: xx XXX 2016   racooper@tamu.edu   Unknown edits & additions         #
+# Updated: 22 Nov 2018   knightmare          Check thumbprint & Serial now     #
+# Updated: 04 Jan 2019   knightmare          Grab a copy of the cert globally  #
+#                                            to fix 'sed broken pipe' bug      #
+# Updated: 10 Jan 2019   knightmare          Add -p Primary cert & -x SANs     #
+#                                                                              #
+#------------------------------------------------------------------------------#
 
 DEBUG=0
 if [ $DEBUG -gt 0 ]
@@ -38,6 +45,16 @@ fi
 certificate=`openssl s_client -servername $servername -connect $host:$port -showcerts $starttls </dev/null 2>/dev/null | sed -n '/BEGIN CERTIFICATE/,/END CERT/p'`
 
 case $func in
+
+-c)
+checkhost=`echo "$certificate" | openssl x509 -noout -checkhost "$host"`
+
+if [ -n "$end_date" ]
+then
+    echo "$checkhost"
+fi
+;;
+
 -d)
 end_date=`echo "$certificate" | openssl x509 -enddate -noout 2>/dev/null | sed -n 's/notAfter=//p' | sed 's/ GMT//g'`
 
@@ -56,6 +73,15 @@ if [ -n "$issue_dn" ]
 then
     issuer=`echo $issue_dn | sed -n 's/.*CN=*//p'`
     echo $issuer
+fi
+;;
+
+-p)
+subject=`echo "$certificate" | openssl x509 -noout -subject | awk -F= '{ print $NF }'i`
+
+if [ -n "$subject" ]
+then
+    echo "$subject"
 fi
 ;;
 
@@ -84,11 +110,23 @@ then
 fi
 ;;
 
+-x)
+sanlist=`echo "$certificate" | openssl x509 -text 2>/dev/null | grep DNS: | sort -u`
+
+if [ -n "$sanlist" ]
+then
+    echo $sanlist
+fi
+;;
+
 *)
-echo "usage: $0 [-i|-d|-s] hostname port sni"
-echo "    -i Show Issuer"
+echo "usage: $0 [-c san | -d|-i|-p|-s|-t|-x] hostname port sni"
+#echo "    -c <san> Check host is valid for certificate, e.g. autodiscover.example.com "
 echo "    -d Show valid days remaining"
+echo "    -i Show Issuer"
+echo "    -p Show Primay Subject of certificate, e.g. www.example.com"
 echo "    -s Show SSL serial number"
 echo "    -t Show SHA1 Thumbprint"
+echo "    -x Show extra SAN values, e.g. dev.example.com"
 ;;
 esac
