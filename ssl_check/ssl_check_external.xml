@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2018-11-22T09:43:28Z</date>
+    <date>2019-01-17T15:28:24Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -11,7 +11,7 @@
         <template>
             <template>SSL Cert Check External</template>
             <name>SSL Cert Check External</name>
-            <description/>
+            <description>Remember to replace the Macro default vlaue 00:18:BA:DF:OO:D0:A7:00:DE:AD:00:BE:EF:00:OF:F1:CE:00:CA:FE with the correct thumbprint.</description>
             <groups>
                 <group>
                     <name>Templates</name>
@@ -24,69 +24,12 @@
             </applications>
             <items>
                 <item>
-                    <name>HTTPS Service is running</name>
-                    <type>3</type>
-                    <snmp_community/>
-                    <snmp_oid/>
-                    <key>net.tcp.service[https]</key>
-                    <delay>90s</delay>
-                    <history>1w</history>
-                    <trends>365d</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications/>
-                    <valuemap>
-                        <name>Service state</name>
-                    </valuemap>
-                    <logtimefmt/>
-                    <preprocessing/>
-                    <jmx_endpoint/>
-                    <timeout>3s</timeout>
-                    <url/>
-                    <query_fields/>
-                    <posts/>
-                    <status_codes>200</status_codes>
-                    <follow_redirects>1</follow_redirects>
-                    <post_type>0</post_type>
-                    <http_proxy/>
-                    <headers/>
-                    <retrieve_mode>0</retrieve_mode>
-                    <request_method>1</request_method>
-                    <output_format>0</output_format>
-                    <allow_traps>0</allow_traps>
-                    <ssl_cert_file/>
-                    <ssl_key_file/>
-                    <ssl_key_password/>
-                    <verify_peer>0</verify_peer>
-                    <verify_host>0</verify_host>
-                    <master_item/>
-                </item>
-                <item>
                     <name>SSL certificate validity</name>
-                    <type>10</type>
+                    <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}]</key>
-                    <delay>1h</delay>
+                    <key>system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;]</key>
+                    <delay>15m</delay>
                     <history>1w</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -140,12 +83,71 @@
                     <master_item/>
                 </item>
                 <item>
-                    <name>SSL certificate issuer</name>
-                    <type>10</type>
+                    <name>SSL certificate thumbprint</name>
+                    <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>zext_ssl_cert.sh[-i,{HOST.CONN},{$SSL_PORT}]</key>
-                    <delay>640m</delay>
+                    <key>system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -t {$SSL_URL} {$SSL_PORT}&quot;]</key>
+                    <delay>10m</delay>
+                    <history>1w</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Having the serial number of hte certificate helps when checking for revocation</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>SSL certificate</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>SSL certificate issuer</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}]</key>
+                    <delay>15m</delay>
                     <history>1w</history>
                     <trends>0</trends>
                     <status>0</status>
@@ -199,12 +201,71 @@
                     <master_item/>
                 </item>
                 <item>
-                    <name>SSL certificate serial</name>
-                    <type>10</type>
+                    <name>SSL certificate Primary Certificate Name</name>
+                    <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>zext_ssl_cert.sh[-s,{HOST.CONN},{$SSL_PORT}]</key>
-                    <delay>640m</delay>
+                    <key>system.run[/usr/local/bin/zext_ssl_cert.sh -p {$SSL_URL} {$SSL_PORT}]</key>
+                    <delay>15m</delay>
+                    <history>1w</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Find the primary certificate name, e.g. www.example.com. Helps with confirming installed certificate is valid</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>SSL certificate</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>SSL certificate serial</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>system.run[/usr/local/bin/zext_ssl_cert.sh -s {$SSL_URL} {$SSL_PORT}]</key>
+                    <delay>15m</delay>
                     <history>1w</history>
                     <trends>0</trends>
                     <status>0</status>
@@ -258,12 +319,12 @@
                     <master_item/>
                 </item>
                 <item>
-                    <name>SSL certificate thumbprint</name>
-                    <type>10</type>
+                    <name>SSL certificate SANs</name>
+                    <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>zext_ssl_cert.sh[-t,{HOST.CONN},{$SSL_PORT}]</key>
-                    <delay>30s</delay>
+                    <key>system.run[/usr/local/bin/zext_ssl_cert.sh -x {$SSL_URL} {$SSL_PORT}]</key>
+                    <delay>15m</delay>
                     <history>1w</history>
                     <trends>0</trends>
                     <status>0</status>
@@ -285,7 +346,306 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>Having the serial number of hte certificate helps when checking for revocation</description>
+                    <description>Find any Subject alternate Names of the SSL cert, e.g. cms.example.com. Helps with confirming installed certificate is valid&#13;
+&#13;
+Why -x parameter...? Because -s is for serial and e(x)tra valid names.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>SSL certificate</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>zext_ssl_cert.sh checksum</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>vfs.file.cksum[/usr/local/bin/zext_ssl_cert.sh]</key>
+                    <delay>300</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>SSL certificate</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>bc package</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/usr/bin/bc]</key>
+                    <delay>300</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>if this file does not exist then we can not check SSL validity</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>SSL certificate</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>cut package</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/usr/bin/cut]</key>
+                    <delay>5m</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>if cutl is not installed then we cannot check SSL certificates.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>SSL certificate</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>openssl package</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/usr/bin/openssl]</key>
+                    <delay>5m</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>if openssl is not installed then we cannot check SSL certificates.&#13;
+&#13;
+TODO: Can we use LibreSSL instead?</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>SSL certificate</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>zext_ssl_cert.sh exists</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[/usr/local/bin/zext_ssl_cert.sh]</key>
+                    <delay>15m</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>if this file does not exist then we can not check SSL certificates</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -331,7 +691,87 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{SSL Cert Check External:zext_ssl_cert.sh[-i,{HOST.CONN},{$SSL_PORT}].str(Startcom)}=1</expression>
+            <expression>{SSL Cert Check External:vfs.file.cksum[/usr/local/bin/zext_ssl_cert.sh].last(0)}&lt;&gt;2716419468</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Hey! {HOST.NAME} has incorrect zext_ssl_cert.sh installed</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>If  /usr/lib/zabbix/externalscripts/zext_ssl_cert.sh version is wrong then throw an alert</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{SSL Cert Check External:vfs.file.exists[/usr/local/bin/zext_ssl_cert.sh].last(0)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Hey! {HOST.NAME} has no /usr/local/bin/zext_ssl_cert.sh installed</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>If  /usr/binzext_ssl_cert.sh does not exist this will throw an alert</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{SSL Cert Check External:vfs.file.exists[/usr/bin/bc].last(0)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Hey! {HOST.NAME} has no bc package installed</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>Throw an alert if command line calculator bc is not installed</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{SSL Cert Check External:vfs.file.exists[/usr/bin/cut].last(0)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Hey! {HOST.NAME} has no cut package installed</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>Throw an alert if cut is not installed</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{SSL Cert Check External:vfs.file.exists[/usr/bin/openssl].last(0)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Hey! {HOST.NAME} has no openssl package installed</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>Throw an alert if command line calculator bc is not installed</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(Startcom)}=1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Hey! {HOST.NAME} using StartCom Certificate REVIEW IMMEDIATELY</name>
@@ -339,7 +779,7 @@
             <correlation_tag/>
             <url/>
             <status>0</status>
-            <priority>5</priority>
+            <priority>4</priority>
             <description>Per https://en.wikipedia.org/wiki/StartCom are not allowed to issue certificates any more, so any nodes using them are verboten.</description>
             <type>0</type>
             <manual_close>0</manual_close>
@@ -347,7 +787,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{SSL Cert Check External:zext_ssl_cert.sh[-i,{HOST.CONN},{$SSL_PORT}].str(WoSign CA)}=1</expression>
+            <expression>{SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(WoSign CA)}=1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Hey! {HOST.NAME} using WoSign Certificate REVIEW IMMEDIATELY</name>
@@ -355,7 +795,7 @@
             <correlation_tag/>
             <url/>
             <status>0</status>
-            <priority>5</priority>
+            <priority>4</priority>
             <description>Per https://wiki.mozilla.org/CA:WoSign_Issues WoSign are not allowed to issue certificates any more, so any nodes using them are verboten.</description>
             <type>0</type>
             <manual_close>0</manual_close>
@@ -363,10 +803,10 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{SSL Cert Check External:net.tcp.service[https].max(5m)}&lt;1</expression>
+            <expression>{SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;].last(0)}&lt;7</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>HTTPS Service is Down</name>
+            <name>SSL certificate for {$SSLURL} expires in less than 7 days ({ITEM.LASTVALUE} remaining)</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -375,19 +815,25 @@
             <description/>
             <type>0</type>
             <manual_close>0</manual_close>
-            <dependencies/>
+            <dependencies>
+                <dependency>
+                    <name>SSL certificate for {$SSL_URL} expires in less than 5 days ({ITEM.LASTVALUE} remaining)</name>
+                    <expression>{SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;].last(0)}&lt;5</expression>
+                    <recovery_expression/>
+                </dependency>
+            </dependencies>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;0</expression>
+            <expression>{SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;].last(0)}&lt;0</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>SSL certificate for {HOST.CONN} expired</name>
+            <name>SSL certificate for {$SSL_URL} expired</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
             <status>0</status>
-            <priority>5</priority>
+            <priority>4</priority>
             <description/>
             <type>0</type>
             <manual_close>0</manual_close>
@@ -395,10 +841,10 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;3</expression>
+            <expression>{SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;].last(0)}&lt;3</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>SSL certificate for {HOST.CONN} expires in less than 3 days ({ITEM.LASTVALUE} remaining)</name>
+            <name>SSL certificate for {$SSL_URL} expires in less than 3 days ({ITEM.LASTVALUE} remaining)</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -409,18 +855,18 @@
             <manual_close>0</manual_close>
             <dependencies>
                 <dependency>
-                    <name>SSL certificate for {HOST.CONN} expires tomorrow ({ITEM.LASTVALUE} remaining)</name>
-                    <expression>{SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;1</expression>
+                    <name>SSL certificate for {$SSL_URL} expires tomorrow ({ITEM.LASTVALUE} remaining)</name>
+                    <expression>{SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;].last(0)}&lt;1</expression>
                     <recovery_expression/>
                 </dependency>
             </dependencies>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;5</expression>
+            <expression>{SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;].last(0)}&lt;5</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>SSL certificate for {HOST.CONN} expires in less than 5 days ({ITEM.LASTVALUE} remaining)</name>
+            <name>SSL certificate for {$SSL_URL} expires in less than 5 days ({ITEM.LASTVALUE} remaining)</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -431,40 +877,18 @@
             <manual_close>0</manual_close>
             <dependencies>
                 <dependency>
-                    <name>SSL certificate for {HOST.CONN} expires in less than 3 days ({ITEM.LASTVALUE} remaining)</name>
-                    <expression>{SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;3</expression>
+                    <name>SSL certificate for {$SSL_URL} expires in less than 3 days ({ITEM.LASTVALUE} remaining)</name>
+                    <expression>{SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;].last(0)}&lt;3</expression>
                     <recovery_expression/>
                 </dependency>
             </dependencies>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;7</expression>
+            <expression>{SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;].last(0)}&lt;14</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>SSL certificate for {HOST.CONN} expires in less than 7 days ({ITEM.LASTVALUE} remaining)</name>
-            <correlation_mode>0</correlation_mode>
-            <correlation_tag/>
-            <url/>
-            <status>0</status>
-            <priority>2</priority>
-            <description/>
-            <type>0</type>
-            <manual_close>0</manual_close>
-            <dependencies>
-                <dependency>
-                    <name>SSL certificate for {HOST.CONN} expires in less than 5 days ({ITEM.LASTVALUE} remaining)</name>
-                    <expression>{SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;5</expression>
-                    <recovery_expression/>
-                </dependency>
-            </dependencies>
-            <tags/>
-        </trigger>
-        <trigger>
-            <expression>{SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;14</expression>
-            <recovery_mode>0</recovery_mode>
-            <recovery_expression/>
-            <name>SSL certificate for {HOST.CONN} expires in less than 14 days ({ITEM.LASTVALUE} remaining)</name>
+            <name>SSL certificate for {$SSL_URL} expires in less than 14 days ({ITEM.LASTVALUE} remaining)</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -475,18 +899,18 @@
             <manual_close>0</manual_close>
             <dependencies>
                 <dependency>
-                    <name>SSL certificate for {HOST.CONN} expires in less than 7 days ({ITEM.LASTVALUE} remaining)</name>
-                    <expression>{SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;7</expression>
+                    <name>SSL certificate for {$SSLURL} expires in less than 7 days ({ITEM.LASTVALUE} remaining)</name>
+                    <expression>{SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;].last(0)}&lt;7</expression>
                     <recovery_expression/>
                 </dependency>
             </dependencies>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;1</expression>
+            <expression>{SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;].last(0)}&lt;1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>SSL certificate for {HOST.CONN} expires tomorrow ({ITEM.LASTVALUE} remaining)</name>
+            <name>SSL certificate for {$SSL_URL} expires tomorrow ({ITEM.LASTVALUE} remaining)</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -497,18 +921,18 @@
             <manual_close>0</manual_close>
             <dependencies>
                 <dependency>
-                    <name>SSL certificate for {HOST.CONN} expired</name>
-                    <expression>{SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;0</expression>
+                    <name>SSL certificate for {$SSL_URL} expired</name>
+                    <expression>{SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;].last(0)}&lt;0</expression>
                     <recovery_expression/>
                 </dependency>
             </dependencies>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&gt;3650</expression>
+            <expression>{SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;].last(0)}&gt;3650</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>SSL certificate for {HOST.CONN} is valid for more than 10 years ({ITEM.LASTVALUE}) likely self-signed</name>
+            <name>SSL certificate for {$SSL_URL} is valid for more than 10 years ({ITEM.LASTVALUE}) likely self-signed</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -519,11 +943,156 @@
             <manual_close>0</manual_close>
             <dependencies>
                 <dependency>
-                    <name>SSL certificate for {HOST.CONN} expires in less than 7 days ({ITEM.LASTVALUE} remaining)</name>
-                    <expression>{SSL Cert Check External:zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}].last(0)}&lt;7</expression>
+                    <name>SSL certificate for {$SSLURL} expires in less than 7 days ({ITEM.LASTVALUE} remaining)</name>
+                    <expression>{SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;].last(0)}&lt;7</expression>
                     <recovery_expression/>
                 </dependency>
             </dependencies>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].diff(0)}&gt;0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{$SSL_URL} CA changed to {ITEM.LASTVALUE} please investigate</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If the Certificate Issuer changes, we want to know about it, otherwise something like this will happen:&#13;
+&#13;
+https://www.schrauger.com/the-story-of-how-wosign-gave-me-an-ssl-certificate-for-github-com</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{SSL Cert Check External:vfs.file.exists[/usr/local/bin/zext_ssl_cert.sh].last(0)}=1&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(Buypass Class 3 CA 2)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(CloudFlare Inc ECC CA-2)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(COMODO RSA Extended Validation Secure Server CA)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(DigiCert SHA2 Extended Validation Server CA)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(DigiCert SHA2 Secure Server CA)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(Entrust Certification Authority - L1K)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(Entrust Certification Authority - L1M)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(GeoTrust TLS RSA CA G1)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(GlobalSign CloudSSL CA - SHA256 - G3)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(Go Daddy Secure Certificate Authority - G2)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(Google Internet Authority G3)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(Let's Encrypt Authority X3)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(Microsoft IT TLS CA 5)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(Network Solutions EV Server CA 2)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(Starfield Secure Certificate Authority - G2)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(Startcom)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(SwissSign EV Gold CA 2014 - G22)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(TeleSec ServerPass Class 2 CA)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(&quot;Trustwave Extended Validation SHA256 CA, Level 1/emailAddress=ca@trustwave.com&quot;)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(WoSign CA)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(WoTrus EV SSL Pro CA)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(COMODO RSA Domain Validation Secure Server CA)}=0&#13;
+and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(Let's Encrypt Authority X3)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{$SSL_URL} certificate has unknown CA {ITEM.LASTVALUE} (maybe self-signed)</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description>This is a partial list of CAs. But per https://en.wikipedia.org/wiki/Certificate_authority with a few obviouso nes such as Microsoft, Godaddy and Starfield (123REG) too. This is a list one would add to, not remove from.&#13;
+&#13;
+Invalid CAs would go into the WoSign trigger after cloning it to be a new item in its own right.&#13;
+&#13;
+The initial check is so we do not generate spurious alerts if the script is not installed</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(&quot;Default Issuer (Do not trust), O=Hewlett-Packard Company, OU=ISS, L=Houston, ST=Texas, C=US&quot;)}=1</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{$SSL_URL} is using a Self-signed HP Certificate!</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>HP Self-Signed Certificate, throw an alert based on that.</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -i {$SSL_URL} {$SSL_PORT}].str(&quot;Parallels Panel/emailAddress=info@parallels.com&quot;)}=1</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{$SSL_URL} is using a Self-signed Parallels Panel Certificate</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>HP Self-Signed Certificate, throw an alert based on that.</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{SSL Cert Check External:vfs.file.exists[/usr/local/bin/zext_ssl_cert.sh].last(0)}=1 and {SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -t {$SSL_URL} {$SSL_PORT}&quot;].str({$SSL_SHA1})}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{$SSL_URL} SHA1SUM of SSL cert does not match expected value</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{SSL Cert Check External:vfs.file.exists[/usr/local/bin/zext_ssl_cert.sh].last(0)}=1 and {SSL Cert Check External:system.run[/usr/local/bin/zext_ssl_cert.sh -s {$SSL_URL} {$SSL_PORT}].diff(0)}=0 and {SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -t {$SSL_URL} {$SSL_PORT}&quot;].last(0)}=0 and {SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;].diff(0)}=1</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{$SSL_URL} SSL serial {ITEM.LASTVALUE} has not changed despite certificate change</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If the Certificate serial number does not change, we want to know about it, otherwise something like this will happen:&#13;
+&#13;
+https://wiki.mozilla.org/CA:WoSign_Issues#Issue_H:_Duplicate_Serial_Numbers_.28Apr_2015.29 and https://crt.sh/?serial=056d1570da645bf6b44c0a7077cc6769&amp;iCAID=1662&#13;
+&#13;
+Serial numbers are supposed to change when certificates do.</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{SSL Cert Check External:vfs.file.exists[/usr/local/bin/zext_ssl_cert.sh].last(0)}=1 and {SSL Cert Check External:system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -t {$SSL_URL} {$SSL_PORT}&quot;].diff(0)}&gt;0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{$SSL_URL} Thumbprint changed to {ITEM.LASTVALUE} confirm this is expected</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>When updatign certs, this triggers an alert. Ensure tht this is expected, as changes outwith those periods are not good.</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
             <tags/>
         </trigger>
     </triggers>
@@ -555,25 +1124,10 @@
                     <type>0</type>
                     <item>
                         <host>SSL Cert Check External</host>
-                        <key>zext_ssl_cert.sh[-d,{HOST.CONN},{$SSL_PORT}]</key>
+                        <key>system.run[&quot;/usr/local/bin/zext_ssl_cert.sh -d {$SSL_URL} {$SSL_PORT}&quot;]</key>
                     </item>
                 </graph_item>
             </graph_items>
         </graph>
     </graphs>
-    <value_maps>
-        <value_map>
-            <name>Service state</name>
-            <mappings>
-                <mapping>
-                    <value>0</value>
-                    <newvalue>Down</newvalue>
-                </mapping>
-                <mapping>
-                    <value>1</value>
-                    <newvalue>Up</newvalue>
-                </mapping>
-            </mappings>
-        </value_map>
-    </value_maps>
 </zabbix_export>
