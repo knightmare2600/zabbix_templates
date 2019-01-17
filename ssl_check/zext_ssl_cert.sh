@@ -71,7 +71,7 @@ issue_dn=`echo "$certificate" | openssl x509 -text 2>/dev/null | sed -n 's/ *Iss
 
 if [ -n "$issue_dn" ]
 then
-    issuer=`echo $issue_dn | sed -n 's/.*CN=*//p'`
+    issuer=`echo $issue_dn | sed -n 's/.*CN=*//p' | tr -d =`
     echo $issuer
 fi
 ;;
