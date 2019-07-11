@@ -9,6 +9,7 @@ Read the info.txt in each folder for specifics for that template, and then impor
 Templates
 
 * 3CX PBX / SBC         - Monitor a 3CX PBX / SBC running on Debian Linux - Windows template WIP
+* Acronis 12.5 Advanced	- Monitor Acronis 12.5 Advanced Backup jobs via zabbix requires cloning of items on a per host basis
 * apc_ups		- Monitor APC UPS using Serial port - see notes on setup
 * domain_check          - Check a list of domains for expiry and warn for 14 days or less and go critical for 0 or below
 * HP ILO		- Template to Monitor HP ILO using LLD & Template for Zabbix Proxy to confirm scripts are in place. Rememebr to set the Macros:
