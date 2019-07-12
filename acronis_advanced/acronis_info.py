@@ -58,14 +58,17 @@ else:
     activities = r.json()['items']
     last_hour = datetime.utcnow() - timedelta(hours=timeperiod) # The "hours" parameter defines the period for tracking activities
     for activity in activities:
-        finish_time = dateutil.parser.parse(activity.get('finishTime')).replace(tzinfo=None)
-        if finish_time < last_hour:
-            continue
+#        finish_time = dateutil.parser.parse(activity.get('finishTime')).replace(tzinfo=None)
+#        print(finish_time.timestamp())
+#        if finish_time < last_hour:
+#           continue
 
         print('Machine hostname:', activity.get('agentName'))
         print('Backup plan name:', activity.get('details', {}).get('BackupPlanName'))
         print('Job Start time  :', activity.get('startTime'))
+        print('Job Start stamp :', dateutil.parser.parse(activity.get('startTime')).replace(tzinfo=None).timestamp())
         print('Job Finish time :', activity.get('finishTime'))
+        print('Job Finish stamp:', dateutil.parser.parse(activity.get('finishTime')).replace(tzinfo=None).timestamp())
         print('CompletionResult:', activity.get('status'), end='\n\n')
 
 ## For those wanting things on a single line

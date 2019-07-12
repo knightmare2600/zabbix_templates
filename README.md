@@ -9,7 +9,18 @@ Read the info.txt in each folder for specifics for that template, and then impor
 Templates
 
 * 3CX PBX / SBC         - Monitor a 3CX PBX / SBC running on Debian Linux - Windows template WIP
-* Acronis 12.5 Advanced	- Monitor Acronis 12.5 Advanced Backup jobs via zabbix requires cloning of items on a per host basis
+* Acronis 12.5 Advanced	- Monitor Acronis 12.5 Advanced Backup jobs via zabbix requires cloning of items on a per host basis. Example script output:
+```
+Machine hostname: TESTNODE01
+Backup plan name: Backup TESTNODE01 to BACKUPSERVER01
+Job Start time  : 1984-04-01T13:00:00Z
+Job Start stamp : 449668800.0
+Job Finish time : 1997-08-29T02:14:00Z
+Job Finish stamp: 872817240.0
+CompletionResult: ok
+```
+After importing the template, be sure to clone items and triggers for each of the jobs you wish to monitor. A future update for Zabbix 4.2 will make the jobs a LLD rule to auto-discover backups.
+
 * apc_ups		- Monitor APC UPS using Serial port - see notes on setup
 * domain_check          - Check a list of domains for expiry and warn for 14 days or less and go critical for 0 or below
 * HP ILO		- Template to Monitor HP ILO using LLD & Template for Zabbix Proxy to confirm scripts are in place. Rememebr to set the Macros:

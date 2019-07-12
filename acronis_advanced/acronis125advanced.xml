@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2019-07-11T13:14:08Z</date>
+    <date>2019-07-12T10:03:29Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -70,7 +70,78 @@ other values include error which the triggers use.</description>
                     <preprocessing>
                         <step>
                             <type>5</type>
-                            <params>plan name: Backup TESTNODE01 to BACKUPSERVER01\n.*\n.*\nCompletionResult: (.*)
+                            <params>plan name: Backup TESTNODE01 to BACKUPSERVER01\n.*\n.*\n.*\n.*\nCompletionResult: (.*)
+\1</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item>
+                        <key>system.run[/usr/local/bin/acronis_info.py -t 24 -n testnode]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>TESTNODE01 Backup plan Finish time epoch</name>
+                    <type>18</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>backupstatus.daily.job.finish.time.epoch.testnode01</key>
+                    <delay>0</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>1</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>unixtime</units>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Grab the backup plan finsih time epoch . E.g.&#13;
+&#13;
+Job Finish time : 872074982&#13;
+&#13;
+In this case, using the time Skynet becomes slef aware as an example. This is used by the trigger to ensure the last reported backup time is &lt; 24hrs ago</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Acronis Backup Server</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>5</type>
+                            <params>plan name: Back up TESTNODE to TESTSERVER\n.*\n.*\n.*\nJob Finish stamp: (.*)\.[0-9]+
 \1</params>
                         </step>
                     </preprocessing>
@@ -141,7 +212,7 @@ In this case, using the time Skynet becomes slef aware as an example</descriptio
                     <preprocessing>
                         <step>
                             <type>5</type>
-                            <params>plan name: Backup TESTNODE01 to BACKUPSERVER01\n.*\n.*Job Finish time\s*:\s*(.*)
+                            <params>plan name: Backup TESTNODE01 to BACKUPSERVER01\n.*\n.*\n.*Job Finish time\s*:\s*(.*)
 \1</params>
                         </step>
                     </preprocessing>
@@ -281,7 +352,7 @@ Backup plan name: Backup TESTVM to TESTNASLAX01</description>
                     <preprocessing>
                         <step>
                             <type>5</type>
-                            <params>(plan name: Backup TESTBOX01 to BACKUPSERVER01.*)
+                            <params>plan name: (Backup TESTBOX01 to BACKUPSERVER01.*)
 \1</params>
                         </step>
                     </preprocessing>
@@ -495,8 +566,8 @@ This avoids all sorts of awk and sed clutter to be avoided.</description>
                     <snmp_community/>
                     <snmp_oid/>
                     <key>system.run[/usr/local/bin/acronis_info.py -t 24 -n testnode]</key>
-                    <delay>5m</delay>
-                    <history>30d</history>
+                    <delay>30m</delay>
+                    <history>7d</history>
                     <trends>0</trends>
                     <status>0</status>
                     <value_type>4</value_type>
@@ -1092,6 +1163,22 @@ Possible values are: ok | error</description>
             <tags/>
         </trigger>
         <trigger>
+            <expression>{Acronis Backup 12.5:backupstatus.daily.job.finish.time.epoch.testnode01.fuzzytime(86400)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>TESTNODE01 Last Backup Result was more than 24hrs ago</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>1</status>
+            <priority>4</priority>
+            <description>Confirm that the last job result completion time is also within the last 24hrs.</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
             <expression>{Acronis Backup 12.5:backupstatus.daily.job.finish.time.testnode01.nodata(24h)}=1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
@@ -1109,4 +1196,3 @@ Possible values are: ok | error</description>
         </trigger>
     </triggers>
 </zabbix_export>
-
