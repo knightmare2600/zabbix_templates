@@ -63,7 +63,7 @@ else:
 #        if finish_time < last_hour:
 #           continue
 
-        print('Machine hostname:', activity.get('agentName'))
+        print('Machine hostname:', activity.get('resourceName'))
         print('Backup plan name:', activity.get('details', {}).get('BackupPlanName'))
         print('Job Start time  :', activity.get('startTime'))
         print('Job Start stamp :', dateutil.parser.parse(activity.get('startTime')).replace(tzinfo=None).timestamp())
