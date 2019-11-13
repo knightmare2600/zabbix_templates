@@ -1,0 +1,9 @@
+/var/log/3CXDailyCallLog.log {
+        daily
+        missingok
+        rotate 31
+        compress
+        delaycompress
+        notifempty
+        create 0640 phonesystem adm
+}
