@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2019-07-15T17:26:17Z</date>
+    <date>2019-07-16T10:07:40Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -1233,7 +1233,7 @@ Macro {$LOGPERIOD} defaults to 24 (hrs) but can be set on a per node basis as re
             <correlation_tag/>
             <url/>
             <status>1</status>
-            <priority>4</priority>
+            <priority>3</priority>
             <description>if the returned status is not &quot;ok&quot; then something went wrong with the backup so alert to this.&#13;
 &#13;
 Possible values are: ok | error</description>
@@ -1267,7 +1267,7 @@ Possible values are: ok | error</description>
             <correlation_tag/>
             <url/>
             <status>1</status>
-            <priority>3</priority>
+            <priority>2</priority>
             <description>If there has been no data for 24hrs then we cannot verify the backup status. also a generic catch all for jobs which may be named wrong.</description>
             <type>0</type>
             <manual_close>0</manual_close>
