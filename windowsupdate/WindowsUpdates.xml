@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
-    <version>3.0</version>
-    <date>2017-08-16T13:10:27Z</date>
+    <version>4.0</version>
+    <date>2019-12-12T15:55:05Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -27,17 +27,15 @@
                     <name>Reboot Required</name>
                     <type>7</type>
                     <snmp_community/>
-                    <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>needsreboot</key>
-                    <delay>120</delay>
-                    <history>2</history>
+                    <delay>60m</delay>
+                    <history>2d</history>
                     <trends>0</trends>
                     <status>0</status>
                     <value_type>4</value_type>
                     <allowed_hosts/>
                     <units/>
-                    <delta>0</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -45,11 +43,8 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
-                    <data_type>0</data_type>
                     <authtype>0</authtype>
                     <username/>
                     <password/>
@@ -65,22 +60,41 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>1</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
                 </item>
                 <item>
-                    <name>needsreboot.cmd file Checksum</name>
+                    <name>Windows Update Configuration</name>
                     <type>0</type>
                     <snmp_community/>
-                    <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>vfs.file.cksum[C:\Zabbix\needsreboot.cmd]</key>
-                    <delay>30</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <key>system.run[C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy bypass -File &quot;C:\Zabbix\Get-WUSettings.ps1&quot;]</key>
+                    <delay>90s</delay>
+                    <history>90d</history>
+                    <trends>0</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>4</value_type>
                     <allowed_hosts/>
                     <units/>
-                    <delta>0</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -88,11 +102,127 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
-                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Script will run and check the status of Windows updates via the registry.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>WindowsUpdate</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Get-wusettings.ps1 Script</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>vfs.file.cksum[c:\zabbix\Get-wusettings.ps1]</key>
+                    <delay>15m</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Powershell script to check current status of windows update. Compatible with Windows 7 and higher.&#13;
+Do checksum on the file.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>WindowsUpdate</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>needsreboot.cmd file Checksum</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>vfs.file.cksum[C:\Zabbix\needsreboot.cmd]</key>
+                    <delay>15m</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
                     <authtype>0</authtype>
                     <username/>
                     <password/>
@@ -108,22 +238,41 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>1</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
                 </item>
                 <item>
-                    <name>needsreboot.cmd script check</name>
+                    <name>Get-wusettings.ps1 Script</name>
                     <type>0</type>
                     <snmp_community/>
-                    <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>vfs.file.exists[C:\Zabbix\needsreboot.cmd]</key>
-                    <delay>30</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <key>vfs.file.exists[c:\zabbix\Get-wusettings.ps1]</key>
+                    <delay>15m</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
-                    <delta>0</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -131,11 +280,67 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
-                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Powershell script to check current status of windows update. Compatible with Windows 7 and higher.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>WindowsUpdate</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>needsreboot.cmd script check</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>vfs.file.exists[C:\Zabbix\needsreboot.cmd]</key>
+                    <delay>15m</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
                     <authtype>0</authtype>
                     <username/>
                     <password/>
@@ -151,22 +356,41 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>1</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
                 </item>
                 <item>
                     <name>zabbix_agentd.conf NeedsReboot UserParemeter</name>
                     <type>0</type>
                     <snmp_community/>
-                    <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>vfs.file.regmatch[&quot;C:\Zabbix\zabbix_agentd.conf&quot;,&quot;needsreboot&quot;,cp850,0,10000]</key>
-                    <delay>30</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <delay>15m</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
-                    <delta>0</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -174,11 +398,8 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
-                    <data_type>3</data_type>
                     <authtype>0</authtype>
                     <username/>
                     <password/>
@@ -194,9 +415,36 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>6</type>
+                            <params/>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>1</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
                 </item>
             </items>
             <discovery_rules/>
+            <httptests/>
             <macros/>
             <templates/>
             <screens/>
@@ -204,44 +452,197 @@
     </templates>
     <triggers>
         <trigger>
+            <expression>{Windows Updates:vfs.file.exists[c:\zabbix\Get-wusettings.ps1].last(0)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Hey! {HOST.NAME} has no C:\Zabbix\Get-wusettings.ps1 installed</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>If file doesn't exist then we can't check the status of windows updates C:\Zabbix\Get-wusettings.ps1</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
             <expression>{Windows Updates:vfs.file.exists[C:\Zabbix\needsreboot.cmd].last(0)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
             <name>Hey! {HOST.NAME} has no C:\Zabbix\needsreboot.cmd installed</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
             <url/>
             <status>0</status>
             <priority>1</priority>
             <description>If the C:\Zabbix\needsreboot.cmd file does not exist, it is not possible to monitor logged in RDP users, so we will throw an alert</description>
             <type>0</type>
+            <manual_close>0</manual_close>
             <dependencies/>
+            <tags/>
         </trigger>
         <trigger>
             <expression>{Windows Updates:vfs.file.regmatch[&quot;C:\Zabbix\zabbix_agentd.conf&quot;,&quot;needsreboot&quot;,cp850,0,10000].last(0)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
             <name>Hey! {HOST.NAME} has no needsreboot Parameter in agent configuration</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
             <url/>
             <status>0</status>
             <priority>1</priority>
             <description>If the line UserParameter=needsreboot,&quot;c:\zabbix\needsreboot.cmd&quot; is not in the C:\Zabbix\Zabbix_Agentd.conf file then this will trigger the alert.</description>
             <type>0</type>
+            <manual_close>0</manual_close>
             <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Windows Updates:vfs.file.cksum[c:\zabbix\Get-wusettings.ps1].last(0)}&lt;&gt;1447743600</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Hey! {HOST.NAME} has the wrong C:\Zabbix\Get-wusettings.ps1 version installed</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>Check the cksum of C:\Zabbix\Get-wusettings.ps1</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
         </trigger>
         <trigger>
             <expression>{Windows Updates:vfs.file.cksum[C:\Zabbix\needsreboot.cmd].last(0)}&lt;&gt;1232286362</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
             <name>Hey! {HOST.NAME} has the wrong needsreboot.cmd version!</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
             <url/>
             <status>0</status>
             <priority>1</priority>
             <description>if the checksum does not match then you are not running hte correct version of the script. This may lead to false or non-existent alerts in zabbix.</description>
             <type>0</type>
+            <manual_close>0</manual_close>
             <dependencies/>
+            <tags/>
         </trigger>
         <trigger>
-            <expression>{Windows Updates:needsreboot.str(&quot;no reboot required&quot;)}=0</expression>
-            <name>{HOST.NAME} has a pending reboot</name>
+            <expression>{Windows Updates:system.run[C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy bypass -File &quot;C:\Zabbix\Get-WUSettings.ps1&quot;].str(&quot;Is Automatic Update Enabled    : True&quot;)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{HOST.NAME} Automatic Updates DISABLED</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description>If none of the above conditions match, updates are not being downloaded so this is a problem.</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Windows Updates:needsreboot.str(&quot;no reboot&quot;)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{HOST.NAME}  has a pending reboot</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
             <url/>
             <status>0</status>
             <priority>1</priority>
             <description>If a reboot is required, let people know</description>
             <type>0</type>
+            <manual_close>0</manual_close>
             <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Windows Updates:system.run[C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy bypass -File &quot;C:\Zabbix\Get-WUSettings.ps1&quot;].str(&quot;Opted-in Microsoft Update      : True&quot;)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{HOST.NAME}  Not Set To Install opt-in updates</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If none of the above conditions match, updates are not being automatically installed.</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Windows Updates:system.run[C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy bypass -File &quot;C:\Zabbix\Get-WUSettings.ps1&quot;].str(&quot;Automatic Updates Notification : Install updates automatically&quot;)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{HOST.NAME}  Not Set To Install updates automatically</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If none of the above conditions match, updates are not being automatically installed.</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Windows Updates:system.run[C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy bypass -File &quot;C:\Zabbix\Get-WUSettings.ps1&quot;].nodata(24h)}=1</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{HOST.NAME} No Windows Update Configuration Data for more than 24hrs</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>If no data is returned for 24hrs, then we have problems.</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Windows Updates:system.run[C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy bypass -File &quot;C:\Zabbix\Get-WUSettings.ps1&quot;].str(&quot;Receive recommended udpates    : True&quot;)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{HOST.NAME}  Receive recommended udpates set to FALSE</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If Automatic Updates: Enabled is not found, then Automatic Updates are disabled.</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Windows Updates:needsreboot.str(&quot;No Reboot With Logged On Users: True&quot;)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{HOST.NAME}  Will Not Reboot With Users Logged In</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>1</status>
+            <priority>1</priority>
+            <description>The logic is reversed. No Auto Reboot being True AKA host will not reboot</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
         </trigger>
     </triggers>
 </zabbix_export>
+

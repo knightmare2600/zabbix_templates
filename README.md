@@ -44,7 +44,7 @@ After importing the template, be sure to clone items and triggers for each of th
 * unattended_upgrades   - Monitors the unattended upgrades package for Ubuntu Linux. Raises an alert if a system has a pending reboot or no cront job specified for the cleaning of old kernels (script included)
 * vmware_snapshot_check - Checks a VMWare ESXi host and outputs a text file with the current number of snapshots to a file. Requires SSH daemon to be running on ESXi host and SSH keys to be available. The shell script also needs to be available
 * VMWare SNMP		- Monitor ESXi via SNMP remember to set the ${SNMP_COMMUNITY} macro and enable SNMP on ESXi
-* Windows Update	- Checks if Windows system needs a restart. Plan to eventually alert for pending updates WIP
+* Windows Update	- Checks Status of windows update on 2008 R2+ Needs EnableRemoteCommands=1 in Zabbix agent configuration
 * Windows OS		- Modify Zabbix Templaye to show volume of free space e.g. 7.2GB as well as < 20% in LLD trigger)
 * Wordpress		- Monitor wordpress installs and alert if they are out of date
 
