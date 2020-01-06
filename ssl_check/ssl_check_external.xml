@@ -691,7 +691,7 @@ TODO: Can we use LibreSSL instead?</description>
     </templates>
     <triggers>
         <trigger>
-            <expression>{SSL Cert Check External:vfs.file.cksum[/usr/local/bin/zext_ssl_cert.sh].last(0)}&lt;&gt;2716419468</expression>
+            <expression>{SSL Cert Check External:vfs.file.cksum[/usr/local/bin/zext_ssl_cert.sh].last(0)}&lt;&gt;2664704979</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Hey! {HOST.NAME} has incorrect zext_ssl_cert.sh installed</name>
