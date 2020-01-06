@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2019-12-04T11:53:26Z</date>
+    <date>2019-12-31T10:12:00Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -1972,4 +1972,3 @@ Only alert if reboot required flag exists for 24 hours or more (to allow for ove
         </trigger>
     </triggers>
 </zabbix_export>
-
