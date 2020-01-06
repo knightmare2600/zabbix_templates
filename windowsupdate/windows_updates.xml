@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2019-12-12T15:55:05Z</date>
+    <date>2019-12-31T09:45:16Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -88,7 +88,7 @@
                     <snmp_community/>
                     <snmp_oid/>
                     <key>system.run[C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy bypass -File &quot;C:\Zabbix\Get-WUSettings.ps1&quot;]</key>
-                    <delay>90s</delay>
+                    <delay>15m</delay>
                     <history>90d</history>
                     <trends>0</trends>
                     <status>0</status>
@@ -589,7 +589,10 @@ Do checksum on the file.</description>
             <url/>
             <status>0</status>
             <priority>2</priority>
-            <description>If none of the above conditions match, updates are not being automatically installed.</description>
+            <description>If none of the above conditions match, updates are not being automatically installed.&#13;
+For Server 2012 enable from CMD-&gt;SConfig-&gt;Option 5-&gt;Option A&#13;
+For Server 2016/19 same as 2012 but need to follow link and add 2 registry files to pass check.&#13;
+http://www.darrylvanderpeijl.com/windows-server-2016-update-settings/</description>
             <type>0</type>
             <manual_close>0</manual_close>
             <dependencies/>
@@ -645,4 +648,3 @@ Do checksum on the file.</description>
         </trigger>
     </triggers>
 </zabbix_export>
-

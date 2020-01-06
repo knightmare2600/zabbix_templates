@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>4.0</version>
+    <date>2019-12-31T09:46:03Z</date>
+    <groups>
+        <group>
+            <name>Zabbix Proxies (Supported Customers)</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>External Connectivity</template>
+            <name>External Connectivity and IP</name>
+            <description/>
+            <groups>
+                <group>
+                    <name>Zabbix Proxies (Supported Customers)</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>External Connectivity</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>External IP Address</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>web.page.regexp[wtfismyip.com,text,80,&quot;[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+&quot;]</key>
+                    <delay>30m</delay>
+                    <history>90d</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>38</inventory_link>
+                    <applications>
+                        <application>
+                            <name>External Connectivity</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>1</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+            </items>
+            <discovery_rules/>
+            <httptests/>
+            <macros/>
+            <templates/>
+            <screens/>
+        </template>
+    </templates>
+</zabbix_export>
