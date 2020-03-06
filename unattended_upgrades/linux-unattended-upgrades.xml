@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2019-12-31T10:12:00Z</date>
+    <date>2020-03-06T10:15:14Z</date>
     <groups>
+        <group>
+            <name>edge-servers</name>
+        </group>
         <group>
             <name>Templates</name>
         </group>
@@ -14,6 +17,9 @@
             <description/>
             <groups>
                 <group>
+                    <name>edge-servers</name>
+                </group>
+                <group>
                     <name>Templates</name>
                 </group>
             </groups>
@@ -24,15 +30,192 @@
             </applications>
             <items>
                 <item>
+                    <name>/var/log/unattended-upgrades/unattended-upgrades-dpkg.log</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>logrt[/var/log/unattended-upgrades/unattended-upgrades-dpkg.log,^Log\sstarted.*(\R.*?)+ended\:.(\d{4}-\d{2}-\d{2}\s+.\d{2}\:\d{2}:\d{2}),UTF8,20,,,]</key>
+                    <delay>10m</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>2</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Collect the unattanded upgrades log which can then be parsed.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt>y.M.d..h:m:s</logtimefmt>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>/var/log/unattended-upgrades/unattended-upgrades.log</name>
+                    <type>7</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>logrt[/var/log/unattended-upgrades/unattended-upgrades.log,,UTF8,20,,,]</key>
+                    <delay>30m</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>2</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Collect the unattanded upgrades log which can then be parsed.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt>y.M.d.h:m:s</logtimefmt>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>apt-get list available upgrades</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>system.run[/usr/bin/apt list --upgradable 2&gt;/dev/null]</key>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
                     <name>Facter</name>
                     <type>7</type>
                     <snmp_community/>
                     <snmp_oid/>
                     <key>system.run[/usr/bin/facter]</key>
                     <delay>900s</delay>
-                    <history>90d</history>
+                    <history>5d</history>
                     <trends>0</trends>
-                    <status>0</status>
+                    <status>1</status>
                     <value_type>4</value_type>
                     <allowed_hosts/>
                     <units/>
@@ -84,8 +267,8 @@
                     <snmp_community/>
                     <snmp_oid/>
                     <key>system.run[/usr/bin/hwe-support-status --verbose]</key>
-                    <delay>300s</delay>
-                    <history>90d</history>
+                    <delay>5m</delay>
+                    <history>5d</history>
                     <trends>0</trends>
                     <status>0</status>
                     <value_type>4</value_type>
@@ -151,7 +334,7 @@ You are not running a system with a Hardware Enablement Stack. Your system is su
                     <snmp_oid/>
                     <key>system.run[/usr/bin/lsb_release -c]</key>
                     <delay>15m</delay>
-                    <history>90d</history>
+                    <history>5d</history>
                     <trends>0</trends>
                     <status>0</status>
                     <value_type>4</value_type>
@@ -217,7 +400,7 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <snmp_oid/>
                     <key>system.run[/usr/bin/lsb_release -i]</key>
                     <delay>15m</delay>
-                    <history>90d</history>
+                    <history>5d</history>
                     <trends>0</trends>
                     <status>0</status>
                     <value_type>4</value_type>
@@ -281,9 +464,9 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>system.run[/usr/bin/tasksel --list-tasks]</key>
-                    <delay>12h</delay>
-                    <history>90d</history>
+                    <key>system.run[/usr/bin/tasksel --list-tasks | /bin/grep 'Basic Ubuntu server']</key>
+                    <delay>15m</delay>
+                    <history>5d</history>
                     <trends>0</trends>
                     <status>0</status>
                     <value_type>4</value_type>
@@ -341,8 +524,8 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <snmp_community/>
                     <snmp_oid/>
                     <key>system.run[/usr/lib/update-notifier/apt-check --human-readable]</key>
-                    <delay>300s</delay>
-                    <history>90d</history>
+                    <delay>5m</delay>
+                    <history>5d</history>
                     <trends>0</trends>
                     <status>0</status>
                     <value_type>4</value_type>
@@ -395,13 +578,72 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <master_item/>
                 </item>
                 <item>
+                    <name>zabbix user adm group</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>system.run[groups zabbix | grep adm | wc -l]</key>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>returns 1 if the zabbix user is a member of the adm group 0 if not</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Unattended Upgrades</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
                     <name>Kernel Build</name>
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
                     <key>system.sw.os[short]</key>
                     <delay>15m</delay>
-                    <history>90d</history>
+                    <history>5d</history>
                     <trends>0</trends>
                     <status>0</status>
                     <value_type>4</value_type>
@@ -467,9 +709,9 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.file.cksum[/etc/sudoers]</key>
-                    <delay>300s</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -527,8 +769,8 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <snmp_oid/>
                     <key>vfs.file.exists[/etc/debian_version]</key>
                     <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -590,9 +832,9 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.file.exists[/etc/update-motd.d/90-updates-available]</key>
-                    <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -655,8 +897,8 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <snmp_oid/>
                     <key>vfs.file.exists[/usr/bin/aptitude]</key>
                     <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -719,9 +961,9 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <snmp_oid/>
                     <key>vfs.file.exists[/usr/bin/facter]</key>
                     <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
-                    <status>0</status>
+                    <history>5d</history>
+                    <trends>30d</trends>
+                    <status>1</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
@@ -782,9 +1024,9 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.file.exists[/usr/bin/unattended-upgrade]</key>
-                    <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -841,14 +1083,14 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <master_item/>
                 </item>
                 <item>
-                    <name>Zabbix Get Package</name>
+                    <name>zabbix-get Package</name>
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.file.exists[/usr/bin/zabbix_get]</key>
-                    <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -910,9 +1152,9 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.file.exists[/usr/local/bin/purge-old-kernels.sh]</key>
-                    <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -974,9 +1216,9 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.file.exists[/var/run/reboot-required]</key>
-                    <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <delay>10m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -1038,9 +1280,9 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.file.regmatch[/etc/apt/apt.conf.d/50unattended-upgrades,Unattended-Upgrade\:\:AutoFixInterruptedDpkg\s+\&quot;true\&quot;\;,UTF8,,]</key>
-                    <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -1097,9 +1339,9 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.file.regmatch[/etc/apt/apt.conf.d/50unattended-upgrades,Unattended-Upgrade\:\:Remove-Unused-Dependencies\s+\&quot;true\&quot;\;,UTF8,,]</key>
-                    <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -1156,9 +1398,9 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.file.regmatch[/etc/apt/apt.conf.d/50unattended-upgrades,Unattended-Upgrade\:\:Remove\-Unused\-Kernel\-Packages\s+\&quot;true\&quot;\;,UTF8,,]</key>
-                    <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -1215,9 +1457,9 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.file.regmatch[/etc/apt/apt.conf.d/50unattended-upgrades,\s+\&quot;\$\{distro\_id}\:\$\{distro\_codename\}\-updates\&quot;\;,UTF8,,]</key>
-                    <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -1274,9 +1516,9 @@ Required as not all the parameters in the 50unattended-upgrades file exist in al
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.file.regmatch[/etc/apt/apt.conf.d/50unattended-upgrades,^\s*\&quot;origin\=Debian\Wcodename\=\$\{distro_codename}\Wlabel\=Debian\-Security\&quot;\;,UTF8,,]</key>
-                    <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -1339,9 +1581,9 @@ Triggers take account of both.</description>
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.file.regmatch[/etc/apt/apt.conf.d/50unattended-upgrades,^\s+\&quot;o\=Debian\Wa\=stable\-updates\&quot;\;,UTF8,,]</key>
-                    <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -1405,9 +1647,9 @@ Triggers take account of both.</description>
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.file.regmatch[/etc/apt/apt.conf.d/50unattended-upgrades,^\s+\&quot;\$\{distro\_id}\:\$\{distro\_codename\}\-security\&quot;\;,UTF8,,]</key>
-                    <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -1466,9 +1708,9 @@ This is the Ubuntu item.</description>
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.file.regmatch[/etc/crontab,purge-old-kernels,UTF8,,]</key>
-                    <delay>15m</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -1525,9 +1767,9 @@ This is the Ubuntu item.</description>
                     <snmp_community/>
                     <snmp_oid/>
                     <key>vfs.file.regmatch[/etc/zabbix/zabbix_agentd.conf,EnableRemoteCommands=1,UTF8,,]</key>
-                    <delay>90s</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <delay>5m</delay>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -1585,8 +1827,8 @@ This is the Ubuntu item.</description>
                     <snmp_oid/>
                     <key>vfs.file.regmatch[/etc/zabbix/zabbix_agentd.conf,update-notifier,UTF8,,]</key>
                     <delay>90s</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
+                    <history>5d</history>
+                    <trends>30d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
@@ -1711,7 +1953,7 @@ This is the Ubuntu item.</description>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Linux Unattended Upgrades:system.run[/usr/bin/tasksel --list-tasks].regexp((&quot;^i server        Basic Ubuntu server&quot;)}=0 and {Linux Unattended Upgrades:system.run[/usr/bin/lsb_release -i].str(Ubuntu)}=1</expression>
+            <expression>{Linux Unattended Upgrades:system.run[/usr/bin/tasksel --list-tasks | /bin/grep 'Basic Ubuntu server'].regexp(^i)}=0 and {Linux Unattended Upgrades:system.run[/usr/bin/lsb_release -i].str(Ubuntu)}=1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Hey! {HOST.NAME} has no Basic Ubuntu server metapackage</name>
@@ -1905,6 +2147,22 @@ also checks if the distro, e..g xenial or trusty as some distros do not include 
             <tags/>
         </trigger>
         <trigger>
+            <expression>{Linux Unattended Upgrades:system.run[groups zabbix | grep adm | wc -l].last()}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>Hey! {HOST.NAME} zabbix user is not a member of the adm group</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description>zabbix user needs to be in the adm group to read log files for unattended upgrades. To correct this, run: usermod -a -G adm zabbix</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
             <expression>{Linux Unattended Upgrades:vfs.file.regmatch[/etc/zabbix/zabbix_agentd.conf,EnableRemoteCommands=1,UTF8,,].last(#1)}=0</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
@@ -1930,7 +2188,7 @@ also checks if the distro, e..g xenial or trusty as some distros do not include 
             <url/>
             <status>0</status>
             <priority>1</priority>
-            <description>/var/spool/cron/crontabs/root must contain the line 00 7   *   *   *    /usr/local/bin/purge-old-kernels.sh --keep 2 for this check to be OK. This will clean the kernels at 07:00 each morning.</description>
+            <description>/etc/crontab must contain the line 00 7   *   *   *   root  /usr/local/bin/purge-old-kernels.sh for this check to be OK. This will clean the kernels at 07:00 each morning.</description>
             <type>0</type>
             <manual_close>0</manual_close>
             <dependencies/>
@@ -1965,6 +2223,24 @@ also checks if the distro, e..g xenial or trusty as some distros do not include 
             <description>If /var/run/reboot-required exists alert that reboot needed.&#13;
 &#13;
 Only alert if reboot required flag exists for 24 hours or more (to allow for overnight auto-reboots without alerting)</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Linux Unattended Upgrades:logrt[/var/log/unattended-upgrades/unattended-upgrades.log,,UTF8,20,,,].str(ERROR)}=1</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{HOST.NAME} reports error {ITEM.LASTVALUE} when installing unattended-upgrasdes</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description>If the unattended upgrades tool prints an ERROR line to the log, it's a safe assumption something broke. Manual investigation is required.&#13;
+&#13;
+It's a goo idea to start with /var/log/unattended-upgrades/unattended-upgrades-dpkg.log</description>
             <type>0</type>
             <manual_close>0</manual_close>
             <dependencies/>
