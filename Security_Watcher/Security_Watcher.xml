@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2020-03-16T13:12:42Z</date>
+    <date>2020-03-17T10:11:58Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -662,7 +662,7 @@ Bob Beck was right you know...</description>
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>system.run[ver]</key>
+                    <key>system.run[Reg Query &quot;HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion&quot; /v ReleaseId]</key>
                     <delay>15m</delay>
                     <history>90d</history>
                     <trends>0</trends>
@@ -685,7 +685,7 @@ Bob Beck was right you know...</description>
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>Get the windows build number</description>
+                    <description>Get the windows build number, e.g. 1903, 1909, etc.</description>
                     <inventory_link>0</inventory_link>
                     <applications/>
                     <valuemap/>
@@ -1698,7 +1698,7 @@ For example, if the local subnet was 192.168.100.0/24 set it to that.</descripti
             <url/>
             <status>0</status>
             <priority>1</priority>
-            <description>If the CVE2020-0796 exploit checking python script is not  installed, alert ot this fact. but only for zabbix proxies</description>
+            <description>If the CVE2020-0796 exploit checking python script is not  installed, alert ot this fact. but only for zabbix proxies. A copy can be found at: https://raw.githubusercontent.com/knightmare2600/SMBGhost/master/cve2020-0796.py</description>
             <type>0</type>
             <manual_close>0</manual_close>
             <dependencies/>
@@ -1775,7 +1775,7 @@ DO NOT change the global macro, as this will break the check on other subnets/pr
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Security Watcher For Public CVEs:system.run[/usr/bin/python /usr/lib/zabbix/externalscripts/cve2020-0796.py {$LANSUBNET}].str(Vulnerable!)}=1 and {Security Watcher For Public CVEs:system.run[ver].str(10.0.18363.720)}&lt;&gt;1</expression>
+            <expression>{Security Watcher For Public CVEs:system.run[/usr/bin/python /usr/lib/zabbix/externalscripts/cve2020-0796.py {$LANSUBNET}].str(Vulnerable!)}=1 and {Security Watcher For Public CVEs:system.run[Reg Query &quot;HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion&quot; /v ReleaseId].str(1903)}=1 or {Security Watcher For Public CVEs:system.run[/usr/bin/python /usr/lib/zabbix/externalscripts/cve2020-0796.py {$LANSUBNET}].str(Vulnerable!)}=1 and {Security Watcher For Public CVEs:system.run[Reg Query &quot;HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion&quot; /v ReleaseId].str(1910)}=1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>{HOST.NAME} reports machines vulnerable to CVE-2020-0796</name>
