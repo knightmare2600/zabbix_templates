@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
-    <version>3.4</version>
-    <date>2018-10-05T14:20:02Z</date>
+    <version>5.0</version>
+    <date>2020-09-19T20:42:16Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -11,7 +11,6 @@
         <template>
             <template>Lets Encrypt SSL Certificate</template>
             <name>Lets Encrypt SSL Certificate</name>
-            <description/>
             <groups>
                 <group>
                     <name>Templates</name>
@@ -24,559 +23,312 @@
             </applications>
             <items>
                 <item>
-                    <name>certbot sources list jessie</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <snmp_oid/>
-                    <key>vfs.file.exists[/etc/apt/sources.list.d/certbot-certbot-jessie.list]</key>
-                    <delay>90s</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description>sources file has to exist in order to install the package.&#13;
-&#13;
-NB: Need to find a better way to check based on distro name</description>
-                    <inventory_link>0</inventory_link>
+                    <name>certbot version</name>
+                    <key>system.run[/usr/bin/certbot --version]</key>
+                    <delay>900s</delay>
+                    <value_type>FLOAT</value_type>
+                    <description>Get the version of certbot</description>
                     <applications>
                         <application>
                             <name>Le't Encrypt</name>
                         </application>
                     </applications>
-                    <valuemap/>
-                    <logtimefmt/>
                     <preprocessing>
                         <step>
-                            <type>6</type>
+                            <type>LTRIM</type>
+                            <params>certbot </params>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}=0</expression>
+                            <name>Hey! {HOST.NAME} has an outdated certbot install</name>
+                            <priority>INFO</priority>
+                            <description>If version is below 0.28.0 then SNI certs are permitted and SSL renewal will not work</description>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Renew certificate</name>
+                    <key>system.run[sudo certbot renew --pre-hook &quot;service nginx stop&quot; --dry-run --post-hook &quot;service nginx start&quot;]</key>
+                    <delay>30s</delay>
+                    <trends>0</trends>
+                    <status>DISABLED</status>
+                    <value_type>TEXT</value_type>
+                    <description>Warning: There's some sharp edges here. Just be very aware of what you're entering into before proceeding.&#13;
+&#13;
+Ideally of course, one would have the script hook also move the new cert into place, but let's walk before we run.</description>
+                    <applications>
+                        <application>
+                            <name>Le't Encrypt</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>certbot sources list jessie</name>
+                    <key>vfs.file.exists[/etc/apt/sources.list.d/certbot-certbot-jessie.list]</key>
+                    <delay>90s</delay>
+                    <description>sources file has to exist in order to install the package.&#13;
+&#13;
+NB: Need to find a better way to check based on distro name</description>
+                    <applications>
+                        <application>
+                            <name>Le't Encrypt</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>BOOL_TO_DECIMAL</type>
                             <params/>
                         </step>
                     </preprocessing>
-                    <jmx_endpoint/>
-                    <master_item/>
+                    <request_method>POST</request_method>
                 </item>
                 <item>
                     <name>certbot sources list stretch</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <snmp_oid/>
                     <key>vfs.file.exists[/etc/apt/sources.list.d/certbot-certbot-stretch.list]</key>
                     <delay>90s</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
                     <description>sources file has to exist in order to install the package.&#13;
 &#13;
 NB: Need to find a better way to check based on distro name</description>
-                    <inventory_link>0</inventory_link>
                     <applications>
                         <application>
                             <name>Le't Encrypt</name>
                         </application>
                     </applications>
-                    <valuemap/>
-                    <logtimefmt/>
                     <preprocessing>
                         <step>
-                            <type>6</type>
+                            <type>BOOL_TO_DECIMAL</type>
                             <params/>
                         </step>
                     </preprocessing>
-                    <jmx_endpoint/>
-                    <master_item/>
+                    <request_method>POST</request_method>
                 </item>
                 <item>
                     <name>certbot sources list trusty</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <snmp_oid/>
                     <key>vfs.file.exists[/etc/apt/sources.list.d/certbot-certbot-trusty.list]</key>
                     <delay>90s</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
                     <description>sources file has to exist in order to install the package.&#13;
 &#13;
 NB: Need to find a better way to check based on distro name</description>
-                    <inventory_link>0</inventory_link>
                     <applications>
                         <application>
                             <name>Le't Encrypt</name>
                         </application>
                     </applications>
-                    <valuemap/>
-                    <logtimefmt/>
                     <preprocessing>
                         <step>
-                            <type>6</type>
+                            <type>BOOL_TO_DECIMAL</type>
                             <params/>
                         </step>
                     </preprocessing>
-                    <jmx_endpoint/>
-                    <master_item/>
+                    <request_method>POST</request_method>
                 </item>
                 <item>
                     <name>certbot sources list xenial</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <snmp_oid/>
                     <key>vfs.file.exists[/etc/apt/sources.list.d/certbot-certbot-xenial.list]</key>
                     <delay>90s</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
                     <description>sources file has to exist in order to install the package.&#13;
 &#13;
 NB: Need to find a better way to check based on distro name</description>
-                    <inventory_link>0</inventory_link>
                     <applications>
                         <application>
                             <name>Le't Encrypt</name>
                         </application>
                     </applications>
-                    <valuemap/>
-                    <logtimefmt/>
                     <preprocessing>
                         <step>
-                            <type>6</type>
+                            <type>BOOL_TO_DECIMAL</type>
                             <params/>
                         </step>
                     </preprocessing>
-                    <jmx_endpoint/>
-                    <master_item/>
+                    <request_method>POST</request_method>
                 </item>
                 <item>
                     <name>certbot sources list bionic</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <snmp_oid/>
                     <key>vfs.file.exists[/etc/apt/sources.list.d/certbot-ubuntu-certbot-bionic.list]</key>
                     <delay>90s</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
                     <description>sources file has to exist in order to install the package.&#13;
 &#13;
 NB: Need to find a better way to check based on distro name</description>
-                    <inventory_link>0</inventory_link>
                     <applications>
                         <application>
                             <name>Le't Encrypt</name>
                         </application>
                     </applications>
-                    <valuemap/>
-                    <logtimefmt/>
                     <preprocessing>
                         <step>
-                            <type>6</type>
+                            <type>BOOL_TO_DECIMAL</type>
                             <params/>
                         </step>
                     </preprocessing>
-                    <jmx_endpoint/>
-                    <master_item/>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>certbot sources list focal</name>
+                    <key>vfs.file.exists[/etc/apt/sources.list.d/certbot-ubuntu-certbot-focal.list]</key>
+                    <delay>90s</delay>
+                    <description>sources file has to exist in order to install the package.&#13;
+&#13;
+NB: Need to find a better way to check based on distro name</description>
+                    <applications>
+                        <application>
+                            <name>Le't Encrypt</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>BOOL_TO_DECIMAL</type>
+                            <params/>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>certbot package snap</name>
+                    <key>vfs.file.exists[/snap/bin/certbot]</key>
+                    <delay>90s</delay>
+                    <description>the package which actually creates certificates. This is pretty much a given.</description>
+                    <applications>
+                        <application>
+                            <name>Le't Encrypt</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>BOOL_TO_DECIMAL</type>
+                            <params/>
+                        </step>
+                    </preprocessing>
                 </item>
                 <item>
                     <name>software-properties-common package</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <snmp_oid/>
                     <key>vfs.file.exists[/usr/bin/add-apt-repository]</key>
                     <delay>90s</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
                     <description>/usr/bin/add-apt-repository must exist for the software-properties-common package to be installed</description>
-                    <inventory_link>0</inventory_link>
                     <applications>
                         <application>
                             <name>Le't Encrypt</name>
                         </application>
                     </applications>
-                    <valuemap/>
-                    <logtimefmt/>
-                    <preprocessing/>
-                    <jmx_endpoint/>
-                    <master_item/>
+                    <request_method>POST</request_method>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(0)}=0</expression>
+                            <name>Hey! {HOST.NAME} has no software-properties-common package installed</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
                 </item>
                 <item>
                     <name>certbot package</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <snmp_oid/>
                     <key>vfs.file.exists[/usr/bin/certbot]</key>
                     <delay>90s</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
                     <description>the package which actually creates certificates. This is pretty much a given.</description>
-                    <inventory_link>0</inventory_link>
                     <applications>
                         <application>
                             <name>Le't Encrypt</name>
                         </application>
                     </applications>
-                    <valuemap/>
-                    <logtimefmt/>
                     <preprocessing>
                         <step>
-                            <type>6</type>
+                            <type>BOOL_TO_DECIMAL</type>
                             <params/>
                         </step>
                     </preprocessing>
-                    <jmx_endpoint/>
-                    <master_item/>
+                    <request_method>POST</request_method>
                 </item>
                 <item>
                     <name>python-pycurl Package</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <snmp_oid/>
                     <key>vfs.file.exists[/usr/share/doc/python-pycurl/copyright]</key>
                     <delay>90s</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
                     <description>python-pycurl package is required when generating the SSL certificates</description>
-                    <inventory_link>0</inventory_link>
                     <applications>
                         <application>
                             <name>Le't Encrypt</name>
                         </application>
                     </applications>
-                    <valuemap/>
-                    <logtimefmt/>
                     <preprocessing>
                         <step>
-                            <type>6</type>
+                            <type>BOOL_TO_DECIMAL</type>
                             <params/>
                         </step>
                     </preprocessing>
-                    <jmx_endpoint/>
-                    <master_item/>
+                    <request_method>POST</request_method>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(0)}=0</expression>
+                            <name>Hey! {HOST.NAME} has no python-pycurl package installed</name>
+                            <priority>INFO</priority>
+                            <description>If /usr/bin/unattended-upgrade binary doesn't exist then package unattended-upgrades is not installed and therefore, alert us to this fact.</description>
+                        </trigger>
+                    </triggers>
                 </item>
                 <item>
                     <name>python-software-properties Package</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <snmp_oid/>
                     <key>vfs.file.exists[/usr/share/doc/python-software-properties/README]</key>
                     <delay>90s</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
                     <description>If this README does not exist, then python-software-properties package is not installed.</description>
-                    <inventory_link>0</inventory_link>
                     <applications>
                         <application>
                             <name>Le't Encrypt</name>
                         </application>
                     </applications>
-                    <valuemap/>
-                    <logtimefmt/>
                     <preprocessing>
                         <step>
-                            <type>6</type>
+                            <type>BOOL_TO_DECIMAL</type>
                             <params/>
                         </step>
                     </preprocessing>
-                    <jmx_endpoint/>
-                    <master_item/>
+                    <request_method>POST</request_method>
                 </item>
                 <item>
                     <name>software-properties-common Package</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <snmp_oid/>
                     <key>vfs.file.exists[/usr/share/doc/software-properties-common/copyright]</key>
                     <delay>90s</delay>
-                    <history>90d</history>
-                    <trends>365d</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
                     <description>If this README does not exist, then python-software-properties package is not installed.</description>
-                    <inventory_link>0</inventory_link>
                     <applications>
                         <application>
                             <name>Le't Encrypt</name>
                         </application>
                     </applications>
-                    <valuemap/>
-                    <logtimefmt/>
                     <preprocessing>
                         <step>
-                            <type>6</type>
+                            <type>BOOL_TO_DECIMAL</type>
                             <params/>
                         </step>
                     </preprocessing>
-                    <jmx_endpoint/>
-                    <master_item/>
+                    <request_method>POST</request_method>
                 </item>
             </items>
-            <discovery_rules/>
-            <httptests/>
-            <macros/>
-            <templates/>
-            <screens/>
         </template>
     </templates>
     <triggers>
         <trigger>
-            <expression>{Lets Encrypt SSL Certificate:vfs.file.exists[/usr/bin/certbot].last(0)}=0</expression>
-            <recovery_mode>0</recovery_mode>
-            <recovery_expression/>
+            <expression>{Lets Encrypt SSL Certificate:vfs.file.exists[/usr/bin/certbot].last(0)}=0 and &#13;
+{Lets Encrypt SSL Certificate:vfs.file.exists[/snap/bin/certbot].last()}=0</expression>
             <name>Hey! {HOST.NAME} has no certbot package installed</name>
-            <correlation_mode>0</correlation_mode>
-            <correlation_tag/>
-            <url/>
-            <status>0</status>
-            <priority>1</priority>
-            <description/>
-            <type>0</type>
-            <manual_close>0</manual_close>
-            <dependencies/>
-            <tags/>
+            <priority>INFO</priority>
         </trigger>
         <trigger>
-            <expression>{Lets Encrypt SSL Certificate:vfs.file.exists[/etc/apt/sources.list.d/certbot-certbot-trusty.list].last(0)}=0 and {Lets Encrypt SSL Certificate:vfs.file.exists[/etc/apt/sources.list.d/certbot-certbot-xenial.list].last(0)}=0 and {Lets Encrypt SSL Certificate:vfs.file.exists[/etc/apt/sources.list.d/certbot-ubuntu-certbot-bionic.list].last(0)}=0 and {Lets Encrypt SSL Certificate:vfs.file.exists[/etc/apt/sources.list.d/certbot-certbot-jessie.list].last(0)}=0 and {Lets Encrypt SSL Certificate:vfs.file.exists[/etc/apt/sources.list.d/certbot-certbot-stretch.list].last(0)}=0</expression>
-            <recovery_mode>0</recovery_mode>
-            <recovery_expression/>
+            <expression>{Lets Encrypt SSL Certificate:vfs.file.exists[/etc/apt/sources.list.d/certbot-certbot-trusty.list].last(0)}=0 and &#13;
+{Lets Encrypt SSL Certificate:vfs.file.exists[/etc/apt/sources.list.d/certbot-certbot-xenial.list].last(0)}=0 and &#13;
+{Lets Encrypt SSL Certificate:vfs.file.exists[/etc/apt/sources.list.d/certbot-ubuntu-certbot-bionic.list].last(0)}=0 and &#13;
+{Lets Encrypt SSL Certificate:vfs.file.exists[/etc/apt/sources.list.d/certbot-ubuntu-certbot-focal.list].last(0)}=0 and &#13;
+{Lets Encrypt SSL Certificate:vfs.file.exists[/etc/apt/sources.list.d/certbot-certbot-jessie.list].last(0)}=0 and &#13;
+{Lets Encrypt SSL Certificate:vfs.file.exists[/etc/apt/sources.list.d/certbot-certbot-stretch.list].last(0)}=0 and &#13;
+{Lets Encrypt SSL Certificate:vfs.file.exists[/usr/bin/certbot].last()}=0 and&#13;
+{Lets Encrypt SSL Certificate:vfs.file.exists[/snap/bin/certbot].last()}=0</expression>
             <name>Hey! {HOST.NAME} has no Let's Encrypt PPA added</name>
-            <correlation_mode>0</correlation_mode>
-            <correlation_tag/>
-            <url/>
-            <status>0</status>
-            <priority>1</priority>
+            <priority>INFO</priority>
             <description>Alert if the sources list does not exist, since we therefore, cannot install packages.</description>
-            <type>0</type>
-            <manual_close>0</manual_close>
-            <dependencies/>
-            <tags/>
         </trigger>
         <trigger>
-            <expression>{Lets Encrypt SSL Certificate:vfs.file.exists[/usr/share/doc/python-pycurl/copyright].last(0)}=0</expression>
-            <recovery_mode>0</recovery_mode>
-            <recovery_expression/>
-            <name>Hey! {HOST.NAME} has no python-pycurl package installed</name>
-            <correlation_mode>0</correlation_mode>
-            <correlation_tag/>
-            <url/>
-            <status>0</status>
-            <priority>1</priority>
-            <description>If /usr/bin/unattended-upgrade binary doesn't exist then package unattended-upgrades is not installed and therefore, alert us to this fact.</description>
-            <type>0</type>
-            <manual_close>0</manual_close>
-            <dependencies/>
-            <tags/>
-        </trigger>
-        <trigger>
-            <expression>{Lets Encrypt SSL Certificate:vfs.file.exists[/usr/share/doc/python-software-properties/README].last(0)}=0 and {Lets Encrypt SSL Certificate:vfs.file.exists[/usr/share/doc/software-properties-common/copyright].last(0)}=0</expression>
-            <recovery_mode>0</recovery_mode>
-            <recovery_expression/>
+            <expression>{Lets Encrypt SSL Certificate:vfs.file.exists[/usr/share/doc/python-software-properties/README].last(0)}=0 and &#13;
+{Lets Encrypt SSL Certificate:vfs.file.exists[/usr/bin/add-apt-repository].last(0)}=0 and&#13;
+{Lets Encrypt SSL Certificate:vfs.file.exists[/usr/bin/certbot].last()}=0</expression>
             <name>Hey! {HOST.NAME} has no python-software-properties or software-properties-common package installed</name>
-            <correlation_mode>0</correlation_mode>
-            <correlation_tag/>
-            <url/>
-            <status>0</status>
-            <priority>1</priority>
-            <description>If copyright file doesn't exist then package python-software-properties or software-properties-common (18.04+) is not installed, so alert us to this fact.</description>
-            <type>0</type>
-            <manual_close>0</manual_close>
-            <dependencies/>
-            <tags/>
-        </trigger>
-        <trigger>
-            <expression>{Lets Encrypt SSL Certificate:vfs.file.exists[/usr/bin/add-apt-repository].last(0)}=0</expression>
-            <recovery_mode>0</recovery_mode>
-            <recovery_expression/>
-            <name>Hey! {HOST.NAME} has no software-properties-common package installed</name>
-            <correlation_mode>0</correlation_mode>
-            <correlation_tag/>
-            <url/>
-            <status>0</status>
-            <priority>1</priority>
-            <description/>
-            <type>0</type>
-            <manual_close>0</manual_close>
-            <dependencies/>
-            <tags/>
+            <priority>INFO</priority>
+            <description>Alert if the packages are installed</description>
         </trigger>
     </triggers>
 </zabbix_export>
-
