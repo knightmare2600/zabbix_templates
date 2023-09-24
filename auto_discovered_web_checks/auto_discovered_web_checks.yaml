@@ -1,0 +1,283 @@
+zabbix_export:
+  version: '6.0'
+  date: '2023-09-24T12:30:48Z'
+  groups:
+    - uuid: 0e01686138174eb292489337d52e5bc0
+      name: 'Web Checks'
+  templates:
+    - uuid: b1742b83c5cb4978b50447a0b0fe7160
+      template: 'Auto-Discovered Web Checks'
+      name: 'Auto-Discovered Web Checks'
+      groups:
+        - name: 'Web Checks'
+      items:
+        - uuid: 023edac4885a433a8559988dd35e5ae0
+          name: 'Site List'
+          key: 'vfs.file.contents[{$SITES_FILE}]'
+          delay: 15m
+          trends: '0'
+          value_type: TEXT
+          description: |
+            Expected format:
+            
+            "URL";"RequiredString";"ResponseCode"
+            "example.com";"This domain is for use in illustrative examples","200
+          preprocessing:
+            - type: CHECK_NOT_SUPPORTED
+              parameters:
+                - ''
+              error_handler: CUSTOM_VALUE
+              error_handler_params: '[]'
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '1'
+          tags:
+            - tag: Application
+              value: 'Site Availability'
+          triggers:
+            - uuid: 39b2a5863c484699bb2d287c6c887dec
+              expression: 'last(/Auto-Discovered Web Checks/vfs.file.contents[{$SITES_FILE}])="[]"'
+              name: 'Empty Site List'
+              priority: DISASTER
+            - uuid: 092ac238abc4453da989951b3e204fe6
+              expression: 'nodata(/Auto-Discovered Web Checks/vfs.file.contents[{$SITES_FILE}],1h)=1'
+              name: 'No Site List Data for 1 Hour'
+              priority: HIGH
+      discovery_rules:
+        - uuid: 01928fd819854c34869f003d963baba3
+          name: 'Site Availability'
+          type: DEPENDENT
+          key: site.availability
+          delay: '0'
+          lifetime: 1h
+          item_prototypes:
+            - uuid: 24aea1f936154dc393089559b229480c
+              name: 'Site {#URL} Git Repo Root'
+              type: HTTP_AGENT
+              key: 'site.availability.git.[{#URL}]'
+              delay: 15m
+              trends: '0'
+              value_type: TEXT
+              timeout: 10s
+              url: 'https://{#URL}/.git'
+              status_codes: ''
+              follow_redirects: 'NO'
+              retrieve_mode: HEADERS
+              tags:
+                - tag: Application
+                  value: 'Site Availability'
+                - tag: Site
+                  value: '{#URL}'
+            - uuid: 9f72763255044566a8b04c820a667ac4
+              name: 'Site {#URL} Git Repo Root'
+              type: HTTP_AGENT
+              key: 'site.availability.githead.[{#URL}]'
+              delay: 15m
+              trends: '0'
+              value_type: TEXT
+              timeout: 10s
+              url: 'https://{#URL}/.git/HEAD'
+              status_codes: ''
+              follow_redirects: 'NO'
+              retrieve_mode: HEADERS
+              tags:
+                - tag: Application
+                  value: 'Site Availability'
+                - tag: Site
+                  value: '{#URL}'
+            - uuid: 9777530f5e874d1f872b8aa067debe2f
+              name: 'Site {#URL} HTTP Response Code'
+              type: HTTP_AGENT
+              key: 'site.availability.http.[{#URL}]'
+              delay: 15m
+              trends: '0'
+              value_type: TEXT
+              timeout: 10s
+              url: 'http://{#URL}'
+              status_codes: '{#RESPONSE_CODE}'
+              retrieve_mode: HEADERS
+              tags:
+                - tag: Application
+                  value: 'Site Availability'
+                - tag: Site
+                  value: '{#URL}'
+              trigger_prototypes:
+                - uuid: aaeba27236144c38919e5d00d380091e
+                  expression: |
+                    find(/Auto-Discovered Web Checks/site.availability.http.[{#URL}],,"like","{#RESPONSE_CODE}")=0 and 
+                    find(/Auto-Discovered Web Checks/site.availability.http.[{#URL}],,"like","HTTP/1.1 301 Moved Permanently")=0
+                  name: '{#URL} Unexpected HTTP Response Code (Expecting {#RESPONSE_CODE} or 301)'
+                  priority: HIGH
+                  tags:
+                    - tag: Application
+                      value: 'Site Availability'
+                    - tag: Site
+                      value: '{#URL}'
+            - uuid: f17d235fbb824a779ee617e64be5a7f4
+              name: 'Site {#URL} HTTPS Response Code'
+              type: HTTP_AGENT
+              key: 'site.availability.https.[{#URL}]'
+              delay: 15m
+              trends: '0'
+              value_type: TEXT
+              timeout: 10s
+              url: 'https://{#URL}'
+              status_codes: '{#RESPONSE_CODE}'
+              retrieve_mode: HEADERS
+              tags:
+                - tag: Application
+                  value: 'Site Availability'
+                - tag: Site
+                  value: '{#URL}'
+              trigger_prototypes:
+                - uuid: d4ba59ef17a746d2a1a1cb5afa6de934
+                  expression: 'find(/Auto-Discovered Web Checks/site.availability.https.[{#URL}],,"like","{#RESPONSE_CODE}")=0'
+                  name: '{#URL} Unexpected HTTPS Response Code (Expecting {#RESPONSE_CODE})'
+                  priority: HIGH
+                  tags:
+                    - tag: Application
+                      value: 'Site Availability'
+                    - tag: Site
+                      value: '{#URL}'
+            - uuid: f34b2e5681874977b6de325262bba8cb
+              name: 'Site {#URL} Web Perf'
+              key: 'web.page.perf[{#URL}]'
+              delay: 5m
+              value_type: FLOAT
+              units: s
+              description: 'Loading time of webpage in seconds'
+              preprocessing:
+                - type: CHECK_NOT_SUPPORTED
+                  parameters:
+                    - ''
+                  error_handler: CUSTOM_VALUE
+                  error_handler_params: '-1'
+              tags:
+                - tag: Application
+                  value: 'Site Availability'
+                - tag: Site
+                  value: '{#URL}'
+              trigger_prototypes:
+                - uuid: 811853f7678f47cd9b19cca2ff7a0f28
+                  expression: 'avg(/Auto-Discovered Web Checks/web.page.perf[{#URL}],#3)<0'
+                  name: 'Site {#URL} Failed to Check Loading Time'
+                  url: 'https://{#URL}'
+                  priority: INFO
+                  tags:
+                    - tag: Application
+                      value: 'Site Availability'
+                    - tag: Site
+                      value: '{#URL}'
+                - uuid: b439acb9ddfc4bc2b1f38c5855c09d53
+                  expression: |
+                    avg(/Auto-Discovered Web Checks/web.page.perf[{#URL}],#3)>0 and
+                    
+                    avg(/Auto-Discovered Web Checks/web.page.perf[{#URL}],#3)>={$LOADING_TIME_WARN} and
+                    
+                    avg(/Auto-Discovered Web Checks/web.page.perf[{#URL}],#3)<{$LOADING_TIME_CRIT}
+                  recovery_mode: RECOVERY_EXPRESSION
+                  recovery_expression: |
+                    avg(/Auto-Discovered Web Checks/web.page.perf[{#URL}],#3)<{$LOADING_TIME_WARN} or
+                    
+                    avg(/Auto-Discovered Web Checks/web.page.perf[{#URL}],#3)>{$LOADING_TIME_CRIT}
+                  name: 'Site {#URL} Slow Loading Times ({ITEM.LASTVALUE1})'
+                  url: 'https://{#URL}'
+                  priority: AVERAGE
+                  tags:
+                    - tag: Application
+                      value: 'Site Availability'
+                    - tag: Site
+                      value: '{#URL}'
+                - uuid: 7dd23fa5b1e54823ba4b67cc1d6a47b8
+                  expression: 'avg(/Auto-Discovered Web Checks/web.page.perf[{#URL}],#3)>={$LOADING_TIME_CRIT}'
+                  recovery_mode: RECOVERY_EXPRESSION
+                  recovery_expression: 'avg(/Auto-Discovered Web Checks/web.page.perf[{#URL}],#3)<{$LOADING_TIME_CRIT}'
+                  name: 'Site {#URL} Very Slow Loading Times ({ITEM.LASTVALUE1})'
+                  url: 'https://{#URL}'
+                  priority: DISASTER
+                  tags:
+                    - tag: Application
+                      value: 'Site Availability'
+                    - tag: Site
+                      value: '{#URL}'
+            - uuid: 0b41a33d0f7743249de691d6a3c21adf
+              name: 'Site {#URL} Required String Search'
+              key: 'web.page.regexp[https://{#URL},,,{#REQUIRED_STRING},,]'
+              delay: 5m
+              trends: '0'
+              value_type: CHAR
+              preprocessing:
+                - type: CHECK_NOT_SUPPORTED
+                  parameters:
+                    - ''
+                  error_handler: CUSTOM_VALUE
+              tags:
+                - tag: Application
+                  value: 'Site Availability'
+                - tag: Site
+                  value: '{#URL}'
+              trigger_prototypes:
+                - uuid: 1676a247170044daa1584a8845c2df91
+                  expression: 'find(/Auto-Discovered Web Checks/web.page.regexp[https://{#URL},,,{#REQUIRED_STRING},,],,"like","{#REQUIRED_STRING}")=0'
+                  name: '{#URL} Required Text "{#REQUIRED_STRING}" not found'
+                  url: 'https://{#URL}'
+                  priority: HIGH
+                  description: |
+                    We expect to be able to find {#REQUIRED_STRING} on {#URL} 
+                    
+                    If this is not found, throw an alert
+                  tags:
+                    - tag: Application
+                      value: 'Site Availability'
+                    - tag: Site
+                      value: '{#URL}'
+          trigger_prototypes:
+            - uuid: 0de2b6ad3f414d6db6555cfcf4fa861e
+              expression: |
+                find(/Auto-Discovered Web Checks/site.availability.githead.[{#URL}],,"like","HTTP/2 403")=0 and
+                
+                find(/Auto-Discovered Web Checks/site.availability.githead.[{#URL}],,"like","HTTP/2 404")=0 and
+                
+                find(/Auto-Discovered Web Checks/site.availability.git.[{#URL}],,"like","HTTP/2 30")=0
+              name: '{#URL} May Have Exposed Git Repo'
+              url: 'https://{#URL}'
+              priority: HIGH
+              description: 'If we get something other than HTTP 403, git repo may be available. We expect the /.git/ directory to be missing or blocked'
+              tags:
+                - tag: Application
+                  value: 'Site Availability'
+                - tag: Site
+                  value: '{#URL}'
+          graph_prototypes:
+            - uuid: a915253dcd6d47238a46e06492d3d768
+              name: '{#URL} Response Time'
+              graph_items:
+                - color: 199C0D
+                  calc_fnc: ALL
+                  item:
+                    host: 'Auto-Discovered Web Checks'
+                    key: 'web.page.perf[{#URL}]'
+          master_item:
+            key: 'vfs.file.contents[{$SITES_FILE}]'
+          lld_macro_paths:
+            - lld_macro: '{#REQUIRED_STRING}'
+              path: $.RequiredString
+            - lld_macro: '{#RESPONSE_CODE}'
+              path: $.ResponseCode
+            - lld_macro: '{#URL}'
+              path: $.URL
+      tags:
+        - tag: Application
+          value: 'Site Availability'
+      macros:
+        - macro: '{$LOADING_TIME_CRIT}'
+          value: '5'
+          description: 'Threshold At Which to Alert of Slow Loading Times'
+        - macro: '{$LOADING_TIME_WARN}'
+          value: '1'
+          description: 'Threshold At Which to Warn of Slow Load Times'
+        - macro: '{$SITES_FILE}'
+          value: /tmp/sites.csv
+          description: 'Path to sites.csv file'
